@@ -1,0 +1,83 @@
+@startuml
+/'
+Private   :  -
+Protected :  #
+public    :  + 
+'/
+abstract Entity
+Entity : #double health
+Entity : #double fastSpeed 
+Entity : #double slowSpeed 
+Entity : #string spriteImage
+
+Entity : +abstract void move()
+Entity : +abstract void attack()
+
+'--- God Class ---'
+class GameController
+GameController <-- PlayerController
+GameController <-- Entity
+GameController <-- BulletFactory
+GameController <-- Stage
+GameController : -Timer
+GameController : -Score
+GameController : -EntityCount
+GameController : -Update()
+
+
+
+'--- Player Stuff ---'
+class Player 
+Entity <|-- Player 
+Player : #int life
+Player : #void getInput
+
+class PlayerController
+PlayerController -- Player
+PlayerController : -void sendInput
+'--- Enemy Stuff ---'
+abstract Enemy
+Entity <|-- Enemy
+
+class Drone
+Enemy <|-- Drone
+
+class Soldier
+Enemy <|-- Soldier
+
+abstract Boss
+Enemy <|-- Boss
+
+class MidBoss
+Boss <|-- MidBoss
+
+class FinalBoss
+Boss <|-- FinalBoss
+
+'--- Bullet Stuff ---'
+abstract Bullet
+BulletFactory -- Bullet
+
+class PlayerBullet
+Bullet <|-- PlayerBullet
+
+class EnemyBullet
+Bullet <|-- EnemyBullet
+
+class BossBullet
+Bullet <|-- BossBullet
+
+'--- Factory Stuff ---'
+class BulletFactory
+BulletFactory : -Bullet shoot()
+
+class EnemyFactory
+EnemyFactory -- Enemy
+EnemyFactory : -Enemy spawn()
+
+'--- Stage Stuff ---'
+class Stage
+Stage : -string background
+Stage : #int timeInSeconds 
+
+@enduml
