@@ -1,0 +1,70 @@
+﻿Project Vision - Florida Fun Time
+Team ProGrammar
+Project Background: 
+The player has gotten stranded in Florida after their car has broken down, and has to deal with all the crazy Florida men, Crazy people, Alligators, Old People.
+The Stage:
+The stage will change depending on the phase. The stage also has a random feature called Cops in Pursuit. In each stage, a warning of red and blue police lights near the top of the screen and a siren will indicate that a Police Vehicle is about to zoom downwards across the screen. It will be a different vehicle depending on the phase and corresponding stage. It cannot be destroyed and if it hits the player, it will deal massive damage.
+
+
+For the first phase, the player will be walking down a swampy road. The Cops in Pursuit vehicle will be a police cruiser.
+For the second phase, the player will enter into a murky swamp and fight the Alligator Queen. The Cops in Pursuit vehicle will be a police boat.
+For the third phase, the player will enter a downtown street towards a mall in search of tools and supplies. The Cops In Pursuit vehicle will be a police interceptor.
+For the fourth phase, the player will enter the mall and fight a berserking man, THE Florida Man. The Cops in pursuit vehicle will be a Mall Cop Segway
+The Player (3 Hit Points):
+An average Joe on his way to work armed with a pistol. His car breaks down on his way to work and he has to go through a swamp, downtown, and a mall to get tools and gas to refill his car. HP of the player will be three total hits. With three lives. He has infinite ammo on his pistol but has limited powerup items and timed power-ups. WASD to move, M1 to shoot. M2 to go slower. Space to Dodge (Optional).
+The grunts (3 Hit Points): 
+- Crazy people: Will throw various small objects often at the player which will deal small amounts of damage. 
+- Old People:  Will throw canes that spin like a boomerang, dealing medium amounts of damage
+- Alligators: Will follow around the player and bite them, dealing medium amounts of damage
+
+
+The Mid Boss (100 Hit Points): 
+- Queen Alligator: A very big alligator wearing a crown which will have wind-up biting attacks with long reach. She will also spawn more alligators.
+The Boss (150 Hit Points): 
+- THE Florida Man: Attacks with Conspiracy Theory Speech Wave, slowing down the character’s movement, throws alligators at you, lots of health, very fast, shoots bullets, throws cheeseburger bombs        
+
+
+Gameplay:
+Phase 1 (grunts) (45 seconds):
+- This phase will have three waves.
+- The first wave will last 10 seconds. In this wave, we will spawn 5 Alligators.
+- The second wave will last 10 seconds. In this wave, we will spawn 3 Alligators and 2 Crazy People.
+- The third wave will last 25 seconds. In this wave, we will spawn 5 Alligators, 5 Crazy People, and 3 Old People. 
+
+
+Phase 2 (mid boss attack) (45 seconds):
+Queen Alligator: The giant Queen Alligator moves across the screen throwing little alligators and trying to bite the player at the same time. Leaves behind eggs: When shot they spawn baby alligators that chase the enemy, however if the layer collides with an egg, they will take damage. Queen Alligator will have a health bar at the top of the screen.
+
+
+- Second 1-5: Queen Alligator Spawns on the Screen
+- Second 5-20: Queen Alligator Chases the player and leaves behind Eggs
+- Seconds 20-35: Queen Alligator goes away from the player and starts throwing eggs
+- Seconds 35-45: Queen Alligator Chases the player at higher speeds.
+
+Phase 3 (grunts) (45 seconds):
+This phase is similar to phase 1, but with increased difficulty
+- This phase will have four waves.
+- The first wave will last 10 seconds. In this wave, we will spawn 8 Alligators.
+- The second wave will last 10 seconds. In this wave, we will spawn 5 Alligators and 2 Crazy People, and 1 Old Person.
+- The third wave will last 10 seconds. In this wave, we will spawn 7 Alligators, 5 Crazy People, and 3 Old People. 
+- The fourth wave will last 15 seconds 
+
+
+Phase 4 (final boss attack) (45 seconds): 
+THE Florida Man will cycle between different attacks, while also constantly shooting the Conspiracy Theory Speech Wave in a certain direction with a semi-wide range.
+
+
+- Seconds 0-5: THE Florida Man drops down from the top of the screen and screams in rage. The music changes to the final boss battle music. Health bar for the Florida man is displayed. 
+- Seconds 5-15: THE Florida Man has rapid left to right movement, throwing alligators out of his pocket. 
+- Seconds 15-25: THE Florida Man gives conspiracy theory speech (x2), which will look like a wave with holes in it for the player to dodge and not lose speed. After the player dodges the waves, THE Florida man will be in place, giving the player a window to land lots of attacks.
+- Seconds 25-35: THE Florida Man has rapid left to right movement, throwing alligators out of his pocket. 
+- Seconds 35-45: THE Florida Man finds 5 cheeseburgers, lobbing them at the player (has bomb effect) then starts moving rapidly left to right again.
+
+
+Power-Ups: 
+* Shotgun - Changes shoot to a 5 pellet spread for x-amount of seconds, short range.
+* Armor Piercing (AP) Bullet - Changes shot to pass through enemies for x-amount of seconds.
+* Tin Foil Hat Shield - Negates next hit.
+* Molotov Cocktail - Throwable Item that burns enemies that pass through for x-amount of seconds.
+* Slurpee - AOE Throwable Item that freezes enemies in place.
+* Bomb - Destroys all enemies on screen.

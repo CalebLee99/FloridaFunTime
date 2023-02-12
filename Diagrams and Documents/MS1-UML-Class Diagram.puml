@@ -36,6 +36,8 @@ Player : #int life
 Player : #void getInput
 Player : -Position
 Player : -shoot()
+Player : -move()
+
 
 
 class PlayerController
