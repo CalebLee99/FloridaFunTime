@@ -14,26 +14,29 @@ Entity : +abstract void move()
 Entity : +abstract void attack()
 
 '--- God Class ---'
-class GameController
-GameController -- PlayerController
-GameController -- Entity
-GameController -- BulletFactory
-GameController -- Stage
-GameController : -Timer
-GameController : -Score
-GameController : -EntityCount
-GameController : -Update()
-GameController -- EnemyFactory
-GameController : -SpawnEnemy()
-GameController : -UpdateLives()
-GameController : -ClearScreen()
-GameController : -UpdateStage()
+class GameManager
+GameManager -- PlayerController
+GameManager -- Entity
+GameManager -- BulletFactory
+GameManager -- Stage
+GameManager : -Timer
+GameManager : -Score
+GameManager : -EntityCount
+GameManager : -updateTick()
+GameManager -- EnemyFactory
+GameManager : -spawnEnemy()
+GameManager : -updateLives()
+GameManager : -clearScreen()
+GameManager : -updateStage()
 
 '--- Player Stuff ---'
 class Player 
 Entity <|-- Player 
 Player : #int life
 Player : #void getInput
+Player : -Position
+Player : -shoot()
+
 
 class PlayerController
 PlayerController -- Player
@@ -63,6 +66,8 @@ Boss <|-- FinalBoss
 '--- Bullet Stuff ---'
 abstract Bullet
 BulletFactory -- Bullet
+Bullet : -int Damage
+Bullet : -int Speed
 
 class PlayerBullet
 Bullet <|-- PlayerBullet
@@ -75,7 +80,7 @@ Bullet <|-- BossBullet
 
 '--- Factory Stuff ---'
 class BulletFactory
-BulletFactory : -Bullet shoot()
+BulletFactory : -Bullet spawn()
 
 class EnemyFactory
 EnemyFactory -- Enemy
