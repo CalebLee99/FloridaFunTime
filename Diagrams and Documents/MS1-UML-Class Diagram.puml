@@ -15,16 +15,19 @@ Entity : +abstract void attack()
 
 '--- God Class ---'
 class GameController
-GameController <-- PlayerController
-GameController <-- Entity
-GameController <-- BulletFactory
-GameController <-- Stage
+GameController -- PlayerController
+GameController -- Entity
+GameController -- BulletFactory
+GameController -- Stage
 GameController : -Timer
 GameController : -Score
 GameController : -EntityCount
 GameController : -Update()
-
-
+GameController -- EnemyFactory
+GameController : -SpawnEnemy()
+GameController : -UpdateLives()
+GameController : -ClearScreen()
+GameController : -UpdateStage()
 
 '--- Player Stuff ---'
 class Player 
@@ -34,10 +37,13 @@ Player : #void getInput
 
 class PlayerController
 PlayerController -- Player
-PlayerController : -void sendInput
+PlayerController : -Scheme ControlScheme 
+PlayerController : -void sendInput()
 '--- Enemy Stuff ---'
 abstract Enemy
 Entity <|-- Enemy
+Enemy : -Script MovementScript
+Enemy : -Script ShootingPattern
 
 class Drone
 Enemy <|-- Drone
