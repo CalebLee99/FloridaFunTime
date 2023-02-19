@@ -1,4 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Microsoft.VisualBasic.Devices;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using SharpDX.Direct3D9;
 using SharpDX.DirectWrite;
 using System;
@@ -9,14 +12,15 @@ using System.Threading.Tasks;
 
 namespace FlameShotGame.Content
 {
-    internal class Player
+    public class Player
     {
         private int _currentHealth;
         private int _maxHealth;
-        private Point _position;
+        private Vector2 _position;
         private bool _slow_on;
-        private int _regularSpeed;
-        private int _slowSpeed;
+        private float _regularSpeed;
+        private float _slowSpeed;
+        private Texture2D _playerTexture;
 
         public Player()
         {
@@ -27,9 +31,24 @@ namespace FlameShotGame.Content
             this._slowSpeed = 2;
         }
 
+        public void setPlayerTexture(Texture2D playerTexture)
+        {
+            this._playerTexture = playerTexture;
+        }
+
+        public Texture2D getPlayerTexture()
+        {
+            return this._playerTexture;
+        }
+
+        public void initializePosition(Vector2 initialPosition)
+        {
+            this._position = initialPosition;
+        }
+
         public void move()
         {
-            return;
+
         }
 
         public void updateHealth()
