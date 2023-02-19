@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+// using Microsoft.Xna.Framework.Storage;
 
 namespace FlameShotGame
 {
@@ -19,18 +20,19 @@ namespace FlameShotGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            // This is where you can query any required services and load any non-graphic related content.
 
             base.Initialize();
         }
 
-        protected override void LoadContent()
+        protected override void LoadContent() // Called once per game
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
 
-        protected override void Update(GameTime gameTime)
+        protected override void Update(GameTime gameTime) // Called multiple times per second
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -40,7 +42,7 @@ namespace FlameShotGame
             base.Update(gameTime);
         }
 
-        protected override void Draw(GameTime gameTime)
+        protected override void Draw(GameTime gameTime) // Called multiple times per second
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
