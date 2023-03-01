@@ -10,7 +10,6 @@ namespace FlameShotGame
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Texture2D playerTexture;
         private Player player;
         private Vector2 initialPlayerPosition;
 
@@ -41,7 +40,6 @@ namespace FlameShotGame
 
             // TODO: use this.Content to load your game content here
             
-            this.player.setPlayerTexture(Content.Load<Texture2D>("Sprites/player"));
         }
 
         protected override void Update(GameTime gameTime) // Called multiple times per second
@@ -58,12 +56,10 @@ namespace FlameShotGame
 
         protected override void Draw(GameTime gameTime) // Called multiple times per second
         {
-            float player_scale = .8f; // make player % smaller
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
-            _spriteBatch.Draw(this.player.getPlayerTexture(), new Vector2(0, 0), Color.White);
             _spriteBatch.End();
             
             base.Draw(gameTime);

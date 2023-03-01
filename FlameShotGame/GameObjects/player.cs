@@ -14,13 +14,14 @@ namespace FlameShotGame
 {
     public class Player
     {
-        private int _currentHealth;
-        private int _maxHealth;
-        private Vector2 _position;
-        private bool _slow_on;
-        private float _regularSpeed;
-        private float _slowSpeed;
-        private Texture2D _playerTexture;
+        private int _currentHealth { get; set; }
+        private int _maxHealth { get; set; }
+        private Vector2 _position { get; set; }
+        private bool _slow_on { get; set; }
+        private float _regularSpeed { get; set; }
+        private float _slowSpeed { get; set; }
+        private Texture2D _playerTexture { get; set; }
+        Globals globals = Globals.instance();
 
         public Player()
         {
@@ -31,16 +32,6 @@ namespace FlameShotGame
             this._slowSpeed = 2;
         }
 
-        public void setPlayerTexture(Texture2D playerTexture)
-        {
-            this._playerTexture = playerTexture;
-        }
-
-        public Texture2D getPlayerTexture()
-        {
-            return this._playerTexture;
-        }
-
         public void initializePosition(Vector2 initialPosition)
         {
             this._position = initialPosition;
@@ -48,7 +39,6 @@ namespace FlameShotGame
 
         public void move()
         {
-            
         }
 
         public void updateHealth()
