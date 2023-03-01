@@ -10,7 +10,7 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace FlameShotGame
 {
-    public class Entity
+    public abstract class Entity
     {
         protected readonly Texture2D texture;
         protected readonly Vector2 spawn;
@@ -25,7 +25,6 @@ namespace FlameShotGame
             this.currentPosition = pos;
             this.speed = 100; // Change this to a global variable defaultSpeed.
             this.spawn = new(texture.Width / 2, texture.Height / 2); // Also change this to global variable defaultSpawnPoint.
-
         }
         public void Draw()
         {

@@ -16,8 +16,7 @@ namespace FlameShotGame
     {
         private static Globals uniqueInstance = new Globals();
 
-        // attributes
-
+        // Attributes
         public static float Time { get; set; }
         public SpriteBatch SpriteBatch { get; set; }
         public GraphicsDevice GraphicsDevice { get; set; }
