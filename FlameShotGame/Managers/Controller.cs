@@ -14,27 +14,28 @@ namespace FlameShotGame
         private static Controller uniqueInstance = new Controller();
 
         // attributes
-        public static Vector2 MovementDirection { get; set; }
+        /*public static Vector2 MovementDirection { get; set; }*/
+        private static Vector2 MovementDirection;
 
         public static void Update()
         {
             KeyboardState ks = Keyboard.GetState();
-            // Switch to using a data structure rather than a lot of conditionals.
+            // Switch to using a data structure instead of conditionals.
             if (ks.IsKeyDown(Keys.W))
             {
-                MovementDirection--;
+                MovementDirection.Y--;
             }
             if (ks.IsKeyDown(Keys.S))
             {
-                MovementDirection++;
+                MovementDirection.Y++;
             }  
             if (ks.IsKeyDown(Keys.A))
             {
-                MovementDirection--;
+                MovementDirection.X--;
             }
             if (ks.IsKeyDown(Keys.D))
             {
-                MovementDirection++;
+                MovementDirection.X++;
             }
         }
 
@@ -45,7 +46,7 @@ namespace FlameShotGame
 
         private Controller() 
         { 
-            this.MovementDirection = Vector2.Zero;
+            MovementDirection = Vector2.Zero;
         }
     }
 }

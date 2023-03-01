@@ -25,9 +25,6 @@ namespace FlameShotGame
         protected override void Initialize()
         {
             // Initialize Player class and position on the screen.
-            player = new Player();
-            initialPlayerPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2); // !! This needs changing.
-            player.initializePosition(initialPlayerPosition);
             
             // This is where you can query any required services and load any non-graphic related content.
 
@@ -46,8 +43,6 @@ namespace FlameShotGame
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            this.player.move();
 
             // TODO: Add your update logic here
 

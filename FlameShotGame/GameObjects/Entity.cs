@@ -1,12 +1,14 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
-namespace FlameShotGame.GameObjects
+namespace FlameShotGame
 {
     public class Entity
     {
@@ -27,7 +29,7 @@ namespace FlameShotGame.GameObjects
         }
         public void Draw()
         {
-            //globals.SpriteBatch.Draw(texture, currentPosition, 0, spawn, 1, 1);
+            globals.SpriteBatch.Draw(this.texture, this.currentPosition, null, Color.White, 1, this.spawn, 1, SpriteEffects.None, 1);
         }
     }    
 }

@@ -1,4 +1,4 @@
-﻿using FlameShotGame.GameObjects;
+﻿using FlameShotGame;
 using Microsoft.VisualBasic.Devices;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
