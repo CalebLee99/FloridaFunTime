@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlameShotGame.Content
+namespace FlameShotGame
 {
     public class Player
     {
@@ -48,20 +48,20 @@ namespace FlameShotGame.Content
 
         public void move()
         {
-
+            
         }
 
         public void updateHealth()
         {
             return;
         }
-        
+
         /// <summary>
         /// Switches the speed of the player when this function gets called.
         /// </summary>
         public void switchSpeed()
         {
-            this._slow_on = !this._slow_on; 
+            this._slow_on = !this._slow_on;
         }
 
         public void shoot()
