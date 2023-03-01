@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.Devices;
+﻿using FlameShotGame.GameObjects;
+using Microsoft.VisualBasic.Devices;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace FlameShotGame
 {
-    public class Player
+    public class Player : Entity
     {
         private int _currentHealth { get; set; }
         private int _maxHealth { get; set; }
@@ -21,9 +22,9 @@ namespace FlameShotGame
         private float _regularSpeed { get; set; }
         private float _slowSpeed { get; set; }
         private Texture2D _playerTexture { get; set; }
-        Globals globals = Globals.instance();
 
-        public Player()
+
+        public Player(Texture2D texture, Vector2 pos) : base(texture, pos)
         {
             this._currentHealth = 3;
             this._maxHealth = 3;

@@ -12,15 +12,15 @@ using System.Threading.Tasks;
 
 namespace FlameShotGame
 {
-    public class Globals // Might be better 
+    public class Globals // Might be better to be internal
     {
         private static Globals uniqueInstance = new Globals();
 
         // attributes
 
         public static float Time { get; set; }
-        public static SpriteBatch SpriteBatch { get; set; }
-        public static GraphicsDevice GraphicsDevice { get; set; }
+        public SpriteBatch SpriteBatch { get; set; }
+        public GraphicsDevice GraphicsDevice { get; set; }
         
         public static Globals instance()
         {
