@@ -15,7 +15,7 @@ namespace FlameShotGame
         protected readonly Texture2D texture;
         protected readonly Vector2 spawn;
         public Vector2 currentPosition { get; set; }
-        public float speed { get; set; }
+        internal float speed { get; set; }
         Globals globals = Globals.instance();
 
         // Constructor

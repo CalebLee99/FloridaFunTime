@@ -17,43 +17,41 @@ namespace FlameShotGame
     {
         private int _currentHealth { get; set; }
         private int _maxHealth { get; set; }
-        private Vector2 _position { get; set; }
-        private bool _slow_on { get; set; }
-        private float _regularSpeed { get; set; }
-        private float _slowSpeed { get; set; }
         private Texture2D _playerTexture { get; set; }
+        private bool _shooting { get; set; }
+
 
 
         public Player(Texture2D texture, Vector2 pos) : base(texture, pos)
         {
             this._currentHealth = 3;
             this._maxHealth = 3;
-            this._slow_on = false;
-            this._regularSpeed = 5;
-            this._slowSpeed = 2;
+            this.speed = 200;
+            this._shooting = false;
         }
 
         public void InitializePosition(Vector2 initialPosition)
         {
-            this._position = initialPosition;
+            this.currentPosition = initialPosition;
+        }
+        public void Speed()
+        {
+            this.speed = Controller.PlayerSpeed;
         }
 
         public void Move()
         {
-            _position = Controller.MovementDirection;
-        }
+            currentPosition = Controller.MovementDirection;
 
+            if (currentPosition != Vector2.Zero)
+            {
+                currentPosition = Vector2.Normalize(currentPosition);
+                currentPosition += currentPosition * speed * Globals.Time;
+            }
+        }
         public void UpdateHealth()
         {
             return;
-        }
-
-        /// <summary>
-        /// Switches the speed of the player when this function gets called.
-        /// </summary>
-        public void SwitchSpeed()
-        {
-            this._slow_on = !this._slow_on;
         }
 
         public void Shoot()
