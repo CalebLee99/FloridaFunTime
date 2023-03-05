@@ -22,7 +22,8 @@ namespace FlameShotGame
         public static Vector2 MovementDirection => _movementDirection;
         public static int PlayerSpeed => _playerSpeed;
         public static bool IsShooting => _isShooting;
-        public static new void Update()
+        
+        protected override void Update()
         {
             KeyboardState ks = Keyboard.GetState();
             MouseState ms = Mouse.GetState();
@@ -57,12 +58,12 @@ namespace FlameShotGame
             }
         }
 
-        public static Controller instance()
+        public static new Controller Instance()
         {
             return uniqueInstance;
         }
 
-        private Controller() 
+        protected Controller() 
         { 
             _movementDirection = Vector2.Zero;
             _playerSpeed = 200;

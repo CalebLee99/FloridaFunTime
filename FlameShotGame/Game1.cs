@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+
 // using Microsoft.Xna.Framework.Storage;
 
 namespace FlameShotGame
@@ -24,10 +25,8 @@ namespace FlameShotGame
 
         protected override void Initialize()
         {
-            // Initialize Player class and position on the screen.
-            
-            // This is where you can query any required services and load any non-graphic related content.
-
+            GameManager gameManager = GameManager.Instance();
+            Globals globals = Globals.instance();
             base.Initialize();
         }
 

@@ -34,6 +34,7 @@ namespace FlameShotGame
         {
             this.currentPosition = initialPosition;
         }
+
         public void Speed()
         {
             this.speed = Controller.PlayerSpeed;
