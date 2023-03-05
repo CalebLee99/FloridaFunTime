@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace FlameShotGame
 {
-    internal class GameManager
+    internal interface GameManager
     {
+        //Globals globals = Globals.instance();
+
 
     }
 }

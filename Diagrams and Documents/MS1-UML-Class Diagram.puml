@@ -14,7 +14,7 @@ Entity : +abstract void move()
 Entity : +abstract void attack()
 
 '--- God Class ---'
-class GameManager
+interface GameManager
 GameManager -- PlayerController
 GameManager -- Entity
 GameManager -- BulletFactory
@@ -28,6 +28,18 @@ GameManager : -spawnEnemy()
 GameManager : -updateLives()
 GameManager : -clearScreen()
 GameManager : -updateStage()
+
+class HitboxManager
+HitboxManager -> GameManager
+class EntityManager
+EntityManager -> GameManager
+class SoundManager
+SoundManager -> GameManager
+class HealthManager
+GameManager <- HealthManager
+class SpawnManager
+GameManager <- SpawnManager
+
 
 '--- Player Stuff ---'
 class Player 

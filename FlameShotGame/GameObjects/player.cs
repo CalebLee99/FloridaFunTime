@@ -33,16 +33,17 @@ namespace FlameShotGame
             this._slowSpeed = 2;
         }
 
-        public void initializePosition(Vector2 initialPosition)
+        public void InitializePosition(Vector2 initialPosition)
         {
             this._position = initialPosition;
         }
 
-        public void move()
+        public void Move()
         {
+            _position = Controller.MovementDirection;
         }
 
-        public void updateHealth()
+        public void UpdateHealth()
         {
             return;
         }
@@ -50,12 +51,12 @@ namespace FlameShotGame
         /// <summary>
         /// Switches the speed of the player when this function gets called.
         /// </summary>
-        public void switchSpeed()
+        public void SwitchSpeed()
         {
             this._slow_on = !this._slow_on;
         }
 
-        public void shoot()
+        public void Shoot()
         {
             return;
         }
