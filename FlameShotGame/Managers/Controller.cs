@@ -31,19 +31,19 @@ namespace FlameShotGame.Managers
             // Switch to using a data structure instead of conditionals.
             if (ks.IsKeyDown(Keys.W))
             {
-                _movementDirection.Y--;
+                _movementDirection.Y -= 1;
             }
             if (ks.IsKeyDown(Keys.S))
             {
-                _movementDirection.Y++;
+                _movementDirection.Y += 1;
             }  
             if (ks.IsKeyDown(Keys.A))
             {
-                _movementDirection.X--;
+                _movementDirection.X -= 1;
             }
             if (ks.IsKeyDown(Keys.D))
             {
-                _movementDirection.X++;
+                _movementDirection.X += 1;
             }
             if (ks.IsKeyDown(Keys.LeftShift))
             {

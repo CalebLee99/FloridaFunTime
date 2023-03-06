@@ -21,7 +21,7 @@ namespace FlameShotGame.GameObjects
         private int _maxHealth { get; set; }
         private Texture2D _playerTexture { get; set; }
         private bool _shooting { get; set; }
-
+        private Vector2 _velocity { get; set; }
 
 
         public Player(Texture2D texture, Vector2 pos) : base(texture, pos)
@@ -29,6 +29,7 @@ namespace FlameShotGame.GameObjects
             this._currentHealth = 3;
             this._maxHealth = 3;
             this._shooting = false;
+            _velocity = Vector2.Zero;
         }
 
         public void InitializePosition(Vector2 initialPosition)
@@ -44,16 +45,18 @@ namespace FlameShotGame.GameObjects
         public override void Move()
         {
             // This needs work...
-            currentPosition = Controller.MovementDirection;
-            this.Speed();
-            if (currentPosition != Vector2.Zero)
+            _velocity = Controller.MovementDirection;
+            Speed();
+            Debug.WriteLine("Speed: " + speed);
+            Debug.WriteLine("position x " + currentPosition.X);
+            Debug.WriteLine("position y " + currentPosition.Y);
+            Debug.WriteLine("Velocity " + _velocity);
+            if (_velocity != Vector2.Zero)
             {
-                //currentPosition = Vector2.Normalize(currentPosition); //Look into this (RESEARCH)
-                Debug.WriteLine("Speed: " + speed);
-                Debug.WriteLine("position x " + currentPosition.X);
-                Debug.WriteLine("position y " + currentPosition.Y);
-                // currentPosition += currentPosition * speed * Globals.Time;
+                _velocity.Normalize();
             }
+            currentPosition += _velocity * this.speed;
+            _velocity = Vector2.Zero;
         }
         public void UpdateHealth()
         {
