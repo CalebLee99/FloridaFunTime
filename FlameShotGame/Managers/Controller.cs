@@ -4,11 +4,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using FlameShotGame.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace FlameShotGame
+namespace FlameShotGame.Managers
 {
     public class Controller : GameManager
     {
@@ -23,7 +24,7 @@ namespace FlameShotGame
         public static int PlayerSpeed => _playerSpeed;
         public static bool IsShooting => _isShooting;
         
-        protected override void Update()
+        public override void Update()
         {
             KeyboardState ks = Keyboard.GetState();
             MouseState ms = Mouse.GetState();
@@ -46,11 +47,11 @@ namespace FlameShotGame
             }
             if (ks.IsKeyDown(Keys.LeftShift))
             {
-                _playerSpeed = 100; // Use global variables??
+                _playerSpeed = 2; // Use global variables??
             }
             if (ks.IsKeyUp(Keys.LeftShift))
             {
-                _playerSpeed = 200; // Use global variables??
+                _playerSpeed = 4; // Use global variables??
             }
             if (ks.IsKeyDown(Keys.Space))
             {

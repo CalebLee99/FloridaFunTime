@@ -20,9 +20,9 @@ namespace FlameShotGame
         // Attributes
         public static float Time { get; set; }
         public SpriteBatch SpriteBatch { get; set; }
-        public GraphicsDevice GraphicsDevice { get; set; }
+        public GraphicsDeviceManager GraphicsDevice { get; set; }
         public ContentManager Content { get; set; }
-        
+       
         public static Globals instance()
         {
             return uniqueInstance;
