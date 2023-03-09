@@ -13,7 +13,7 @@ using FlameShotGame.Creational;
 // This manager is used when ever an entity needs to be spawned.
 namespace FlameShotGame.Managers
 {
-    public class SpawnManager : GameManager
+    public class SpawnManager 
     {
         private static SpawnManager uniqueInstance = new SpawnManager();
         Globals global = Globals.Instance();
@@ -22,12 +22,12 @@ namespace FlameShotGame.Managers
         // Attributes
         private static List<Entity> EntitiesOnScreen; // This should be pass by ref per entity... Test this.
 
-        public static new SpawnManager Instance()
+        public static SpawnManager Instance()
         {
             return uniqueInstance;
         }
 
-        public override void Update()
+        public void Update()
         {
             Globals.EntitiesList = EntitiesOnScreen;
         }

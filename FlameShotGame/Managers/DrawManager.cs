@@ -12,16 +12,16 @@ using Microsoft.Xna.Framework.Input;
 namespace FlameShotGame.Managers
 {
 
-    public class DrawManager : GameManager
+    public class DrawManager 
     {
         private static DrawManager uniqueInstance = new DrawManager();
         Globals global = Globals.Instance();
         
-        public static new DrawManager Instance()
+        public static DrawManager Instance()
         {
             return uniqueInstance;
         }
-        public override void Update()
+        public void Update()
         {
             global.SpriteBatch.Begin();
             foreach(var entity in Globals.EntitiesList)

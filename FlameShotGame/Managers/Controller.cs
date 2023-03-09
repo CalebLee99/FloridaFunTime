@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace FlameShotGame.Managers
 {
-    public class Controller : GameManager
+    public class Controller
     {
         private static Controller uniqueInstance = new Controller();
 
@@ -29,7 +29,7 @@ namespace FlameShotGame.Managers
         public static float defaultPlayerSpeed => _defaultPlayerSpeed;
         public static float slowPlayerSpeed => _slowPlayerSpeed;
         
-        public override void Update()
+        public void Update()
         {
             KeyboardState ks = Keyboard.GetState();
             MouseState ms = Mouse.GetState();
@@ -61,7 +61,7 @@ namespace FlameShotGame.Managers
             }
         }
 
-        public static new Controller Instance()
+        public static Controller Instance()
         {
             return uniqueInstance;            
         }
