@@ -38,21 +38,21 @@ namespace FlameShotGame.Managers
             this.enemyFactory = new EnemyFactory();
         }
 
-        public void SpawnEntity(Entity en)
+        public void SpawnPlayer(Player pl)
         {
-            EntitiesOnScreen.Add(en);
+            EntitiesOnScreen.Add(pl);
         }
 
         public void SpawnEntity(Player player)
         {
             EntitiesOnScreen.Add(enemyFactory.CreateEnemy("grunt",
-                                                                global.Content.Load<Texture2D>("Sprites/player"),
-                                                                new Vector2(0, 0),
+                                                                global.Content.Load<Texture2D>("Sprites/enemy"),
+                                                                new Vector2(200, 0),
                                                                 player,
                                                                 new List<Vector2>(){new Vector2(50, 0)}));
 
             EntitiesOnScreen.Add(enemyFactory.CreateEnemy("alligator",
-                                                                global.Content.Load<Texture2D>("Sprites/player"),
+                                                                global.Content.Load<Texture2D>("Sprites/alligator"),
                                                                 new Vector2(0, 0),
                                                                 player,
                                                                 new List<Vector2>(){

@@ -30,11 +30,13 @@ namespace FlameShotGame.Managers
         protected GameManager()
         {
             // Set ALL sprites here.
-            _player = new (global.Content.Load<Texture2D>("Sprites/player"), new Vector2(0, 0));
+            _player = new Player(global.Content.Load<Texture2D>("Sprites/player"), new Vector2(300, 250));
             // Populate the Managers list with all of the submanagers.
             //Managers.Add(drawManager);
 
+            spawnManager.SpawnPlayer(_player);
             spawnManager.SpawnEntity(_player);
+            
         }
 
         // Gets called every tick, MUST get overridden by subclasses
@@ -43,7 +45,8 @@ namespace FlameShotGame.Managers
             // Go through Managers list and call the update function in there.
             controller.Update();
             spawnManager.Update();
-            drawManager.Update();
+            //drawManager.Update();
+            _player.Move();
         }
         public void Draw()
         {
