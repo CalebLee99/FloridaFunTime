@@ -48,7 +48,7 @@ namespace FlameShotGame
             // TODO: Add your update logic here
             gameManager.Update();
             Globals.Update(gameTime);
-            //base.Update(gameTime);
+            base.Update(gameTime);
             
         }
 
@@ -61,7 +61,7 @@ namespace FlameShotGame
             gameManager.Draw();
             _spriteBatch.End();
             
-            //base.Draw(gameTime);
+            base.Draw(gameTime);
         }
     }
 }
