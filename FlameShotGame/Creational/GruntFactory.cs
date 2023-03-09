@@ -8,12 +8,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
 
+
 namespace FlameShotGame.Creational
 {
     public class EnemyFactory
     {
         public Entity CreateEnemy(string enemyType, Texture2D texture, Vector2 pos, Player player, List<Vector2> movePath)
-        {   
+        {
             if (enemyType == "alligator")
             {
                 return new AlligatorEnemy(texture, pos, player);

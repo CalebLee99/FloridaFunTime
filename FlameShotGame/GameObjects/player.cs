@@ -36,25 +36,25 @@ namespace FlameShotGame.GameObjects
 
         public override void Move()
         {
-            if (Controller.MovementDirection != Vector2.Zero)
+            var currentDirection = Controller.MovementDirection;
+            if (currentDirection == Vector2.Zero)
             {
-                Debug.WriteLine("Moving");
-                var currentDirection = Vector2.Normalize(Controller.MovementDirection);
-                Debug.WriteLine("CURRENT DIRECTION x " + currentDirection.X);
-                Debug.WriteLine("CURRENT DIRECTION y " + currentDirection.Y);
-
-                this.currentPosition += currentDirection * Controller.currentPlayerSpeed * Globals.Time;
-                Debug.WriteLine("Speed: " + Controller.currentPlayerSpeed);
-                Debug.WriteLine("position x " + currentPosition.X);
-                Debug.WriteLine("position y " + currentPosition.Y); 
+                Debug.WriteLine("Not moving");
             }
 
-            
+            //currentDirection = Vector2.Normalize(currentDirection);
+            Debug.WriteLine("CURRENT DIRECTION x " + currentDirection.X);
+            Debug.WriteLine("CURRENT DIRECTION y " + currentDirection.Y);
+
+            this.currentPosition += currentDirection * Controller.currentPlayerSpeed * Globals.Time;
+            Debug.WriteLine("Speed: " + Controller.currentPlayerSpeed);
+            Debug.WriteLine("position x " + currentPosition.X);
+            Debug.WriteLine("position y " + currentPosition.Y);
         }
 
         public override void Update()
         {
-            Move();
+            base.Update();
         }
         public void UpdateHealth()
         {
