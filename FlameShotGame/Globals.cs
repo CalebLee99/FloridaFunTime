@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using FlameShotGame.GameObjects;
 using Microsoft.Xna.Framework.Input;
 using SharpDX.MediaFoundation.DirectX;
 using System;
@@ -10,6 +11,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace FlameShotGame
 {
@@ -24,8 +26,9 @@ namespace FlameShotGame
         public GraphicsDeviceManager GraphicsDevice { get; set; }
         public ContentManager Content { get; set; }
         public readonly float defaultEntitySpeed = 5;
+        public static List<Entity> EntitiesList;
        
-        public static Globals instance()
+        public static Globals Instance()
         {
             return uniqueInstance;
         }
@@ -38,8 +41,7 @@ namespace FlameShotGame
         private Globals() 
         {
             Time = (float) 0;
-            // SpriteBatch Initialization?
-            // GraphicsDevice Initialization?
+
         }
 
     }

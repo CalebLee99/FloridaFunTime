@@ -16,7 +16,7 @@ namespace FlameShotGame.GameObjects
         // Movement data members
         private readonly List<Vector2> _MovementPath;
         private int _currentMovementPath;
-        Globals globals = Globals.instance();
+        Globals globals = Globals.Instance();
 
         public GruntEnemy(Texture2D texture, Vector2 pos) : base(texture, pos)
         {

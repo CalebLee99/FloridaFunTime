@@ -12,10 +12,12 @@ namespace FlameShotGame.Managers
     {
         private static GameManager uniqueInstance = new GameManager();
 
-        Globals global = Globals.instance();
+        Globals global = Globals.Instance();
         // This will hold all of the sub managers that are inheriting from GameManager.
         private static List<GameManager> Managers { get; set; }
         Controller controller = Controller.Instance();
+        SpawnManager spawnManager = SpawnManager.Instance();
+        DrawManager drawManager = DrawManager.Instance();
         private readonly Player _player;
 
         public static GameManager Instance()
@@ -26,22 +28,28 @@ namespace FlameShotGame.Managers
         protected GameManager()
         {
             Managers = new List<GameManager>();
+            // Set ALL sprites here.
             _player = new (global.Content.Load<Texture2D>("Sprites/player"), new Vector2(0, 0));
-
             // Populate the Managers list with all of the submanagers.
             Managers.Add(controller);
+            Managers.Add(spawnManager);
+            //Managers.Add(drawManager);
+
+            spawnManager.SpawnEntity(_player);
         }
 
         // Gets called every tick, MUST get overridden by subclasses
         public virtual void Update()
         {
             // Go through Managers list and call the update function in there.
-            controller.Update();
-            _player.Move(); // This needs to be changes
+            foreach (var manager in Managers)
+            {
+                manager.Update();
+            }
         }
         public void Draw()
         {
-            _player.Draw();
+            drawManager.Update();
         }
     }
 }

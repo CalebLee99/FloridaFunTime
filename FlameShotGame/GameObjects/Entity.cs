@@ -16,7 +16,7 @@ namespace FlameShotGame.GameObjects
         protected readonly Vector2 spawn;
         public Vector2 currentPosition { get; set; }
         public float speed { get; set; }
-        Globals globals = Globals.instance();
+        Globals globals = Globals.Instance();
 
         // Constructor
         public Entity(Texture2D texture, Vector2 pos)

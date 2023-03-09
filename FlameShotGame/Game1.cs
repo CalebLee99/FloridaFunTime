@@ -13,7 +13,7 @@ namespace FlameShotGame
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        Globals globals = Globals.instance();
+        Globals globals = Globals.Instance();
         
         public Game1()
         {
@@ -55,9 +55,7 @@ namespace FlameShotGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
             GameManager gameManager = GameManager.Instance();
             // TODO: Add your drawing code here
-            _spriteBatch.Begin();
             gameManager.Draw();
-            _spriteBatch.End();
             
             base.Draw(gameTime);
         }
