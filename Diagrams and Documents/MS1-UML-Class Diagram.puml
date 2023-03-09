@@ -29,6 +29,20 @@ GameManager : -updateLives()
 GameManager : -clearScreen()
 GameManager : -updateStage()
 
+class HitboxManager
+HitboxManager -> GameManager
+HitboxManager : -Update()
+class EntityManager
+EntityManager -> GameManager
+EntityManager : -Update()
+class SoundManager
+SoundManager -> GameManager
+class HealthManager
+GameManager <- HealthManager
+class SpawnManager
+GameManager <- SpawnManager
+
+
 '--- Player Stuff ---'
 class Player 
 Entity <|-- Player 

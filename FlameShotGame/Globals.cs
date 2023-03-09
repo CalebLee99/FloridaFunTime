@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SharpDX.MediaFoundation.DirectX;
@@ -20,8 +21,9 @@ namespace FlameShotGame
 
         public static float Time { get; set; }
         public SpriteBatch SpriteBatch { get; set; }
-        public GraphicsDevice GraphicsDevice { get; set; }
-        
+        public GraphicsDeviceManager GraphicsDevice { get; set; }
+        public ContentManager Content { get; set; }
+       
         public static Globals instance()
         {
             return uniqueInstance;

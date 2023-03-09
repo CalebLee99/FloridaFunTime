@@ -1,7 +1,10 @@
 ﻿using FlameShotGame;
+using FlameShotGame.Managers;
+using FlameShotGame.GameObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+
 // using Microsoft.Xna.Framework.Storage;
 
 namespace FlameShotGame
@@ -10,9 +13,8 @@ namespace FlameShotGame
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Player player;
-        private Vector2 initialPlayerPosition;
-
+        Globals globals = Globals.instance();
+        
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -24,40 +26,42 @@ namespace FlameShotGame
 
         protected override void Initialize()
         {
-            // Initialize Player class and position on the screen.
             
-            // This is where you can query any required services and load any non-graphic related content.
-
+            globals.Content = Content;
+            globals.GraphicsDevice = this._graphics;
+            GameManager gameManager = GameManager.Instance();
             base.Initialize();
         }
 
         protected override void LoadContent() // Called once per game
-        {
+        { 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            globals.SpriteBatch = this._spriteBatch;
             // TODO: use this.Content to load your game content here
-            
         }
 
         protected override void Update(GameTime gameTime) // Called multiple times per second
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            GameManager gameManager = GameManager.Instance();
             // TODO: Add your update logic here
-
-            base.Update(gameTime);
+            gameManager.Update();
+            Globals.Update(gameTime);
+            //base.Update(gameTime);
+            
         }
 
         protected override void Draw(GameTime gameTime) // Called multiple times per second
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            GameManager gameManager = GameManager.Instance();
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
+            gameManager.Draw();
             _spriteBatch.End();
             
-            base.Draw(gameTime);
+            //base.Draw(gameTime);
         }
     }
 }
