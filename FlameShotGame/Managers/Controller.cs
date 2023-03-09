@@ -34,6 +34,7 @@ namespace FlameShotGame.Managers
             KeyboardState ks = Keyboard.GetState();
             MouseState ms = Mouse.GetState();
             // Switch to using a data structure instead of conditionals.
+            _movementDirection = Vector2.Zero;
             if (ks.IsKeyDown(Keys.W))
             {
                 _movementDirection.Y--;
@@ -68,8 +69,8 @@ namespace FlameShotGame.Managers
         protected Controller() 
         { 
             _movementDirection = Vector2.Zero;
-            _defaultPlayerSpeed = 10;
-            _slowPlayerSpeed    =  5;
+            _defaultPlayerSpeed = 200;
+            _slowPlayerSpeed    = 100;
             _currentPlayerSpeed = _defaultPlayerSpeed;
             _isShooting = false;
 

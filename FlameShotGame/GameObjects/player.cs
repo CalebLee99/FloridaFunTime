@@ -38,7 +38,7 @@ namespace FlameShotGame.GameObjects
         public override void Move()
         {
             /*currentPosition = Controller.MovementDirection;
-            if (currentPosition != Vector2.Zero)
+            if (currentPosition != Vector2.Zero)fbnhdsjbfhjskbdsjk
             {
                 //currentPosition = Vector2.Normalize(currentPosition); //Look into this (RESEARCH)
                 Debug.WriteLine("Speed: " + Controller.currentPlayerSpeed);
@@ -46,25 +46,25 @@ namespace FlameShotGame.GameObjects
                 Debug.WriteLine("position y " + currentPosition.Y);
                 currentPosition += currentPosition * Controller.currentPlayerSpeed * Globals.Time;
             }*/
-            var currentDirection = Controller.MovementDirection;
-            if (currentDirection == Vector2.Zero)
+            if (Controller.MovementDirection != Vector2.Zero)
             {
-                Debug.WriteLine("Not moving");
+                Debug.WriteLine("Moving");
+                var currentDirection = Vector2.Normalize(Controller.MovementDirection);
+                Debug.WriteLine("CURRENT DIRECTION x " + currentDirection.X);
+                Debug.WriteLine("CURRENT DIRECTION y " + currentDirection.Y);
+
+                this.currentPosition += currentDirection * Controller.currentPlayerSpeed * Globals.Time;
+                Debug.WriteLine("Speed: " + Controller.currentPlayerSpeed);
+                Debug.WriteLine("position x " + currentPosition.X);
+                Debug.WriteLine("position y " + currentPosition.Y); 
             }
 
-            //currentDirection = Vector2.Normalize(currentDirection);
-            Debug.WriteLine("CURRENT DIRECTION x " + currentDirection.X);
-            Debug.WriteLine("CURRENT DIRECTION y " + currentDirection.Y);
-
-            this.currentPosition += currentDirection * Controller.currentPlayerSpeed * Globals.Time;
-            Debug.WriteLine("Speed: " + Controller.currentPlayerSpeed);
-            Debug.WriteLine("position x " + currentPosition.X);
-            Debug.WriteLine("position y " + currentPosition.Y);
+            
         }
 
         public override void Update()
         {
-            base.Update();
+            Move();
         }
         public void UpdateHealth()
         {
