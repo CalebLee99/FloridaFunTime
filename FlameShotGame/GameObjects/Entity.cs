@@ -10,12 +10,12 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace FlameShotGame.GameObjects
 {
-    public class Entity
+    public abstract class Entity
     {
         protected readonly Texture2D texture;
         protected readonly Vector2 spawn;
         public Vector2 currentPosition { get; set; }
-        internal float speed { get; set; }
+        public float speed { get; set; }
         Globals globals = Globals.instance();
 
         // Constructor
@@ -23,11 +23,15 @@ namespace FlameShotGame.GameObjects
         {
             this.texture = texture;
             this.currentPosition = pos;
-            this.speed = 100; // Change this to a global variable defaultSpeed.
+            this.speed = globals.defaultEntitySpeed; // Change this to a global variable defaultSpeed.
             this.spawn = new(texture.Width / 2, texture.Height / 2); // Also change this to global variable defaultSpawnPoint.
 
         }
         public virtual void Move()
+        {
+            return;
+        }
+        public virtual void Update()
         {
             return;
         }

@@ -26,7 +26,7 @@ namespace FlameShotGame.Managers
         protected GameManager()
         {
             Managers = new List<GameManager>();
-            _player = new (global.Content.Load<Texture2D>("Sprites/player"), new Vector2(600, 600));
+            _player = new (global.Content.Load<Texture2D>("Sprites/player"), new Vector2(0, 0));
 
             // Populate the Managers list with all of the submanagers.
             Managers.Add(controller);

@@ -22,13 +22,11 @@ namespace FlameShotGame.GameObjects
         private Texture2D _playerTexture { get; set; }
         private bool _shooting { get; set; }
 
-
-
         public Player(Texture2D texture, Vector2 pos) : base(texture, pos)
         {
             this._currentHealth = 3;
             this._maxHealth = 3;
-            this._shooting = false;
+            this._shooting = Controller.IsShooting;
         }
 
         public void InitializePosition(Vector2 initialPosition)
@@ -36,24 +34,37 @@ namespace FlameShotGame.GameObjects
             this.currentPosition = initialPosition;
         }
 
-        public void Speed()
-        {
-            this.speed = Controller.PlayerSpeed;
-        }
 
         public override void Move()
         {
-            // This needs work...
-            currentPosition = Controller.MovementDirection;
-            this.Speed();
+            /*currentPosition = Controller.MovementDirection;
             if (currentPosition != Vector2.Zero)
             {
                 //currentPosition = Vector2.Normalize(currentPosition); //Look into this (RESEARCH)
-                Debug.WriteLine("Speed: " + speed);
+                Debug.WriteLine("Speed: " + Controller.currentPlayerSpeed);
                 Debug.WriteLine("position x " + currentPosition.X);
                 Debug.WriteLine("position y " + currentPosition.Y);
-                // currentPosition += currentPosition * speed * Globals.Time;
+                currentPosition += currentPosition * Controller.currentPlayerSpeed * Globals.Time;
+            }*/
+            var currentDirection = Controller.MovementDirection;
+            if (currentDirection == Vector2.Zero)
+            {
+                Debug.WriteLine("Not moving");
             }
+
+            //currentDirection = Vector2.Normalize(currentDirection);
+            Debug.WriteLine("CURRENT DIRECTION x " + currentDirection.X);
+            Debug.WriteLine("CURRENT DIRECTION y " + currentDirection.Y);
+
+            this.currentPosition += currentDirection * Controller.currentPlayerSpeed * Globals.Time;
+            Debug.WriteLine("Speed: " + Controller.currentPlayerSpeed);
+            Debug.WriteLine("position x " + currentPosition.X);
+            Debug.WriteLine("position y " + currentPosition.Y);
+        }
+
+        public override void Update()
+        {
+            base.Update();
         }
         public void UpdateHealth()
         {

@@ -23,6 +23,7 @@ namespace FlameShotGame
         public SpriteBatch SpriteBatch { get; set; }
         public GraphicsDeviceManager GraphicsDevice { get; set; }
         public ContentManager Content { get; set; }
+        public readonly float defaultEntitySpeed = 5;
        
         public static Globals instance()
         {

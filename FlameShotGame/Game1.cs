@@ -26,7 +26,6 @@ namespace FlameShotGame
 
         protected override void Initialize()
         {
-            
             globals.Content = Content;
             globals.GraphicsDevice = this._graphics;
             GameManager gameManager = GameManager.Instance();
@@ -49,7 +48,6 @@ namespace FlameShotGame
             gameManager.Update();
             Globals.Update(gameTime);
             base.Update(gameTime);
-            
         }
 
         protected override void Draw(GameTime gameTime) // Called multiple times per second

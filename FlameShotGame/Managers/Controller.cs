@@ -17,12 +17,17 @@ namespace FlameShotGame.Managers
 
         // attributes
         private static Vector2 _movementDirection;
-        private static int _playerSpeed;
+        private static float _currentPlayerSpeed;
         private static bool _isShooting;
 
+        private static float _defaultPlayerSpeed; // Global attribute for the default player speed.
+        private static float _slowPlayerSpeed;    // Global attribute for the slow player speed.
+
         public static Vector2 MovementDirection => _movementDirection;
-        public static int PlayerSpeed => _playerSpeed;
+        public static float currentPlayerSpeed => _currentPlayerSpeed;
         public static bool IsShooting => _isShooting;
+        public static float defaultPlayerSpeed => _defaultPlayerSpeed;
+        public static float slowPlayerSpeed => _slowPlayerSpeed;
         
         public override void Update()
         {
@@ -45,30 +50,29 @@ namespace FlameShotGame.Managers
             {
                 _movementDirection.X++;
             }
-            if (ks.IsKeyDown(Keys.LeftShift))
+            if (ks.IsKeyDown(Keys.LeftShift)) // Check to see if the key is down... then change player speed.
             {
-                _playerSpeed = 2; // Use global variables??
+                _currentPlayerSpeed = _slowPlayerSpeed;
             }
-            if (ks.IsKeyUp(Keys.LeftShift))
+            if (ks.IsKeyUp(Keys.LeftShift)) // Check to see if the key is up... then change player speed.
             {
-                _playerSpeed = 4; // Use global variables??
-            }
-            if (ks.IsKeyDown(Keys.Space))
-            {
-                _isShooting = true;
+                _currentPlayerSpeed = _defaultPlayerSpeed;
             }
         }
 
         public static new Controller Instance()
         {
-            return uniqueInstance;
+            return uniqueInstance;            
         }
 
         protected Controller() 
         { 
             _movementDirection = Vector2.Zero;
-            _playerSpeed = 200;
+            _defaultPlayerSpeed = 10;
+            _slowPlayerSpeed    =  5;
+            _currentPlayerSpeed = _defaultPlayerSpeed;
             _isShooting = false;
+
         }
     }
 }
