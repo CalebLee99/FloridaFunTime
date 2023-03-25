@@ -1,0 +1,22 @@
+@startuml
+Actor Player as Pl
+'View is the drawManager class' 
+Participant View as Vw
+'All other managers' 
+Participant Controller as Cl
+'All the other classes'
+Participant Model as Ml
+
+Pl -> Vw: Test
+        Vw -> Cl
+                Cl -> Ml
+                Cl <-- Ml 
+                Cl --> Cl 
+                note right
+                    the GameManager 
+                    delegates specific
+                    tasks to other managers
+                end note
+        Vw <-- Cl
+Pl <-- Vw
+@enduml
