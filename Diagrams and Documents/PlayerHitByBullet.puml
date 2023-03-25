@@ -1,0 +1,52 @@
+@startuml
+
+Actor Player as Pl
+'View is the drawManager class' 
+Participant ":View" as Vw
+'All other managers' 
+Participant ":Controller" as Cl
+'All the other classes'
+Participant ":Model" as Ml
+
+
+activate Vw
+Vw -> Vw: RenderMenu()
+Pl -> Vw: Select "Start Game"
+        Vw --> Cl: StartGameButtonClicked()
+        activate Cl
+        Vw -> Vw: Draw()
+        
+        Cl -> Ml: StartGame()
+        activate Ml        
+        Ml -> Ml: SpawnMap()
+        Ml -> Ml: SpawnWave()
+                Vw <-- Ml: Draw() 
+                deactivate Ml
+                note left
+                        Draws spawned 
+                        enemies onto 
+                        level
+                end note
+        Cl -> Cl: ReadFromJSONScript()
+        Cl -> Ml: TellEnemyFireProjectile()
+        deactivate Cl
+        activate Ml
+        Ml -> Ml: CreateEnemyProjectile()
+        Ml --> Vw: Draw()
+        deactivate Ml
+        Vw --> Cl: PlayerAndBulletCollide()
+        activate Cl
+        Cl -> Cl: CollisionDetected()
+        Cl -> Ml: PlayerTakeDamage()
+        deactivate Cl
+        activate Ml
+        deactivate Cl
+        Ml -> Ml: ReducePlayerHealth()
+        Ml --> Vw: Draw()
+        deactivate Ml
+        note left
+            Updates UI
+            element showing
+            Player health
+        end note
+@enduml

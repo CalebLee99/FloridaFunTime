@@ -1,0 +1,36 @@
+@startuml
+
+Actor Player as Pl
+'View is the drawManager class' 
+Participant ":View" as Vw
+'All other managers' 
+Participant ":Controller" as Cl
+'All the other classes'
+Participant ":Model" as Ml
+
+activate Vw
+Vw -> Vw: Render Menu
+Pl -> Vw: Select "Start Game"
+        Vw --> Cl: StartGameButtonClicked()
+                activate Cl
+        Vw -> Vw: Draw()
+                note right
+                    Draws stage 
+                    and UI
+                end note
+                Cl -> Ml: StartGame()
+                deactivate Cl
+                activate Ml
+                Ml -> Ml: SpawnMap()
+                Ml -> Ml: SpawnWave()
+                Vw <-- Ml: Draw() 
+                deactivate Ml
+        Vw --> Cl: PlayerMovement()
+        activate Cl
+        Cl -> Ml: UpdatePlayerPosition()
+        deactivate Cl
+        activate Ml
+        Ml -> Ml: ChangePlayerCoordinates()
+        Ml --> Vw: Draw() 
+        deactivate Ml
+@enduml
