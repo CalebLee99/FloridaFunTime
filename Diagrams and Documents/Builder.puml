@@ -1,0 +1,62 @@
+@startuml
+
+class Director
+{
+    -builder: IWaveBuilder
+    BuildWave1()
+    BuildWave2()
+    BuildWave3()
+    BuildWave4()
+}
+
+SpawnManager -right-> Director
+
+interface IWaveBuilder
+{
+    reset()
+}
+
+Director -right-> IWaveBuilder
+
+class Wave1Builder
+{
+    -Result: Wave1
+    reset()
+    BuildGrunt1()
+    BuildGrunt2()
+}
+class Wave2Builder
+{
+    -Result: Wave2
+    reset()
+    BuildGrunt1()
+    BuildGrunt2()
+    BuildMiniboss()
+}
+class Wave3Builder
+{
+    -Result: Wave3
+    reset()
+    BuildGrunt1()
+    BuildGrunt2()
+}
+class Wave4Builder
+{
+    -Result: Wave4
+    reset()
+    BuildGrunt1()
+    BuildGrunt2()
+    BuildFinalBoss()
+}
+
+Wave1Builder -up-|> IWaveBuilder
+Wave2Builder -up-|> IWaveBuilder
+Wave3Builder -up-|> IWaveBuilder
+Wave4Builder -up-|> IWaveBuilder
+
+Wave1Builder -down-> Wave1
+Wave2Builder -down-> Wave2
+Wave3Builder -down-> Wave3
+Wave4Builder -down-> Wave4
+
+@enduml
