@@ -16,5 +16,10 @@ namespace FlameShotGame.GameObjects
         {
             this.Damage = damage;
         }
+
+        public override void Move()
+        {
+            
+        }
     }
 }

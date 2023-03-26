@@ -26,6 +26,7 @@ namespace FlameShotGame.Managers
             global.SpriteBatch.Begin();
             foreach(var entity in Globals.EntitiesList)
             {
+                entity.Move();
                 entity.Draw();
             }
             global.SpriteBatch.End();
