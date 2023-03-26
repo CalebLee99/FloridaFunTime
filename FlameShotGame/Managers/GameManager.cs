@@ -34,8 +34,13 @@ namespace FlameShotGame.Managers
             // Populate the Managers list with all of the submanagers.
             //Managers.Add(drawManager);
 
-            spawnManager.SpawnPlayer(_player);
-            spawnManager.SpawnEntity(_player);
+
+            // Set player in global
+            Globals.player = _player;
+                
+            // Spawn 
+            spawnManager.SpawnPlayer();
+            spawnManager.SpawnEntity();
             
         }
 

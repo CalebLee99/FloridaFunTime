@@ -21,6 +21,9 @@ namespace FlameShotGame.Managers
 
         // Attributes
         private static List<Entity> EntitiesOnScreen; // This should be pass by ref per entity... Test this.
+        public static Player player;
+        public static List<Bullet> EnemyBulletList;
+        public static List<Bullet> PlayerBulletList;
 
         public static SpawnManager Instance()
         {
@@ -30,6 +33,12 @@ namespace FlameShotGame.Managers
         public void Update()
         {
             Globals.EntitiesList = EntitiesOnScreen;
+
+            //Globals.player = player; GameManager will set player
+            
+            Globals.EnemyBulletList = EnemyBulletList;
+            
+            Globals.PlayerBulletList = PlayerBulletList;
         }
 
         protected SpawnManager()
@@ -38,29 +47,34 @@ namespace FlameShotGame.Managers
             this.enemyFactory = new EnemyFactory();
         }
 
-        public void SpawnPlayer(Player pl)
+        public void SpawnPlayer()
         {
-            EntitiesOnScreen.Add(pl);
+            EntitiesOnScreen.Add(Globals.player);
         }
 
-        public void SpawnEntity(Player player)
+        public void SpawnEntity()
         {
             EntitiesOnScreen.Add(enemyFactory.CreateEnemy("grunt",
                                                                 global.Content.Load<Texture2D>("Sprites/enemy"),
                                                                 new Vector2(200, 0),
-                                                                player,
+                                                                Globals.player,
                                                                 new List<Vector2>(){new Vector2(50, 0)}));
 
             EntitiesOnScreen.Add(enemyFactory.CreateEnemy("alligator",
                                                                 global.Content.Load<Texture2D>("Sprites/alligator"),
                                                                 new Vector2(0, 0),
-                                                                player,
+                                                                Globals.player,
                                                                 new List<Vector2>(){
                                                                     new Vector2(100, 100),
                                                                     new Vector2(400, 100),
                                                                     new Vector2(400, 400),
                                                                     new Vector2(100, 400)
                                                                     }));
+        }
+
+        public void ShootPlayerBullet()
+        {
+
         }
 
         public void DespawnEntity(Entity en)

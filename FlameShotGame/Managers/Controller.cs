@@ -16,6 +16,8 @@ namespace FlameShotGame.Managers
         private static Controller uniqueInstance = new Controller();
 
         // attributes
+        SpawnManager spawnManager = SpawnManager.Instance();
+
         private static Vector2 _movementDirection;
         private static float _currentPlayerSpeed;
         private static bool _isShooting;
@@ -58,6 +60,10 @@ namespace FlameShotGame.Managers
             if (ks.IsKeyUp(Keys.LeftShift)) // Check to see if the key is up... then change player speed.
             {
                 _currentPlayerSpeed = _defaultPlayerSpeed;
+            }
+            if (ks.IsKeyDown(Keys.Space)) 
+            {
+                spawnManager.ShootPlayerBullet();
             }
         }
 

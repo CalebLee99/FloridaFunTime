@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
@@ -12,6 +12,11 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Creational\EntityFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Creational\NewFile1.txt" />
+    <None Remove="GameObjects\NewFile1.txt" />
     <None Remove="Managers\NewFile1.txt" />
   </ItemGroup>
   <ItemGroup>
