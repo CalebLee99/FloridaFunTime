@@ -25,7 +25,7 @@ namespace FlameShotGame
         public SpriteBatch SpriteBatch { get; set; }
         public GraphicsDeviceManager GraphicsDevice { get; set; }
         public ContentManager Content { get; set; }
-        public readonly float defaultEntitySpeed = 5;
+        public readonly float defaultEntitySpeed = 40;
         
         public static List<Entity> EntitiesList;
         public static Player player;

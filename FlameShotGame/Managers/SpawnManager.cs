@@ -56,9 +56,14 @@ namespace FlameShotGame.Managers
         {
             EntitiesOnScreen.Add(enemyFactory.CreateEnemy("grunt",
                                                                 global.Content.Load<Texture2D>("Sprites/enemy"),
-                                                                new Vector2(200, 0),
+                                                                new Vector2(0, 0),
                                                                 Globals.player,
-                                                                new List<Vector2>(){new Vector2(50, 0)}));
+                                                                new List<Vector2>(){
+                                                                    new Vector2(0, 10),
+                                                                    new Vector2(10, 10),
+                                                                    new Vector2(10, 0),
+                                                                    new Vector2(0, 0)
+                                                                    }));
 
             EntitiesOnScreen.Add(enemyFactory.CreateEnemy("alligator",
                                                                 global.Content.Load<Texture2D>("Sprites/alligator"),
