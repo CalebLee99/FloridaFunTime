@@ -32,10 +32,7 @@ namespace FlameShotGame.GameObjects
             this.Hitbox = new Rectangle((int) pos.X, (int) pos.Y, (int) (texture.Width * 0.8), (int) (texture.Height * .8));
         }
 
-        public virtual void Move()
-        {
-            return;
-        }
+        public abstract void Move();
         public virtual void Update()
         {
             return;

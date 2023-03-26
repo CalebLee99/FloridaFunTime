@@ -13,5 +13,10 @@ namespace FlameShotGame.GameObjects
         public EnemyBullet(Texture2D texture, Vector2 pos, int damage) : base(texture, pos, damage)
         {
         }
+
+        public override void Move()
+        {
+            return;
+        }
     }
 }

@@ -43,13 +43,13 @@ namespace FlameShotGame.GameObjects
             }
 
             //currentDirection = Vector2.Normalize(currentDirection);
-            Debug.WriteLine("CURRENT DIRECTION x " + currentDirection.X);
-            Debug.WriteLine("CURRENT DIRECTION y " + currentDirection.Y);
+            //Debug.WriteLine("CURRENT DIRECTION x " + currentDirection.X);
+            //Debug.WriteLine("CURRENT DIRECTION y " + currentDirection.Y);
 
             this.currentPosition += currentDirection * Controller.currentPlayerSpeed * Globals.Time;
-            Debug.WriteLine("Speed: " + Controller.currentPlayerSpeed);
-            Debug.WriteLine("position x " + currentPosition.X);
-            Debug.WriteLine("position y " + currentPosition.Y);
+            //Debug.WriteLine("Speed: " + Controller.currentPlayerSpeed);
+            //Debug.WriteLine("position x " + currentPosition.X);
+            //Debug.WriteLine("position y " + currentPosition.Y);
         }
 
         public override void Update()

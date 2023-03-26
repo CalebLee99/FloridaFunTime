@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SharpDX.MediaFoundation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,6 @@ namespace FlameShotGame.GameObjects
         public Bullet(Texture2D texture, Vector2 pos, int damage) : base(texture, pos)
         {
             this.Damage = damage;
-        }
-
-        public override void Move()
-        {
-            
         }
     }
 }

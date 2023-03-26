@@ -13,7 +13,7 @@ using FlameShotGame.Creational;
 // This manager is used when ever an entity needs to be spawned.
 namespace FlameShotGame.Managers
 {
-    public class SpawnManager 
+    public class SpawnManager
     {
         private static SpawnManager uniqueInstance = new SpawnManager();
         Globals global = Globals.Instance();
@@ -35,15 +35,19 @@ namespace FlameShotGame.Managers
             Globals.EntitiesList = EntitiesOnScreen;
 
             //Globals.player = player; GameManager will set player
-            
+
             Globals.EnemyBulletList = EnemyBulletList;
-            
+
             Globals.PlayerBulletList = PlayerBulletList;
         }
 
         protected SpawnManager()
         {
+
             EntitiesOnScreen = new List<Entity>();
+            EnemyBulletList = new List<Bullet>();
+            PlayerBulletList = new List<Bullet>();
+
             this.enemyFactory = new EnemyFactory();
         }
 
@@ -79,12 +83,17 @@ namespace FlameShotGame.Managers
 
         public void ShootPlayerBullet()
         {
-
+            Globals.PlayerBulletList.Add(new PlayerBullet(global.Content.Load<Texture2D>("Sprites/playerbullet"), Globals.player.currentPosition, 25));
         }
 
         public void DespawnEntity(Entity en)
         {
             EntitiesOnScreen.Remove(en);
+        }
+
+        public void DespawnPlayerBullet(Bullet b)
+        {
+            PlayerBulletList.Remove(b);
         }
     }
 
