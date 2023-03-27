@@ -35,7 +35,7 @@ namespace FlameShotGame.GameObjects
             _currentMovementPath = 0;
 
 
-            this.ShootCoolDownValue = (float) 0.5;
+            this.ShootCoolDownValue = (float) 2;
             this.ShootAccumulator = 0;
         }
 

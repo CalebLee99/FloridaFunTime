@@ -12,23 +12,19 @@ namespace FlameShotGame.GameObjects
     internal class EnemyBullet : Bullet
     {
         Globals global = Globals.Instance();
-        private Vector2 _MovementPath;
+        private Vector2 _Direction;
         public EnemyBullet(Texture2D texture, Vector2 pos, int damage) : base(texture, pos, damage)
         {
-            if (Globals.player.currentPosition.X >= Globals.ScreenWidth / 2)
-            {
-                _MovementPath = new Vector2(Globals.player.currentPosition.X, Globals.player.currentPosition.Y) * 2;
-                this.speed = 150;
-                Debug.WriteLine("Enemy Bullet: " + _MovementPath.X + ", " + _MovementPath.Y);
-            }
+            _Direction = new Vector2(Globals.player.currentPosition.X, Globals.player.currentPosition.Y) - pos;
+            _Direction.Normalize();
+            this.speed = 150;
+            Debug.WriteLine("Enemy Bullet: " + _Direction.X + ", " + _Direction.Y);
             
         }
 
         public override void Move()
         {
-            var directionToMove = _MovementPath - this.currentPosition;
-            directionToMove.Normalize();
-            this.currentPosition += directionToMove * this.speed * Globals.Time;
+            this.currentPosition += _Direction * this.speed * Globals.Time;
         }
     }
 }
