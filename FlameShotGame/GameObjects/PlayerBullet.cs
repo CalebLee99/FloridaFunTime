@@ -12,11 +12,11 @@ namespace FlameShotGame.GameObjects
     {
         Globals global = Globals.Instance();
         private Vector2 _MovementPath;
-        public PlayerBullet(Texture2D texture, Vector2 pos, int damage) : base(texture, pos, damage)
+        public PlayerBullet(Texture2D texture, Vector2 pos, int damage) : base(texture, new Vector2(pos.X + 14, pos.Y), damage)
         {
             // start from player position and go towards top of screen
-            _MovementPath = new Vector2(Globals.player.currentPosition.X, 0);
-            this.speed = 100;
+            _MovementPath = new Vector2(Globals.player.currentPosition.X + 14, 0);
+            this.speed = 250;
         }
 
         public override void Move()

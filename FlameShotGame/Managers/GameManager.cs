@@ -57,8 +57,6 @@ namespace FlameShotGame.Managers
             controller.Update();
             spawnManager.Update();
             _player.Move();
-
-
             collisionManager.Update();
         }
         public void Draw()

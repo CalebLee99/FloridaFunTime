@@ -52,12 +52,7 @@ namespace FlameShotGame.Managers
         {
             bullet.Move();
             bullet.Draw();
-            Debug.WriteLine("Bullet Position in int: " + (int) bullet.currentPosition.X + ", " + (int) bullet.currentPosition.Y);
-            if (((int) bullet.currentPosition.Y) == 0)
-            {
-                Debug.WriteLine("bullet should be deleted.");
-                spawnManager.DespawnPlayerBullet(bullet);
-            }
+
         }
 
         protected DrawManager()

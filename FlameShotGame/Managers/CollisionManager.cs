@@ -44,6 +44,13 @@ namespace FlameShotGame.Managers
             foreach (var bullet in Globals.PlayerBulletList.ToList())
             {
                 bullet.Update();
+                Debug.WriteLine("Bullet Position in int: " + (int)bullet.currentPosition.X + ", " + (int)bullet.currentPosition.Y);
+
+                if (((int)bullet.currentPosition.Y) == 1)
+                {
+                    Debug.WriteLine("bullet should be deleted.");
+                    spawnManager.DespawnPlayerBullet(bullet);
+                }
             }
 
             // 
@@ -62,6 +69,8 @@ namespace FlameShotGame.Managers
                 {
                     if (bullet.Hitbox.Intersects(entity.Hitbox))
                     {
+                        spawnManager.DespawnPlayerBullet(bullet);
+                        spawnManager.DespawnEntity(entity);
                         Debug.WriteLine("!!!! PlayerBullet hits Enemy !!!!!");
                     }
                 }
@@ -83,6 +92,7 @@ namespace FlameShotGame.Managers
                     Debug.WriteLine("!!!!! Enemy hits Player !!!!!");
                 }
             }
+
         }
     }
 }

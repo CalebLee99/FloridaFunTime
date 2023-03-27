@@ -95,6 +95,11 @@ namespace FlameShotGame.Managers
         {
             PlayerBulletList.Remove(b);
         }
+
+        public void DespawnEntityBullet(Bullet b)
+        {
+            EnemyBulletList.Remove(b);
+        }
     }
 
 }
