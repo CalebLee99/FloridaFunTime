@@ -18,6 +18,8 @@ namespace FlameShotGame.Managers
         Controller controller = Controller.Instance();
         SpawnManager spawnManager = SpawnManager.Instance();
         DrawManager drawManager = DrawManager.Instance();
+        CollisionManager collisionManager = CollisionManager.Instance();
+
         private readonly Player _player;
 
         private static GameManager uniqueInstance = new GameManager();
@@ -39,9 +41,13 @@ namespace FlameShotGame.Managers
             Globals.player = _player;
                 
             // Spawn 
-            spawnManager.SpawnPlayer();
+
+/*            spawnManager.SpawnPlayer();*/ 
             spawnManager.SpawnEntity();
-            
+
+
+            // Make sure CollisionManager called after Spawn Manager
+
         }
 
         // Gets called every tick, MUST get overridden by subclasses
@@ -50,8 +56,10 @@ namespace FlameShotGame.Managers
             // Go through Managers list and call the update function in there.
             controller.Update();
             spawnManager.Update();
-            //drawManager.Update();
             _player.Move();
+
+
+            collisionManager.Update();
         }
         public void Draw()
         {

@@ -42,6 +42,8 @@ namespace FlameShotGame.GameObjects
                 Debug.WriteLine("Not moving");
             }
 
+            this.Update();
+
             //currentDirection = Vector2.Normalize(currentDirection);
             //Debug.WriteLine("CURRENT DIRECTION x " + currentDirection.X);
             //Debug.WriteLine("CURRENT DIRECTION y " + currentDirection.Y);

@@ -21,7 +21,8 @@ namespace FlameShotGame.Managers
         private static Vector2 _movementDirection;
         private static float _currentPlayerSpeed;
         private static bool _isShooting;
-
+        private bool _shootingCoolDown;
+        
         private static float _defaultPlayerSpeed; // Global attribute for the default player speed.
         private static float _slowPlayerSpeed;    // Global attribute for the slow player speed.
 
@@ -63,7 +64,15 @@ namespace FlameShotGame.Managers
             }
             if (ks.IsKeyDown(Keys.Space)) 
             {
-                spawnManager.ShootPlayerBullet();
+                if (_shootingCoolDown == true)
+                {
+                    spawnManager.ShootPlayerBullet();
+                    _shootingCoolDown = false;
+                }
+            }
+            if (ks.IsKeyUp(Keys.Space))
+            {
+                _shootingCoolDown = true;
             }
         }
 
@@ -79,7 +88,7 @@ namespace FlameShotGame.Managers
             _slowPlayerSpeed    = 100;
             _currentPlayerSpeed = _defaultPlayerSpeed;
             _isShooting = false;
-
+            _shootingCoolDown = true;
         }
     }
 }
