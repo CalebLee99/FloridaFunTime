@@ -37,10 +37,6 @@ namespace FlameShotGame.GameObjects
         public override void Move()
         {
             var currentDirection = Controller.MovementDirection;
-            if (currentDirection == Vector2.Zero)
-            {
-                Debug.WriteLine("Not moving");
-            }
 
             this.Update();
 
@@ -50,8 +46,8 @@ namespace FlameShotGame.GameObjects
 
             this.currentPosition += currentDirection * Controller.currentPlayerSpeed * Globals.Time;
             //Debug.WriteLine("Speed: " + Controller.currentPlayerSpeed);
-            //Debug.WriteLine("position x " + currentPosition.X);
-            //Debug.WriteLine("position y " + currentPosition.Y);
+            Debug.WriteLine("position x " + currentPosition.X);
+            Debug.WriteLine("position y " + currentPosition.Y);
         }
 
         public override void Update()

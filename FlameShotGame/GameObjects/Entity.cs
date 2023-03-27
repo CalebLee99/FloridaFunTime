@@ -16,9 +16,6 @@ namespace FlameShotGame.GameObjects
         protected readonly Vector2 spawn;
         public Vector2 currentPosition { get; set; }
         private Rectangle _hitbox;
-        public bool HasShot;
-        public float ShootCoolDownValue;
-        public float ShootAccumulator;
         
         public Rectangle Hitbox 
         { 
@@ -41,22 +38,15 @@ namespace FlameShotGame.GameObjects
 
             // Want to change this to be a more global 
 
-            this.ShootCoolDownValue = 2;
-
-            this.ShootAccumulator = 0;
 
         }
-        public void HasShotUpdate()
-        {
-            this.ShootAccumulator -= this.ShootCoolDownValue;
-        }
+
         public abstract void Move();
 
         public virtual void Update()
         {
             this._hitbox.X = (int)currentPosition.X;
             this._hitbox.Y = (int)currentPosition.Y;
-            this.ShootAccumulator += Globals.Time;
             
         }
         public void Draw()

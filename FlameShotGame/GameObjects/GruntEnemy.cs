@@ -18,6 +18,10 @@ namespace FlameShotGame.GameObjects
         private int _currentMovementPath;
         Globals globals = Globals.Instance();
 
+        public bool HasShot;
+        public float ShootCoolDownValue;
+        public float ShootAccumulator;
+
         public GruntEnemy(Texture2D texture, Vector2 pos) : base(texture, pos)
         {
             // TODO: Stat data members (e.g. hit points)
@@ -28,7 +32,11 @@ namespace FlameShotGame.GameObjects
         {
             // TODO: Stat data members (e.g. hit points)
             this._MovementPath = movePath;
-            _currentMovementPath = 0;   
+            _currentMovementPath = 0;
+
+
+            this.ShootCoolDownValue = (float) 0.5;
+            this.ShootAccumulator = 0;
         }
 
         // Add location for Grunt Enemy to move to.
@@ -57,9 +65,16 @@ namespace FlameShotGame.GameObjects
             }
         }
 
+        public void HasShotUpdate()
+        {
+            this.ShootAccumulator -= this.ShootCoolDownValue;
+        }
+
+
         public override void Update()
         {
-            return;
+            base.Update();
+            this.ShootAccumulator += Globals.Time;
         }
     }
 }

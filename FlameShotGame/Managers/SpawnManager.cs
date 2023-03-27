@@ -63,14 +63,16 @@ namespace FlameShotGame.Managers
         {
             foreach (var enemy in EntitiesOnScreen)
             {
-
-                if (enemy.ShootAccumulator >= enemy.ShootCoolDownValue)
+                if(enemy.GetType() == typeof(GruntEnemy))
                 {
-                    enemy.HasShotUpdate(); // Now HasShot is True
-                    Debug.WriteLine("!!!! SHOOT ACCUMUL !!!" + enemy.ShootAccumulator);
-                    Globals.EnemyBulletList.Add(new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), enemy.currentPosition, 25));
+                    var gruntEnemy = enemy as GruntEnemy;   
+                    if (gruntEnemy.ShootAccumulator >= gruntEnemy.ShootCoolDownValue)
+                    {
+                        gruntEnemy.HasShotUpdate(); // Now HasShot is True
+                        Debug.WriteLine("!!!! SHOOT ACCUMUL !!!" + gruntEnemy.ShootAccumulator);
+                        Globals.EnemyBulletList.Add(new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), enemy.currentPosition, 25));
+                    }
                 }
-
             }
         }
 
@@ -78,13 +80,11 @@ namespace FlameShotGame.Managers
         {
             EntitiesOnScreen.Add(enemyFactory.CreateEnemy("grunt",
                                                                 global.Content.Load<Texture2D>("Sprites/enemy"),
-                                                                new Vector2(0, 0),
+                                                                new Vector2(0, 100),
                                                                 Globals.player,
                                                                 new List<Vector2>(){
-                                                                    new Vector2(0, 10),
-                                                                    new Vector2(10, 10),
-                                                                    new Vector2(10, 0),
-                                                                    new Vector2(0, 0)
+                                                                    new Vector2(400, 100),
+                                                                    new Vector2(0, 100)
                                                                     }));
 
             EntitiesOnScreen.Add(enemyFactory.CreateEnemy("alligator",
