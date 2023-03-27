@@ -14,7 +14,7 @@ namespace FlameShotGame.GameObjects
         private Vector2 _MovementPath;
         public EnemyBullet(Texture2D texture, Vector2 pos, int damage) : base(texture, pos, damage)
         {
-            _MovementPath = new Vector2(Globals.player.currentPosition.X * 1000, Globals.player.currentPosition.Y * 1000);
+            _MovementPath = new Vector2(Globals.player.currentPosition.X * 10, Globals.player.currentPosition.Y * 10);
             this.speed = 150;
         }
 

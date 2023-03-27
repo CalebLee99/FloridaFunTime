@@ -64,31 +64,13 @@ namespace FlameShotGame.Managers
             foreach (var enemy in EntitiesOnScreen)
             {
 
-                int shootTarget = Globals.FrameCounter + (enemy.ShootCoolDown * 60);
-                bool canShoot = true;
-                if (Globals.FrameCounter >= shootTarget && canShoot)
+                if (enemy.ShootAccumulator >= enemy.ShootCoolDownValue)
                 {
-                    canShoot = false;
-                    shootTarget += (enemy.ShootCoolDown * 60);
+                    enemy.HasShotUpdate(); // Now HasShot is True
+                    Debug.WriteLine("!!!! SHOOT ACCUMUL !!!" + enemy.ShootAccumulator);
                     Globals.EnemyBulletList.Add(new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), enemy.currentPosition, 25));
                 }
 
-
-                //if (Globals.Time)
-                // Shoot bullets every 5 seconds
-                /*                if (Globals.TotalElapsedTime % 5 == 0 && Globals.TotalElapsedTime > 4)
-                                {
-
-                                    if (enemy.GetType() == typeof(GruntEnemy))
-                                    {
-                                        enemy.TimeLastShot -= (int) Globals.TotalElapsedTime;
-                                        Globals.EnemyBulletList.Add(new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), enemy.currentPosition, 25));
-                                    }
-                                }
-                                else
-                                {
-                                    enemy.TimeLastShot = (int)Globals.TotalElapsedTime;
-                                }*/
             }
         }
 

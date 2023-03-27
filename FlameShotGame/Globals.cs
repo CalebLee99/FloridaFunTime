@@ -23,7 +23,7 @@ namespace FlameShotGame
         // attributes
 
         public static float Time { get; set; }
-        public static int TotalElapsedTime { get; set; }
+        public static float TotalElapsedTime { get; set; }
         public SpriteBatch SpriteBatch { get; set; }
         public GraphicsDeviceManager GraphicsDevice { get; set; }
         public ContentManager Content { get; set; }
@@ -46,19 +46,9 @@ namespace FlameShotGame
 
         public static void Update(GameTime gt)
         {
-            Debug.WriteLine(" ************ In GLOBALS UPDATE ***********");
-            Debug.WriteLine(" FRAME COUNTER: " + FrameCounter);
             Time = (float)gt.ElapsedGameTime.TotalSeconds;
             FrameCounter++;
-            if (FrameCounter >= 60)
-            {
-                UpdateTotalGameTime();
-            }
-        }
-
-        private static void UpdateTotalGameTime()
-        {
-            TotalElapsedTime+= 1;
+            TotalElapsedTime += Time; // Update the total ElapsedTime everyframe.
         }
         
         private Globals() 
