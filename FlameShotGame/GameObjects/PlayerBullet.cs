@@ -16,7 +16,7 @@ namespace FlameShotGame.GameObjects
         {
             // start from player position and go towards top of screen
             _MovementPath = new Vector2(Globals.player.currentPosition.X + 14, 0);
-            this.speed = 250;
+            this.speed = 350;
         }
 
         public override void Move()

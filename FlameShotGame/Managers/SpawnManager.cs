@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using FlameShotGame.GameObjects;
 using FlameShotGame.Creational;
+using System.Diagnostics;
 
 // This manager is used when ever an entity needs to be spawned.
 namespace FlameShotGame.Managers
@@ -39,6 +40,8 @@ namespace FlameShotGame.Managers
             Globals.EnemyBulletList = EnemyBulletList;
 
             Globals.PlayerBulletList = PlayerBulletList;
+
+            EnemiesSpawnAndShootBullets();
         }
 
         protected SpawnManager()
@@ -54,6 +57,39 @@ namespace FlameShotGame.Managers
         public void SpawnPlayer()
         {
             EntitiesOnScreen.Add(Globals.player);
+        }
+
+        public void EnemiesSpawnAndShootBullets()
+        {
+            foreach (var enemy in EntitiesOnScreen)
+            {
+
+                int shootTarget = Globals.FrameCounter + (enemy.ShootCoolDown * 60);
+                bool canShoot = true;
+                if (Globals.FrameCounter >= shootTarget && canShoot)
+                {
+                    canShoot = false;
+                    shootTarget += (enemy.ShootCoolDown * 60);
+                    Globals.EnemyBulletList.Add(new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), enemy.currentPosition, 25));
+                }
+
+
+                //if (Globals.Time)
+                // Shoot bullets every 5 seconds
+                /*                if (Globals.TotalElapsedTime % 5 == 0 && Globals.TotalElapsedTime > 4)
+                                {
+
+                                    if (enemy.GetType() == typeof(GruntEnemy))
+                                    {
+                                        enemy.TimeLastShot -= (int) Globals.TotalElapsedTime;
+                                        Globals.EnemyBulletList.Add(new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), enemy.currentPosition, 25));
+                                    }
+                                }
+                                else
+                                {
+                                    enemy.TimeLastShot = (int)Globals.TotalElapsedTime;
+                                }*/
+            }
         }
 
         public void SpawnEntity()
@@ -96,7 +132,7 @@ namespace FlameShotGame.Managers
             PlayerBulletList.Remove(b);
         }
 
-        public void DespawnEntityBullet(Bullet b)
+        public void DespawnEnemyBullet(Bullet b)
         {
             EnemyBulletList.Remove(b);
         }

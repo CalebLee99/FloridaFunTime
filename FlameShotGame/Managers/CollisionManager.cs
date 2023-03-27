@@ -46,9 +46,8 @@ namespace FlameShotGame.Managers
                 bullet.Update();
                 Debug.WriteLine("Bullet Position in int: " + (int)bullet.currentPosition.X + ", " + (int)bullet.currentPosition.Y);
 
-                if (((int)bullet.currentPosition.Y) == 1)
+                if (((int)bullet.currentPosition.Y) <= 2)
                 {
-                    Debug.WriteLine("bullet should be deleted.");
                     spawnManager.DespawnPlayerBullet(bullet);
                 }
             }
@@ -57,6 +56,17 @@ namespace FlameShotGame.Managers
             foreach (var bullet in Globals.EnemyBulletList.ToList())
             {
                 bullet.Update();
+
+                // If bullet is off the screen. Despawn the bullet.
+                /*int w = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+                int h = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;*/
+
+                if (bullet.currentPosition.Y <= 2 || bullet.currentPosition.X <= 2 
+                    || bullet.currentPosition.X >= Globals.ScreenWidth 
+                    || bullet.currentPosition.Y >= Globals.ScreenHeight)
+                {
+                    spawnManager.DespawnEnemyBullet(bullet);
+                }
             }
             
             // ---------------------------

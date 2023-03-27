@@ -42,13 +42,19 @@ namespace FlameShotGame.Managers
             // player bullet entities
             foreach(var bullet in Globals.PlayerBulletList.ToList())
             {
-                UpdatePlayerBullet(bullet);
+                UpdateBullet(bullet);
+            }
+
+            // enemy bullet entities
+            foreach(var bullet in Globals.EnemyBulletList.ToList())
+            {
+                UpdateBullet(bullet);
             }
 
             global.SpriteBatch.End();
         }
 
-        private void UpdatePlayerBullet(Bullet bullet)
+        private void UpdateBullet(Bullet bullet)
         {
             bullet.Move();
             bullet.Draw();
