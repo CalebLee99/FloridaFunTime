@@ -1,0 +1,21 @@
+@startuml 
+
+class Globals
+{
+    -uniqueInstance: static Globals
+    +Time: float
+    +SpriteBatch: SpriteBatch
+    +GraphicsDevice: GraphicsDeviceManager
+    +Content: ContentManager
+    +defaultEntitySpeed: float
+    +EntitiesList: List<Entity>
+    +Instance()
+    +Update()
+}
+note left of Globals::uniqueInstance
+return uniqueInstance
+end note
+
+Globals <-- Globals
+
+@enduml

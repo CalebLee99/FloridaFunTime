@@ -1,0 +1,43 @@
+@startuml
+
+abstract Entity
+Entity : -texture: Texture2D 
+Entity : -spawn: Vector2 
+Entity : -health: int 
+Entity : +CurrentPosition: Vector2 
+Entity : +Speed: float 
+Entity : +Move()
+Entity : +Update()
+Entity : +Draw()
+Entity : +GetHealth()
+
+abstract EntityFactory
+EntityFactory : {abstract} +createEntity()
+EntityFactory : +provideEntity()
+
+class EnemyFactory
+EntityFactory <|-- EnemyFactory
+EnemyFactory : +createEntity()
+
+class BulletFactory
+EntityFactory <|-left- BulletFactory
+BulletFactory : +createEntity()
+
+Bullet <-right- BulletFactory
+
+class Bullet
+Entity <|-right- Bullet
+
+class AlligatorEnemy
+Entity <|-- AlligatorEnemy
+AlligatorEnemy : +FollowTarget: Player 
+
+class GruntEnemy
+Entity <|-- GruntEnemy 
+GruntEnemy : -_MovementPath: List<Vector2> 
+GruntEnemy : -_currentMovementPath: int
+
+GruntEnemy <-- EnemyFactory
+AlligatorEnemy <-- EnemyFactory
+
+@enduml

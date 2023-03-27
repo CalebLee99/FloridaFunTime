@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using SharpDX.MediaFoundation.DirectX;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
@@ -22,12 +23,22 @@ namespace FlameShotGame
         // attributes
 
         public static float Time { get; set; }
+        public static int TotalElapsedTime { get; set; }
         public SpriteBatch SpriteBatch { get; set; }
         public GraphicsDeviceManager GraphicsDevice { get; set; }
         public ContentManager Content { get; set; }
-        public readonly float defaultEntitySpeed = 5;
+        public readonly float defaultEntitySpeed = 40;
+        
         public static List<Entity> EntitiesList;
-       
+        public static Player player;
+        public static List<Bullet> EnemyBulletList;
+        public static List<Bullet> PlayerBulletList;
+        public static int FrameCounter = 0;
+
+
+        public static int ScreenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+        public static int ScreenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
         public static Globals Instance()
         {
             return uniqueInstance;
@@ -35,9 +46,21 @@ namespace FlameShotGame
 
         public static void Update(GameTime gt)
         {
+            Debug.WriteLine(" ************ In GLOBALS UPDATE ***********");
+            Debug.WriteLine(" FRAME COUNTER: " + FrameCounter);
             Time = (float)gt.ElapsedGameTime.TotalSeconds;
+            FrameCounter++;
+            if (FrameCounter >= 60)
+            {
+                UpdateTotalGameTime();
+            }
         }
 
+        private static void UpdateTotalGameTime()
+        {
+            TotalElapsedTime+= 1;
+        }
+        
         private Globals() 
         {
             Time = (float) 0;

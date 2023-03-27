@@ -9,11 +9,12 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using FlameShotGame.GameObjects;
 using FlameShotGame.Creational;
+using System.Diagnostics;
 
 // This manager is used when ever an entity needs to be spawned.
 namespace FlameShotGame.Managers
 {
-    public class SpawnManager 
+    public class SpawnManager
     {
         private static SpawnManager uniqueInstance = new SpawnManager();
         Globals global = Globals.Instance();
@@ -21,6 +22,9 @@ namespace FlameShotGame.Managers
 
         // Attributes
         private static List<Entity> EntitiesOnScreen; // This should be pass by ref per entity... Test this.
+        public static Player player;
+        public static List<Bullet> EnemyBulletList;
+        public static List<Bullet> PlayerBulletList;
 
         public static SpawnManager Instance()
         {
@@ -30,31 +34,81 @@ namespace FlameShotGame.Managers
         public void Update()
         {
             Globals.EntitiesList = EntitiesOnScreen;
+
+            //Globals.player = player; GameManager will set player
+
+            Globals.EnemyBulletList = EnemyBulletList;
+
+            Globals.PlayerBulletList = PlayerBulletList;
+
+            EnemiesSpawnAndShootBullets();
         }
 
         protected SpawnManager()
         {
+
             EntitiesOnScreen = new List<Entity>();
+            EnemyBulletList = new List<Bullet>();
+            PlayerBulletList = new List<Bullet>();
+
             this.enemyFactory = new EnemyFactory();
         }
 
-        public void SpawnPlayer(Player pl)
+        public void SpawnPlayer()
         {
-            EntitiesOnScreen.Add(pl);
+            EntitiesOnScreen.Add(Globals.player);
         }
 
-        public void SpawnEntity(Player player)
+        public void EnemiesSpawnAndShootBullets()
+        {
+            foreach (var enemy in EntitiesOnScreen)
+            {
+
+                int shootTarget = Globals.FrameCounter + (enemy.ShootCoolDown * 60);
+                bool canShoot = true;
+                if (Globals.FrameCounter >= shootTarget && canShoot)
+                {
+                    canShoot = false;
+                    shootTarget += (enemy.ShootCoolDown * 60);
+                    Globals.EnemyBulletList.Add(new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), enemy.currentPosition, 25));
+                }
+
+
+                //if (Globals.Time)
+                // Shoot bullets every 5 seconds
+                /*                if (Globals.TotalElapsedTime % 5 == 0 && Globals.TotalElapsedTime > 4)
+                                {
+
+                                    if (enemy.GetType() == typeof(GruntEnemy))
+                                    {
+                                        enemy.TimeLastShot -= (int) Globals.TotalElapsedTime;
+                                        Globals.EnemyBulletList.Add(new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), enemy.currentPosition, 25));
+                                    }
+                                }
+                                else
+                                {
+                                    enemy.TimeLastShot = (int)Globals.TotalElapsedTime;
+                                }*/
+            }
+        }
+
+        public void SpawnEntity()
         {
             EntitiesOnScreen.Add(enemyFactory.CreateEnemy("grunt",
                                                                 global.Content.Load<Texture2D>("Sprites/enemy"),
-                                                                new Vector2(200, 0),
-                                                                player,
-                                                                new List<Vector2>(){new Vector2(50, 0)}));
+                                                                new Vector2(0, 0),
+                                                                Globals.player,
+                                                                new List<Vector2>(){
+                                                                    new Vector2(0, 10),
+                                                                    new Vector2(10, 10),
+                                                                    new Vector2(10, 0),
+                                                                    new Vector2(0, 0)
+                                                                    }));
 
             EntitiesOnScreen.Add(enemyFactory.CreateEnemy("alligator",
                                                                 global.Content.Load<Texture2D>("Sprites/alligator"),
                                                                 new Vector2(0, 0),
-                                                                player,
+                                                                Globals.player,
                                                                 new List<Vector2>(){
                                                                     new Vector2(100, 100),
                                                                     new Vector2(400, 100),
@@ -63,9 +117,24 @@ namespace FlameShotGame.Managers
                                                                     }));
         }
 
+        public void ShootPlayerBullet()
+        {
+            Globals.PlayerBulletList.Add(new PlayerBullet(global.Content.Load<Texture2D>("Sprites/playerbullet"), Globals.player.currentPosition, 25));
+        }
+
         public void DespawnEntity(Entity en)
         {
             EntitiesOnScreen.Remove(en);
+        }
+
+        public void DespawnPlayerBullet(Bullet b)
+        {
+            PlayerBulletList.Remove(b);
+        }
+
+        public void DespawnEnemyBullet(Bullet b)
+        {
+            EnemyBulletList.Remove(b);
         }
     }
 

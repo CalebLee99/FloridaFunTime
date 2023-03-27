@@ -18,6 +18,7 @@ namespace FlameShotGame.GameObjects
         public AlligatorEnemy(Texture2D texture, Vector2 pos, Player target) : base(texture, pos)
         {
             this.FollowTarget = target;
+            this.speed = 85;
         }
 
         public override void Move()

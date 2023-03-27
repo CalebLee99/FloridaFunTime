@@ -8,6 +8,8 @@ using FlameShotGame.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
+using FlameShotGame.GameObjects;
 
 namespace FlameShotGame.Managers
 {
@@ -15,6 +17,8 @@ namespace FlameShotGame.Managers
     public class DrawManager 
     {
         private static DrawManager uniqueInstance = new DrawManager();
+        SpawnManager spawnManager = SpawnManager.Instance();
+        
         Globals global = Globals.Instance();
         
         public static DrawManager Instance()
@@ -24,12 +28,39 @@ namespace FlameShotGame.Managers
         public void Update()
         {
             global.SpriteBatch.Begin();
-            foreach(var entity in Globals.EntitiesList)
+
+            // player
+            Globals.player.Draw();
+            
+            // actor entities
+            foreach(var entity in Globals.EntitiesList.ToList())
             {
+                entity.Move();
                 entity.Draw();
             }
+            
+            // player bullet entities
+            foreach(var bullet in Globals.PlayerBulletList.ToList())
+            {
+                UpdateBullet(bullet);
+            }
+
+            // enemy bullet entities
+            foreach(var bullet in Globals.EnemyBulletList.ToList())
+            {
+                UpdateBullet(bullet);
+            }
+
             global.SpriteBatch.End();
         }
+
+        private void UpdateBullet(Bullet bullet)
+        {
+            bullet.Move();
+            bullet.Draw();
+
+        }
+
         protected DrawManager()
         {
         
