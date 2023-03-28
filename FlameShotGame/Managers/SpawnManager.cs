@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -10,6 +11,9 @@ using Microsoft.Xna.Framework.Input;
 using FlameShotGame.GameObjects;
 using FlameShotGame.Creational;
 using System.Diagnostics;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 // This manager is used when ever an entity needs to be spawned.
 namespace FlameShotGame.Managers
@@ -76,8 +80,34 @@ namespace FlameShotGame.Managers
             }
         }
 
+        public void ReadWave()
+        {
+            string fileName = "../../../EnemyWaves.JSON";
+            string jsonString = File.ReadAllText(fileName);
+            Debug.WriteLine("----------------------READING WAVE---------------------------");
+            Debug.WriteLine(jsonString);
+
+            var enemyWaves = JsonConvert.DeserializeObject<JToken>(jsonString);
+
+            foreach (var wave in enemyWaves["waves"])
+            {
+                Debug.WriteLine("Wave: " + wave["id"]);
+                foreach (var enemy in wave["enemies"])
+                {
+                    Debug.WriteLine("\t enemy: " + enemy["type"]);
+                    Debug.WriteLine("\t spawnLoc: " + enemy["spawnLoc"]);
+                    Debug.WriteLine("\t pathList");
+                    foreach (var pos in enemy["pathList"])
+                    {
+                        Debug.WriteLine("\t" + pos);
+                    }
+                }
+            }
+        }
+
         public void SpawnEntity()
         {
+            this.ReadWave();
             EntitiesOnScreen.Add(enemyFactory.CreateEnemy("grunt",
                                                                 global.Content.Load<Texture2D>("Sprites/enemy"),
                                                                 new Vector2(0, 100),
