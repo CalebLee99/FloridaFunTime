@@ -81,7 +81,7 @@ namespace FlameShotGame.Managers
                     {
                         spawnManager.DespawnPlayerBullet(bullet);
                         spawnManager.DespawnEntity(entity);
-                        Debug.WriteLine("!!!! PlayerBullet hits Enemy !!!!!");
+                        Debug.WriteLine("!!!! Take That !!!!!");
                     }
                 }
             }
@@ -91,7 +91,12 @@ namespace FlameShotGame.Managers
             {
                 if (bullet.Hitbox.Intersects(Globals.player.Hitbox))
                 {
-                    Debug.WriteLine("!!!!! EnemyBullet hits Player !!!!!");
+                    Debug.WriteLine("!!!!! POW POW !!!!!");
+                    // Despawn Enemy Bullet
+                    spawnManager.DespawnEnemyBullet(bullet);
+                    // Update Health
+                    Globals.player.UpdateHealth(bullet.GetDamage());
+                    
                 }
             }
             // Case 3: Enemy hits Player
@@ -99,7 +104,8 @@ namespace FlameShotGame.Managers
             {
                 if (enemy.Hitbox.Intersects(Globals.player.Hitbox))
                 {
-                    Debug.WriteLine("!!!!! Enemy hits Player !!!!!");
+                    Debug.WriteLine("!!!!! Chomp Chomp !!!!!");
+                    Globals.player.UpdateHealth(-1);
                 }
             }
 

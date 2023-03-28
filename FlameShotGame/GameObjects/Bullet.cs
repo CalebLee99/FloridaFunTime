@@ -23,6 +23,11 @@ namespace FlameShotGame.GameObjects
             MaxTime = 10;
         }
 
+        public int GetDamage()
+        {
+            return this.Damage;
+        }
+
         public override void Update()
         {
             base.Update();

@@ -74,7 +74,7 @@ namespace FlameShotGame.Managers
                     {
                         gruntEnemy.HasShotUpdate(); // Now HasShot is True
                         Debug.WriteLine("!!!! SHOOT ACCUMUL !!!" + gruntEnemy.ShootAccumulator);
-                        Globals.EnemyBulletList.Add(new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), enemy.currentPosition, 25));
+                        Globals.EnemyBulletList.Add(new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), enemy.currentPosition, -1));
                     }
                 }
             }

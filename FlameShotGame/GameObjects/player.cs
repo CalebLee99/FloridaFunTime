@@ -17,15 +17,15 @@ namespace FlameShotGame.GameObjects
 {
     public class Player : Entity
     {
-        private int _currentHealth { get; set; }
+        public int _currentHealth { get; set; }
         private int _maxHealth { get; set; }
         private Texture2D _playerTexture { get; set; }
         private bool _shooting { get; set; }
 
         public Player(Texture2D texture, Vector2 pos) : base(texture, pos)
         {
-            this._currentHealth = 3;
-            this._maxHealth = 3;
+            this._currentHealth = 5;
+            this._maxHealth = 5;
             this._shooting = Controller.IsShooting;
         }
 
@@ -46,17 +46,22 @@ namespace FlameShotGame.GameObjects
 
             this.currentPosition += currentDirection * Controller.currentPlayerSpeed * Globals.Time;
             //Debug.WriteLine("Speed: " + Controller.currentPlayerSpeed);
-            Debug.WriteLine("position x " + currentPosition.X);
-            Debug.WriteLine("position y " + currentPosition.Y);
+            //Debug.WriteLine("position x " + currentPosition.X);
+            //Debug.WriteLine("position y " + currentPosition.Y);
         }
 
         public override void Update()
         {
+            if (this._currentHealth == 0)
+            {
+                Environment.Exit(0);
+            }
             base.Update();
         }
-        public void UpdateHealth()
+        public void UpdateHealth(int change)
         {
-            return;
+            this._currentHealth = this._currentHealth + change;
+            Debug.WriteLine("PLAYER HEALTH " + this._currentHealth);
         }
 
         public void Shoot()
