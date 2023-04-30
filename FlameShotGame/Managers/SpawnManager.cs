@@ -152,7 +152,26 @@ namespace FlameShotGame.Managers
 
         public void UpdatePlayerHealthBar()
         {
-
+            if (Globals.player._currentHealth == 5)
+            {
+                Globals.player.PlayerHealthBar = new HealthBar(global.Content.Load<Texture2D>("Sprites/health_5"), new Vector2(0, 0));
+            }
+            if (Globals.player._currentHealth == 4)
+            {
+                Globals.player.PlayerHealthBar = new HealthBar(global.Content.Load<Texture2D>("Sprites/health_4"), new Vector2(0, 0));
+            }
+            if (Globals.player._currentHealth == 3)
+            {
+                Globals.player.PlayerHealthBar = new HealthBar(global.Content.Load<Texture2D>("Sprites/health_3"), new Vector2(0, 0));
+            }
+            if (Globals.player._currentHealth == 2)
+            {
+                Globals.player.PlayerHealthBar = new HealthBar(global.Content.Load<Texture2D>("Sprites/health_2"), new Vector2(0, 0));
+            }
+            if (Globals.player._currentHealth == 1)
+            {
+                Globals.player.PlayerHealthBar = new HealthBar(global.Content.Load<Texture2D>("Sprites/health_1"), new Vector2(0, 0));
+            }
         }
     }
 }
