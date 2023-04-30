@@ -61,6 +61,7 @@ namespace FlameShotGame.Managers
         public void SpawnPlayer()
         {
             EntitiesOnScreen.Add(Globals.player);
+            //EntitiesOnScreen.Add(Globals.player);
         }
 
         public void EnemiesSpawnAndShootBullets()

@@ -17,10 +17,12 @@ namespace FlameShotGame.GameObjects
 {
     public class Player : Entity
     {
+        Globals global = Globals.Instance();
+
         public int _currentHealth { get; set; }
         private int _maxHealth { get; set; }
         private Texture2D _playerTexture { get; set; }
-        private Texture2D _playerHealthTexture { get; set; }
+        private HealthBar _playerHealthOnScreen { get; set; }
         private bool _shooting { get; set; }
         private bool _invincible { get; set; }
 
@@ -30,6 +32,7 @@ namespace FlameShotGame.GameObjects
             this._maxHealth = 5;
             this._shooting = Controller.IsShooting;
             this._invincible = false;
+            this._playerHealthOnScreen = new HealthBar(global.Content.Load<Texture2D>("Sprites/health_5"), new Vector2(0, 0));
         }
 
         public void InitializePosition(Vector2 initialPosition)
