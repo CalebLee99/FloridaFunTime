@@ -105,6 +105,7 @@ namespace FlameShotGame.Managers
                 if (enemy.Hitbox.Intersects(Globals.player.Hitbox))
                 {
                     Debug.WriteLine("!!!!! Chomp Chomp !!!!!");
+                    spawnManager.DespawnEntity(enemy);
                     Globals.player.UpdateHealth(-1);
                 }
             }
