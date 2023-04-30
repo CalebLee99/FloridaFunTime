@@ -22,7 +22,7 @@ namespace FlameShotGame.GameObjects
         public int _currentHealth { get; set; }
         private int _maxHealth { get; set; }
         private Texture2D _playerTexture { get; set; }
-        private HealthBar _playerHealthOnScreen { get; set; }
+        public HealthBar PlayerHealthBar { get; set; }
         private bool _shooting { get; set; }
         private bool _invincible { get; set; }
 
@@ -32,7 +32,7 @@ namespace FlameShotGame.GameObjects
             this._maxHealth = 5;
             this._shooting = Controller.IsShooting;
             this._invincible = false;
-            this._playerHealthOnScreen = new HealthBar(global.Content.Load<Texture2D>("Sprites/health_5"), new Vector2(0, 0));
+            this.PlayerHealthBar = new HealthBar(global.Content.Load<Texture2D>("Sprites/health_5"), new Vector2(0, 0));
         }
 
         public void InitializePosition(Vector2 initialPosition)
@@ -45,6 +45,7 @@ namespace FlameShotGame.GameObjects
             var currentDirection = Controller.MovementDirection;
 
             this.Update();
+            this.PlayerHealthBar.Update();
 
             //currentDirection = Vector2.Normalize(currentDirection);
             //Debug.WriteLine("CURRENT DIRECTION x " + currentDirection.X);

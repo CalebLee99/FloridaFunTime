@@ -96,7 +96,7 @@ namespace FlameShotGame.Managers
                     spawnManager.DespawnEnemyBullet(bullet);
                     // Update Health
                     Globals.player.UpdateHealth(bullet.GetDamage());
-                    spawnManager.UpdatePlayerHealthOnScreen();
+                    spawnManager.UpdatePlayerHealthBar();
                 }
             }
             // Case 3: Enemy hits Player
@@ -107,7 +107,7 @@ namespace FlameShotGame.Managers
                     Debug.WriteLine("!!!!! Chomp Chomp !!!!!");
                     spawnManager.DespawnEntity(enemy);
                     Globals.player.UpdateHealth(-1);
-                    spawnManager.UpdatePlayerHealthOnScreen();
+                    spawnManager.UpdatePlayerHealthBar();
                 }
             }
 

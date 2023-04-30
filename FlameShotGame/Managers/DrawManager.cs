@@ -31,6 +31,7 @@ namespace FlameShotGame.Managers
 
             // player
             Globals.player.Draw();
+            Globals.player.PlayerHealthBar.Draw();
             
             // actor entities
             foreach(var entity in Globals.EntitiesList.ToList())

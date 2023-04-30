@@ -61,7 +61,7 @@ namespace FlameShotGame.Managers
         public void SpawnPlayer()
         {
             EntitiesOnScreen.Add(Globals.player);
-            //EntitiesOnScreen.Add(Globals.player);
+            EntitiesOnScreen.Add(Globals.player.PlayerHealthBar);
         }
 
         public void EnemiesSpawnAndShootBullets()
@@ -150,7 +150,7 @@ namespace FlameShotGame.Managers
             EnemyBulletList.Remove(b);
         }
 
-        public void UpdatePlayerHealthOnScreen()
+        public void UpdatePlayerHealthBar()
         {
 
         }
