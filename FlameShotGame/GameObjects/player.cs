@@ -20,6 +20,7 @@ namespace FlameShotGame.GameObjects
         public int _currentHealth { get; set; }
         private int _maxHealth { get; set; }
         private Texture2D _playerTexture { get; set; }
+        private Texture2D _playerHealthTexture { get; set; }
         private bool _shooting { get; set; }
         private bool _invincible { get; set; }
 

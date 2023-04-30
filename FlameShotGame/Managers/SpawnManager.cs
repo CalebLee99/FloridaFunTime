@@ -148,6 +148,10 @@ namespace FlameShotGame.Managers
         {
             EnemyBulletList.Remove(b);
         }
-    }
 
+        public void UpdatePlayerHealthOnScreen()
+        {
+
+        }
+    }
 }
