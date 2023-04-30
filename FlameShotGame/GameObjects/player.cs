@@ -25,6 +25,8 @@ namespace FlameShotGame.GameObjects
         public HealthBar PlayerHealthBar { get; set; }
         private bool _shooting { get; set; }
         private bool _invincible { get; set; }
+        public bool Invincible => _invincible;
+        private int _frameWhereDamageOccurred { get; set; }
 
         public Player(Texture2D texture, Vector2 pos) : base(texture, pos)
         {
@@ -32,6 +34,7 @@ namespace FlameShotGame.GameObjects
             this._maxHealth = 5;
             this._shooting = Controller.IsShooting;
             this._invincible = false;
+            this._frameWhereDamageOccurred = -180;
             this.PlayerHealthBar = new HealthBar(global.Content.Load<Texture2D>("Sprites/health_5"), new Vector2(0, 0));
         }
 
@@ -63,6 +66,12 @@ namespace FlameShotGame.GameObjects
             {
                 Environment.Exit(0);
             }
+
+            // Invincibility period has run out
+            if ((this._frameWhereDamageOccurred + 180 < Globals.FrameCounter) && (this._invincible == true))
+            {
+                this._invincible = false;
+            }
             base.Update();
         }
         public void UpdateHealth(int change)
@@ -76,5 +85,12 @@ namespace FlameShotGame.GameObjects
             return;
         }
 
+        public void PlayerTakesDamage(int damage)
+        {
+            this.UpdateHealth(damage);
+            this.currentPosition = new Vector2(300, 250);
+            this._invincible = true;
+            this._frameWhereDamageOccurred = Globals.FrameCounter;
+        }
     }
 }

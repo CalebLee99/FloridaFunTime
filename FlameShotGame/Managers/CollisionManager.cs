@@ -87,30 +87,35 @@ namespace FlameShotGame.Managers
             }
 
             // Case 2: EnemyBullet hits Player
-            foreach (var bullet in Globals.EnemyBulletList.ToList())
+            if (!Globals.player.Invincible)
             {
-                if (bullet.Hitbox.Intersects(Globals.player.Hitbox))
+                // Case 2: EnemyBullet hits Player
+                foreach (var bullet in Globals.EnemyBulletList.ToList())
                 {
-                    Debug.WriteLine("!!!!! POW POW !!!!!");
-                    // Despawn Enemy Bullet
-                    spawnManager.DespawnEnemyBullet(bullet);
-                    // Update Health
-                    Globals.player.UpdateHealth(bullet.GetDamage());
-                    spawnManager.UpdatePlayerHealthBar();
+                    if (bullet.Hitbox.Intersects(Globals.player.Hitbox))
+                    {
+                        Debug.WriteLine("!!!!! POW POW !!!!!");
+                        // Despawn Enemy Bullet
+                        spawnManager.DespawnEnemyBullet(bullet);
+                        // Update Health
+                        //Globals.player.UpdateHealth(bullet.GetDamage());
+                        Globals.player.PlayerTakesDamage(bullet.GetDamage());
+                        spawnManager.UpdatePlayerHealthBar();
+                    }
                 }
-            }
-            // Case 3: Enemy hits Player
-            foreach (var enemy in Globals.EntitiesList.ToList())
-            {
-                if (enemy.Hitbox.Intersects(Globals.player.Hitbox))
-                {
-                    Debug.WriteLine("!!!!! Chomp Chomp !!!!!");
-                    spawnManager.DespawnEntity(enemy);
-                    Globals.player.UpdateHealth(-1);
-                    spawnManager.UpdatePlayerHealthBar();
-                }
-            }
 
+                // Case 3: Enemy hits Playerw
+                foreach (var enemy in Globals.EntitiesList.ToList())
+                {
+                    if (enemy.Hitbox.Intersects(Globals.player.Hitbox))
+                    {
+                        Debug.WriteLine("!!!!! Chomp Chomp !!!!!");
+                        spawnManager.DespawnEntity(enemy);
+                        Globals.player.PlayerTakesDamage(-1);
+                        spawnManager.UpdatePlayerHealthBar();
+                    }
+                }
+            }
         }
     }
 }
