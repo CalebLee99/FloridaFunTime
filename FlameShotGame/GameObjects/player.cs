@@ -21,12 +21,14 @@ namespace FlameShotGame.GameObjects
         private int _maxHealth { get; set; }
         private Texture2D _playerTexture { get; set; }
         private bool _shooting { get; set; }
+        private bool _invincible { get; set; }
 
         public Player(Texture2D texture, Vector2 pos) : base(texture, pos)
         {
             this._currentHealth = 5;
             this._maxHealth = 5;
             this._shooting = Controller.IsShooting;
+            this._invincible = false;
         }
 
         public void InitializePosition(Vector2 initialPosition)
