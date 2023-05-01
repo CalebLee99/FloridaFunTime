@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace FlameShotGame.GameObjects
 {
@@ -22,11 +23,13 @@ namespace FlameShotGame.GameObjects
         public int _currentHealth { get; set; }
         private int _maxHealth { get; set; }
         private Texture2D _playerTexture { get; set; }
+        private Texture2D _playerInvincibleTexture { get; set; }
         public HealthBar PlayerHealthBar { get; set; }
         private bool _shooting { get; set; }
         private bool _invincible { get; set; }
         public bool Invincible => _invincible;
         private int _frameWhereDamageOccurred { get; set; }
+        private readonly Animation _anim;
 
         public Player(Texture2D texture, Vector2 pos) : base(texture, pos)
         {
@@ -35,6 +38,8 @@ namespace FlameShotGame.GameObjects
             this._shooting = Controller.IsShooting;
             this._invincible = false;
             this._frameWhereDamageOccurred = -180;
+            this._playerInvincibleTexture = global.Content.Load<Texture2D>("Sprites/player_animation");
+            this._anim = new Animation(_playerInvincibleTexture, 2, 0.1f);
             this.PlayerHealthBar = new HealthBar(global.Content.Load<Texture2D>("Sprites/health_5"), new Vector2(0, 0));
         }
 
@@ -72,8 +77,22 @@ namespace FlameShotGame.GameObjects
             {
                 this._invincible = false;
             }
+            _anim.Update();
             base.Update();
         }
+
+        public void Draw()
+        {
+            if (Globals.player.Invincible == true)
+            {
+                Globals.player._anim.Draw(this.currentPosition);
+            }
+            else
+            {
+                global.SpriteBatch.Draw(this.texture, this.currentPosition, Color.White);
+            }
+        }
+
         public void UpdateHealth(int change)
         {
             this._currentHealth = this._currentHealth + change;
