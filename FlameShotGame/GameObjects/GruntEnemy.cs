@@ -13,6 +13,8 @@ namespace FlameShotGame.GameObjects
     {
         // TODO: Stat data members (e.g. hit points)
 
+        // 
+
         // Movement data members
         private readonly List<Vector2> _MovementPath;
         private int _currentMovementPath;

@@ -7,34 +7,46 @@
                     "enemies": [
                         {
                             "type": "grunt",
+                       "spawnTime": 0,
                         "spawnLoc": [0, 100],
                         "pathList": [[400, 100], [0, 100]]
                         },
-                        {
-                            "type": "grunt",
-                        "spawnLoc": [0, 150],
-                        "pathList": [[400, 150], [0, 150]]
-                        },
-                        {
-                            "type": "grunt",
-                        "spawnLoc": [0, 200],
-                        "pathList": [[400, 200], [0, 200]]
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [0, 100],
+                      {
+                        "type": "grunt",
+                       "spawnTime": 2,
+                        "spawnLoc": [ 0, 150 ],
+                        "pathList": [
+                          [ 400, 150 ],
+                          [ 0, 150 ]
+                        ]
+                      },
+                      {
+                        "type": "grunt",
+                        "spawnTime": 4,
+                        "spawnLoc": [ 0, 200 ],
+                        "pathList": [
+                          [ 400, 200 ],
+                          [ 0, 200 ]
+                        ]
+                      },
+                      {
+                        "type": "alligator",
+                        "spawnTime": 6,
+                        "spawnLoc": [ 0, 100 ],
                         "pathList": []
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [200, 100],
+                      },
+                      {
+                        "type": "alligator",
+                        "spawnTime": 8,
+                        "spawnLoc": [ 200, 100 ],
                         "pathList": []
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [300, 100],
+                      },
+                      {
+                        "type": "alligator",
+                        "spawnTime": 10,
+                        "spawnLoc": [ 300, 100 ],
                         "pathList": []
-                        }
+                      }
                     ]
                 },
                 {

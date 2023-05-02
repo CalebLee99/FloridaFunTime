@@ -109,26 +109,30 @@ namespace FlameShotGame.Managers
         public void SpawnEntity()
         {
             this.ReadWave();
-            EntitiesOnScreen.Add(enemyFactory.CreateEnemy("grunt",
+            /*EntitiesOnScreen.Add(enemyFactory.CreateEnemy("grunt",
                                                                 global.Content.Load<Texture2D>("Sprites/enemy"),
                                                                 new Vector2(0, 100),
                                                                 Globals.player,
                                                                 new List<Vector2>(){
                                                                     new Vector2(400, 100),
                                                                     new Vector2(0, 100)
-                                                                    }));
+                                                                    }))*/;
 
-            EntitiesOnScreen.Add(enemyFactory.CreateEnemy("alligator",
+            /*            EntitiesOnScreen.Add(enemyFactory.CreateEnemy("alligator",
+                                                                            global.Content.Load<Texture2D>("Sprites/alligator"),
+                                                                            new Vector2(0, 0),
+                                                                            Globals.player,
+                                                                            new List<Vector2>(){
+                                                                                new Vector2(100, 100),
+                                                                                new Vector2(400, 100),
+                                                                                new Vector2(400, 400),
+                                                                                new Vector2(100, 400)
+                                                                                }));*/
+            EntitiesOnScreen.Add(enemyFactory.CreateEnemy("alligator", "chase", 85, "",
                                                                 global.Content.Load<Texture2D>("Sprites/alligator"),
-                                                                new Vector2(0, 0),
-                                                                Globals.player,
-                                                                new List<Vector2>(){
-                                                                    new Vector2(100, 100),
-                                                                    new Vector2(400, 100),
-                                                                    new Vector2(400, 400),
-                                                                    new Vector2(100, 400)
-                                                                    }));
+                                                                new Vector2(0, 0)));
         }
+
 
         public void ShootPlayerBullet()
         {
