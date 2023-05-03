@@ -1,181 +1,38 @@
 {
     "waves": 
             [
-                {
-                    "id": 1,
-                    "timeLimit": 45,
-                    "enemies": [
-                        {
-                            "type": "grunt",
-                       "spawnTime": 0,
-                        "spawnLoc": [0, 100],
-                        "pathList": [[400, 100], [0, 100]]
-                        },
-                      {
-                        "type": "grunt",
-                       "spawnTime": 2,
-                        "spawnLoc": [ 0, 150 ],
-                        "pathList": [
-                          [ 400, 150 ],
-                          [ 0, 150 ]
-                        ]
-                      },
-                      {
-                        "type": "grunt",
-                        "spawnTime": 4,
-                        "spawnLoc": [ 0, 200 ],
-                        "pathList": [
-                          [ 400, 200 ],
-                          [ 0, 200 ]
-                        ]
-                      },
-                      {
-                        "type": "alligator",
-                        "spawnTime": 6,
-                        "spawnLoc": [ 0, 100 ],
-                        "pathList": []
-                      },
-                      {
-                        "type": "alligator",
-                        "spawnTime": 8,
-                        "spawnLoc": [ 200, 100 ],
-                        "pathList": []
-                      },
-                      {
-                        "type": "alligator",
-                        "spawnTime": 10,
-                        "spawnLoc": [ 300, 100 ],
-                        "pathList": []
-                      }
-                    ]
-                },
-                {
-                    "id": 2,
-                    "timeLimit": 45,
-                    "enemies": [
-                        {
-                            "type": "midBoss",
-                        "spawnLoc": [0, 150],
-                        "pathList": []
-                        },
-                        {
-                            "type": "grunt",
-                        "spawnLoc": [0, 150],
-                        "pathList": [[400, 150], [0, 150]]
-                        },
-                        {
-                            "type": "grunt",
-                        "spawnLoc": [0, 200],
-                        "pathList": [[400, 200], [0, 200]]
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [0, 100],
-                        "pathList": []
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [200, 100],
-                        "pathList": []
-                        }
-                    ]
-                },
-                {
-                    "id": 3,
-                    "timeLimit": 45,
-                    "enemies": [
-                        {
-                            "type": "grunt",
-                        "spawnLoc": [0, 100],
-                        "pathList": [[400, 100], [0, 100]]
-                        },
-                        {
-                            "type": "grunt",
-                        "spawnLoc": [0, 150],
-                        "pathList": [[400, 150], [0, 150]]
-                        },
-                        {
-                            "type": "grunt",
-                        "spawnLoc": [0, 200],
-                        "pathList": [[400, 200], [0, 200]]
-                        },
-                        {
-                            "type": "grunt",
-                        "spawnLoc": [0, 250],
-                        "pathList": [[400, 250], [0, 250]]
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [0, 100],
-                        "pathList": []
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [200, 100],
-                        "pathList": []
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [300, 100],
-                        "pathList": []
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [400, 100],
-                        "pathList": []
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [500, 100],
-                        "pathList": []
-                        }
-                    ]
-                },
-                {
-                    "id": 4,
-                    "timeLimit": 45,
-                    "enemies": [
-                        {
-                            "type": "midBoss",
-                        "spawnLoc": [0, 150],
-                        "pathList": []
-                        },
-                        {
-                        "type": "grunt",
-                        "spawnLoc": [0, 150],
-                        "pathList": [[400, 150], [0, 150]]
-                        },
-                        {
-                            "type": "grunt",
-                        "spawnLoc": [0, 200],
-                        "pathList": [[400, 200], [0, 200]]
-                        },
-                        {
-                            "type": "grunt",
-                        "spawnLoc": [0, 250],
-                        "pathList": [[400, 250], [0, 250]]
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [0, 100],
-                        "pathList": []
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [200, 100],
-                        "pathList": []
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [300, 100],
-                        "pathList": []
-                        },
-                        {
-                            "type": "alligator",
-                        "spawnLoc": [400, 100],
-                        "pathList": []
-                        }
-                    ]
-                }
-            ]
+              {
+                "id": 1,
+                "startTime": 5,
+                "enemies": [
+                  {
+                    "enemyType": "alligator",
+                    "movementType": "chase",
+                    "data": "",
+                    "speed": 85,
+                    "spawnTime": 0,
+                    "spawnLocX": 0,
+                    "spawnLocY": 100
+                  },
+                  {
+                    "enemyType": "alligator",
+                    "movementType": "chase",
+                    "data": "",
+                    "speed": 85,
+                    "spawnTime": 5,
+                    "spawnLocX": 0,
+                    "spawnLocY": 200
+                  },
+                  {
+                    "enemyType": "alligator",
+                    "movementType": "chase",
+                    "data": "",
+                    "speed": 85,
+                    "spawnTime": 10,
+                    "spawnLocX": 0,
+                    "spawnLocY": 300
+                  }
+                ]
+              }
+           ]
 }

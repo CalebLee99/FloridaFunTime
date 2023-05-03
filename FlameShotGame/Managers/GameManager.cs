@@ -43,7 +43,7 @@ namespace FlameShotGame.Managers
             // Spawn 
 
 /*            spawnManager.SpawnPlayer();*/ 
-            spawnManager.SpawnEntity();
+            //spawnManager.SpawnEntity();
 
 
             // Make sure CollisionManager called after Spawn Manager
@@ -58,6 +58,7 @@ namespace FlameShotGame.Managers
             spawnManager.Update();
             _player.Move();
             collisionManager.Update();
+            //TODO: Add SpawnManager.Update();
         }
         public void Draw()
         {
