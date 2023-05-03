@@ -1,0 +1,319 @@
+{
+  "enemies": [
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 1,
+      "spawnLocX": 0,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 2,
+      "spawnLocX": 750,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "grunt",
+      "movementType": "patroll",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 3,
+      "spawnLocX": 250,
+      "spawnLocY": 0
+    },
+    {
+      "enemyType": "grunt",
+      "movementType": "patroll",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 4,
+      "spawnLocX": 400,
+      "spawnLocY": 0
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 15,
+      "spawnLocX": 0,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 16,
+      "spawnLocX": 750,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "grunt",
+      "movementType": "patroll",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 19,
+      "spawnLocX": 250,
+      "spawnLocY": 0
+    },
+    {
+      "enemyType": "grunt",
+      "movementType": "patroll",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 20,
+      "spawnLocX": 400,
+      "spawnLocY": 0
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 27,
+      "spawnLocX": 0,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 28,
+      "spawnLocX": 750,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 105,
+      "spawnTime": 29,
+      "spawnLocX": 150,
+      "spawnLocY": 0
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 105,
+      "spawnTime": 30,
+      "spawnLocX": 600,
+      "spawnLocY": 0
+    },
+    {
+      "enemyType": "grunt",
+      "movementType": "patroll",
+      "data": "",
+      "speed": 120,
+      "spawnTime": 35,
+      "spawnLocX": 250,
+      "spawnLocY": 50
+    },
+    {
+      "enemyType": "grunt",
+      "movementType": "patroll",
+      "data": "",
+      "speed": 120,
+      "spawnTime": 36,
+      "spawnLocX": 500,
+      "spawnLocY": 50
+    },
+    {
+      "enemyType": "despawn",
+      "movementType": "0",
+      "data": "",
+      "speed": 0,
+      "spawnTime": 45,
+      "spawnLocX": 0,
+      "spawnLocY": 0
+    },
+
+
+
+    {
+      "enemyType": "midboss",
+      "movementType": "0",
+      "data": "",
+      "speed": 0,
+      "spawnTime": 46,
+      "spawnLocX": 350,
+      "spawnLocY": 50
+    },
+    {
+      "enemyType": "despawn",
+      "movementType": "0",
+      "data": "",
+      "speed": 0,
+      "spawnTime": 90,
+      "spawnLocX": 0,
+      "spawnLocY": 0
+    },
+
+
+
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 91,
+      "spawnLocX": 0,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 92,
+      "spawnLocX": 750,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "grunt",
+      "movementType": "patroll",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 93,
+      "spawnLocX": 250,
+      "spawnLocY": 0
+    },
+    {
+      "enemyType": "grunt",
+      "movementType": "patroll",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 94,
+      "spawnLocX": 400,
+      "spawnLocY": 0
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 105,
+      "spawnLocX": 0,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 106,
+      "spawnLocX": 750,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "grunt",
+      "movementType": "patroll",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 109,
+      "spawnLocX": 250,
+      "spawnLocY": 0
+    },
+    {
+      "enemyType": "grunt",
+      "movementType": "patroll",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 110,
+      "spawnLocX": 400,
+      "spawnLocY": 0
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 117,
+      "spawnLocX": 0,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 118,
+      "spawnLocX": 750,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 105,
+      "spawnTime": 119,
+      "spawnLocX": 150,
+      "spawnLocY": 0
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 105,
+      "spawnTime": 120,
+      "spawnLocX": 600,
+      "spawnLocY": 0
+    },
+    {
+      "enemyType": "grunt",
+      "movementType": "patroll",
+      "data": "",
+      "speed": 120,
+      "spawnTime": 125,
+      "spawnLocX": 0,
+      "spawnLocY": 250
+    },
+    {
+      "enemyType": "grunt",
+      "movementType": "patroll",
+      "data": "",
+      "speed": 120,
+      "spawnTime": 126,
+      "spawnLocX": 0,
+      "spawnLocY": 400
+    },
+    {
+      "enemyType": "despawn",
+      "movementType": "0",
+      "data": "",
+      "speed": 0,
+      "spawnTime": 135,
+      "spawnLocX": 0,
+      "spawnLocY": 0
+    },
+
+
+
+    {
+      "enemyType": "finalboss",
+      "movementType": "0",
+      "data": "",
+      "speed": 0,
+      "spawnTime": 136,
+      "spawnLocX": 350,
+      "spawnLocY": 50
+    },
+    {
+      "enemyType": "despawn",
+      "movementType": "0",
+      "data": "",
+      "speed": 0,
+      "spawnTime": 180,
+      "spawnLocX": 0,
+      "spawnLocY": 0
+    }
+  ]
+}
