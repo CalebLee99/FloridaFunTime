@@ -1,17 +1,9 @@
-﻿using FlameShotGame;
-using FlameShotGame.Managers;
-using Microsoft.VisualBasic.Devices;
+﻿using FlameShotGame.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using SharpDX.Direct3D9;
-using SharpDX.DirectWrite;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace FlameShotGame.GameObjects
@@ -29,6 +21,7 @@ namespace FlameShotGame.GameObjects
         private bool _invincible { get; set; }
         public bool Invincible => _invincible;
         private int _frameWhereDamageOccurred { get; set; }
+        private int _invincibilityFrames { get; set; }
         private readonly Animation _anim;
 
         public Player(Texture2D texture, Vector2 pos) : base(texture, pos)
@@ -73,7 +66,7 @@ namespace FlameShotGame.GameObjects
             }
 
             // Invincibility period has run out
-            if ((this._frameWhereDamageOccurred + 180 < Globals.FrameCounter) && (this._invincible == true))
+            if ((this._frameWhereDamageOccurred + _invincibilityFrames < Globals.FrameCounter) && (this._invincible == true))
             {
                 this._invincible = false;
             }
@@ -107,9 +100,20 @@ namespace FlameShotGame.GameObjects
         public void PlayerTakesDamage(int damage)
         {
             this.UpdateHealth(damage);
-            this.currentPosition = new Vector2(300, 250);
-            this._invincible = true;
+            this.currentPosition = new Vector2(350, 300);
+            ToggleInvincibility();
+            this.SetInvincibilityFrames(150);
             this._frameWhereDamageOccurred = Globals.FrameCounter;
+        }
+
+        public void ToggleInvincibility()
+        {
+            this._invincible = !this._invincible;
+        }
+
+        public void SetInvincibilityFrames(int frames)
+        {
+            this._invincibilityFrames = frames;
         }
     }
 }

@@ -22,7 +22,8 @@ namespace FlameShotGame.Managers
         private static float _currentPlayerSpeed;
         private static bool _isShooting;
         private bool _shootingCoolDown;
-        
+        private bool _invincibilityModeCoolDown;
+
         private static float _defaultPlayerSpeed; // Global attribute for the default player speed.
         private static float _slowPlayerSpeed;    // Global attribute for the slow player speed.
 
@@ -73,6 +74,19 @@ namespace FlameShotGame.Managers
             if (ks.IsKeyUp(Keys.Space))
             {
                 _shootingCoolDown = true;
+            }
+            if (ks.IsKeyDown(Keys.P))
+            {
+                if (_invincibilityModeCoolDown == true)
+                {
+                    Globals.player.ToggleInvincibility();
+                    Globals.player.SetInvincibilityFrames(99999999);
+                    _invincibilityModeCoolDown = false;
+                }
+            }
+            if (ks.IsKeyUp(Keys.P))
+            {
+                _invincibilityModeCoolDown = true;
             }
         }
 
