@@ -27,9 +27,7 @@ namespace FlameShotGame.Managers
 
         // Attributes
         private static List<Entity> EntitiesOnScreen; // This should be pass by ref per entity... Test this.
-        private Dictionary<int, Dictionary<int, ArrayList>> waveDictonary;
-
-        private Dictionary<int, ArrayList> inner = null;
+        private Dictionary<int, JSONEnemy> waveDictonary;
 
         private int currentWaveTime;
 
@@ -59,37 +57,14 @@ namespace FlameShotGame.Managers
 
         private void AddEntityToScreen()
         {
-/*            Dictionary<int, ArrayList> inner;*/
-            int waveTimer = 0;
-/*            if (enemyAccu >= )*/
-            if (!waveDictonary.TryGetValue((int) Globals.TotalElapsedTime, out inner))
+            JSONEnemy currentEnemy;
+            if (this.waveDictonary.TryGetValue((int) Globals.TotalElapsedTime, out currentEnemy))
             {
-                Debug.WriteLine("Current Wave Set");
-                currentWaveTime = (int)Globals.TotalElapsedTime;
+                this.SpawnEntity(currentEnemy);
+
+                // remove because already spawned.
+                this.waveDictonary.Remove((int)Globals.TotalElapsedTime);
             }
-
-            if (inner != null)
-            {
-                waveTimer = (int)Globals.TotalElapsedTime - currentWaveTime;
-                Debug.WriteLine("WaveTimer: " + waveTimer);
-
-                // spawn all items inside that match wave timer
-                ArrayList toSpawn;
-                if (!inner.TryGetValue(waveTimer, out toSpawn))
-                {
-                    Debug.WriteLine("Spawning enemies...");
-                    foreach (ArrayList enemy in toSpawn)
-                    {
-                        this.SpawnEntity(enemy);
-                    }
-                }
-
-                // once all items inside, delete the dictionary entry
-                // wave timer increments to next time
-                // once wave timer hits next inner
-                // delete the inner and go to next
-            }
-
         }
 
         protected SpawnManager()
@@ -101,7 +76,7 @@ namespace FlameShotGame.Managers
 
             this.enemyFactory = new EnemyFactory();
 
-            waveDictonary = new Dictionary<int, Dictionary<int, ArrayList>>();
+            waveDictonary = new Dictionary<int, JSONEnemy>();
             this.ReadWave();
         }
 
@@ -136,14 +111,7 @@ namespace FlameShotGame.Managers
  /*           Debug.WriteLine(jsonString);*/
 
             var enemyWaves = JsonConvert.DeserializeObject<JToken>(jsonString);
-
-            foreach (var wave in enemyWaves["waves"])
-            {
-                Debug.WriteLine("Wave: " + wave["startTime"]);
-
-                Dictionary<int, ArrayList> inner = new Dictionary<int, ArrayList>();
-
-                foreach (var enemy in wave["enemies"])
+                foreach (var enemy in enemyWaves["enemies"])
                 {
 
                     Debug.WriteLine("\t enemy: " + enemy["enemyType"]);
@@ -167,74 +135,18 @@ namespace FlameShotGame.Managers
                     Debug.WriteLine("\t spawnLocY: " + enemy["spawnLocY"]);
                     int spawnLocY = (int)enemy["spawnLocY"];
 
-                    if (inner.ContainsKey(spawnTime))
-                    {
-                        ArrayList newEnemy = new ArrayList() { enemyType, movementType, data, speed, spawnTime, spawnLocX, spawnLocY };
-                        inner[spawnTime].Add(newEnemy);
-                    }
-                    else
-                    {
-                        inner[spawnTime] = new ArrayList();
-                        ArrayList newEnemy = new ArrayList() { enemyType, movementType, data, speed, spawnTime, spawnLocX, spawnLocY };
-                        inner[spawnTime].Add(newEnemy);
-                    }
-
-/*                    inner.Add((int) enemy["spawnTime"], new ArrayList() {enemy["enemyType"], enemy["movementType"], enemy["data"],
-                        enemy["spawnTime"], enemy["spawnLocX"], enemy["spawnLocY"]} );*/
-                    /*                    "enemyType": "alligator",
-                                          "movementType": "chase",
-                                          "data": "",
-                                          "spawnTime": 0,
-                                          "spawnLoc": [ 0, 100 ]*/
-
-                    /*                   Debug.WriteLine("\t pathList");*/
-                    /*                    foreach (var pos in enemy["pathList"])
-                                        {
-                                            Debug.WriteLine("\t" + pos);
-                                        }*/
+                    JSONEnemy newJSONEnemy = new JSONEnemy(enemyType, movementType, data, speed, spawnLocX, spawnLocY);
+                
+                    this.waveDictonary[spawnTime] = newJSONEnemy;
                 }
-
-                this.waveDictonary.Add((int) wave["startTime"], inner);
-            }
 
         }
 
-        public void SpawnEntity(ArrayList enemyData)
+        private void SpawnEntity(JSONEnemy enemy)
         {
-            this.ReadWave();
-            /*EntitiesOnScreen.Add(enemyFactory.CreateEnemy("grunt",
-                                                                global.Content.Load<Texture2D>("Sprites/enemy"),
-                                                                new Vector2(0, 100),
-                                                                Globals.player,
-                                                                new List<Vector2>(){
-                                                                    new Vector2(400, 100),
-                                                                    new Vector2(0, 100)
-                                                                    }))*/
-            ;
-
-            /*            EntitiesOnScreen.Add(enemyFactory.CreateEnemy("alligator",
-                                                                            global.Content.Load<Texture2D>("Sprites/alligator"),
-                                                                            new Vector2(0, 0),
-                                                                            Globals.player,
-                                                                            new List<Vector2>(){
-                                                                                new Vector2(100, 100),
-                                                                                new Vector2(400, 100),
-                                                                                new Vector2(400, 400),
-                                                                                new Vector2(100, 400)
-                                                                                }));*/
-            /*EntitiesOnScreen.Add(enemyFactory.CreateEnemy("alligator", "chase", 85, "",
-                                                                global.Content.Load<Texture2D>("Sprites/alligator"),
-                                                                new Vector2(0, 0)));*/
-            string enemyName = (string) enemyData[0];
-            string enemyMovementType = (string)enemyData[1];
-            string enemyMovementData = (string)enemyData[2];
-            int enemySpeed = (int) enemyData[3];
-            string spritePath = "Sprites/" + enemyData[0];
-            int spawnPositionX = (int)enemyData[5]; // This might not work.
-            int spawnPositionY = (int)enemyData[6];
-
-            EntitiesOnScreen.Add(enemyFactory.CreateEnemy(enemyName, enemyMovementType, enemySpeed, enemyMovementData,
-                                 global.Content.Load<Texture2D>(spritePath), new Vector2(spawnPositionX, spawnPositionY)));
+            string spritePath = "Sprites/" + enemy.enemyName;
+            EntitiesOnScreen.Add(enemyFactory.CreateEnemy(enemy.enemyName, enemy.movementType, enemy.speed, enemy.data,
+                                   global.Content.Load<Texture2D>(spritePath), new Vector2(enemy.spawnLocX, enemy.spawnLocY)));
         }
 
 

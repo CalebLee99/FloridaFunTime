@@ -1,38 +1,33 @@
 {
-    "waves": 
+    "enemies": 
             [
               {
-                "id": 1,
-                "startTime": 5,
-                "enemies": [
-                  {
-                    "enemyType": "alligator",
-                    "movementType": "chase",
-                    "data": "",
-                    "speed": 85,
-                    "spawnTime": 0,
-                    "spawnLocX": 0,
-                    "spawnLocY": 100
-                  },
-                  {
-                    "enemyType": "alligator",
-                    "movementType": "chase",
-                    "data": "",
-                    "speed": 85,
-                    "spawnTime": 5,
-                    "spawnLocX": 0,
-                    "spawnLocY": 200
-                  },
-                  {
-                    "enemyType": "alligator",
-                    "movementType": "chase",
-                    "data": "",
-                    "speed": 85,
-                    "spawnTime": 10,
-                    "spawnLocX": 0,
-                    "spawnLocY": 300
-                  }
-                ]
+                "enemyType": "alligator",
+                "movementType": "chase",
+                "data": "",
+                "speed": 85,
+                "spawnTime": 2,
+                "spawnLocX": 0,
+                "spawnLocY": 100
+              },
+              {
+                "enemyType": "alligator",
+                "movementType": "chase",
+                "data": "",
+                "speed": 85,
+                "spawnTime": 3,
+                "spawnLocX": 0,
+                "spawnLocY": 200
+              },
+              {
+                "enemyType": "alligator",
+                "movementType": "chase",
+                "data": "",
+                "speed": 85,
+                "spawnTime": 5,
+                "spawnLocX": 0,
+                "spawnLocY": 300
               }
+              
            ]
 }
