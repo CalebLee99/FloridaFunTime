@@ -144,11 +144,17 @@ namespace FlameShotGame.Managers
 
         private void SpawnEntity(JSONEnemy enemy)
         {
-            string spritePath = "Sprites/" + enemy.enemyName;
-            EntitiesOnScreen.Add(enemyFactory.CreateEnemy(enemy.enemyName, enemy.movementType, enemy.speed, enemy.data,
-                                   global.Content.Load<Texture2D>(spritePath), new Vector2(enemy.spawnLocX, enemy.spawnLocY)));
+            if (enemy.enemyName == "despawn")
+            {
+                EntitiesOnScreen.Clear();
+            }
+            else
+            {
+                string spritePath = "Sprites/" + enemy.enemyName;
+                EntitiesOnScreen.Add(enemyFactory.CreateEnemy(enemy.enemyName, enemy.movementType, enemy.speed, enemy.data,
+                                       global.Content.Load<Texture2D>(spritePath), new Vector2(enemy.spawnLocX, enemy.spawnLocY)));
+            }
         }
-
 
         public void ShootPlayerBullet()
         {

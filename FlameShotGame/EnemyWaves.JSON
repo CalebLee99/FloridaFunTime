@@ -1,33 +1,42 @@
 {
-    "enemies": 
-            [
-              {
-                "enemyType": "alligator",
-                "movementType": "chase",
-                "data": "",
-                "speed": 85,
-                "spawnTime": 2,
-                "spawnLocX": 0,
-                "spawnLocY": 100
-              },
-              {
-                "enemyType": "alligator",
-                "movementType": "chase",
-                "data": "",
-                "speed": 85,
-                "spawnTime": 3,
-                "spawnLocX": 0,
-                "spawnLocY": 200
-              },
-              {
-                "enemyType": "alligator",
-                "movementType": "chase",
-                "data": "",
-                "speed": 85,
-                "spawnTime": 5,
-                "spawnLocX": 0,
-                "spawnLocY": 300
-              }
-              
-           ]
+  "enemies": [
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 2,
+      "spawnLocX": 0,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 3,
+      "spawnLocX": 400,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
+      "spawnTime": 5,
+      "spawnLocX": 700,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "despawn",
+      "movementType": "0",
+      "data": "",
+      "speed": 0,
+      "spawnTime": 10,
+      "spawnLocX": 0,
+      "spawnLocY": 0
+    }
+
+
+  ]
 }
