@@ -18,7 +18,7 @@ namespace FlameShotGame.GameObjects
         public ChaseMovement(Vector2 pos, int speed)
         {
             this.currentPosition = pos;
-            this.EnemySpeed = speed;
+            this.speed = speed;
         }
 
         public override Vector2 Move()
@@ -33,7 +33,7 @@ namespace FlameShotGame.GameObjects
                 if (directionToMove.Length() > 4)
                 {
                     directionToMove.Normalize();
-                    this.currentPosition += directionToMove * this.EnemySpeed * Globals.Time;
+                    this.currentPosition += directionToMove * this.speed * Globals.Time;
                 }
             }
             return this.currentPosition;    

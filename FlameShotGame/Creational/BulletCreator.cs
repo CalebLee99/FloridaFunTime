@@ -14,11 +14,11 @@ namespace FlameShotGame.Creational
     {
         Globals global = Globals.Instance();
 
-        protected override Entity createEntity(string entityType, Vector2 pos, int damage)
+        protected override Entity createEntity(string entityType, Vector2 pos, int damage, IMovement movement)
         {
             if (entityType.ToLower() == "player")
             {
-                return new PlayerBullet(global.Content.Load<Texture2D>("Sprites/playerbullet"), pos, damage);
+                return new PlayerBullet(global.Content.Load<Texture2D>("Sprites/playerbullet"), pos, damage, movement);
             }
             else if (entityType.ToLower() == "enemy")
             {

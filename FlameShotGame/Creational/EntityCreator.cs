@@ -12,11 +12,11 @@ namespace FlameShotGame.Creational
 {
     public abstract class EntityCreator
     {
-        protected abstract Entity createEntity(String entityType, Vector2 pos, int damage);
+        protected abstract Entity createEntity(String entityType, Vector2 pos, int damage, IMovement movement);
 
-        public Entity provideEntity(String entityType, Vector2 pos, int damage)
+        public Entity provideEntity(String entityType, Vector2 pos, int damage, IMovement movement)
         {
-            Entity entity = createEntity(entityType, pos, damage);
+            Entity entity = createEntity(entityType, pos, damage, movement);
             return entity;
         }
     }

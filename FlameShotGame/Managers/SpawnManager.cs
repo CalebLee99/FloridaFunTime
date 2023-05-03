@@ -144,6 +144,7 @@ namespace FlameShotGame.Managers
 
         private void SpawnEntity(JSONEnemy enemy)
         {
+            // clear enemies at end of wave or another arbitrary time
             if (enemy.enemyName == "despawn")
             {
                 EntitiesOnScreen.Clear();
@@ -158,7 +159,8 @@ namespace FlameShotGame.Managers
 
         public void ShootPlayerBullet()
         {
-            Globals.PlayerBulletList.Add(new PlayerBullet(global.Content.Load<Texture2D>("Sprites/playerbullet"), Globals.player.currentPosition, 25));
+            IMovement straightMovement = new StraightMovement(Globals.player.currentPosition, 350);
+            Globals.PlayerBulletList.Add(new PlayerBullet(global.Content.Load<Texture2D>("Sprites/playerbullet"), Globals.player.currentPosition, 25, straightMovement));
         }
 
         public void DespawnEntity(Entity en)

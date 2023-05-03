@@ -11,7 +11,7 @@ namespace FlameShotGame.GameObjects
     public abstract class IMovement
     {
         protected string data;
-        protected int EnemySpeed;
+        protected int speed;
         public abstract Vector2 Move();
     }
 }
