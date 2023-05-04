@@ -55,47 +55,50 @@ namespace FlameShotGame.Managers
             Debug.WriteLine(Globals.TotalElapsedTime);
             AddEntityToScreen();
 
+
             //prniting list
-/*            foreach (JSONEnemy e in this.waveList)
-            {
-                Debug.Write("[");
-                Debug.Write(e.enemyName + ", ");
-                Debug.WriteLine("}");
-            }*/
-
-            if (Globals.EntitiesList.Count == 0 && waveList.Count != 0 && waveList[0].enemyName == "despawn")
-            {
-                
-                Debug.WriteLine("*******All Enemies Dead*******");
-                Dictionary<int, JSONEnemy> temp = new Dictionary<int, JSONEnemy>();
-                var keys = new List<int>(waveDictonary.Keys);
-                int timeToSubtract = waveList[0].spawnTime - (int)Globals.TotalElapsedTime;
-
- 
-
-                foreach (int key in keys)
+            /*            foreach (JSONEnemy e in this.waveList)
+                        {
+                            Debug.Write("[");
+                            Debug.Write(e.enemyName + ", ");
+                            Debug.WriteLine("}");
+                        }*/
+           
+                if (Globals.EntitiesList.Count == 0 && waveList.Count > 0 && waveList[0].enemyName == "despawn")
                 {
-                    waveDictonary[key].spawnTime = waveDictonary[key].spawnTime - timeToSubtract + 1;
-                    temp.Add((waveDictonary[key].spawnTime), waveDictonary[key]);
+
+                    Debug.WriteLine("*******All Enemies Dead*******");
+                    Dictionary<int, JSONEnemy> temp = new Dictionary<int, JSONEnemy>();
+                    var keys = new List<int>(waveDictonary.Keys);
+                    int timeToSubtract = waveList[0].spawnTime - (int)Globals.TotalElapsedTime;
+
+
+
+                    foreach (int key in keys)
+                    {
+                        waveDictonary[key].spawnTime = waveDictonary[key].spawnTime - timeToSubtract + 1;
+                        temp.Add((waveDictonary[key].spawnTime), waveDictonary[key]);
+                    }
+                    foreach (JSONEnemy e in waveList)
+                    {
+                        Debug.WriteLine("SPAWN TIME IN WAVE LIST: " + e.enemyName + ", " + e.spawnTime);
+                        /*e.spawnTime = e.spawnTime - timeToSubtract;*/
+                    }
+
+                    this.waveDictonary.Remove(waveList[0].spawnTime);
+                    this.waveList.RemoveAt(0);
+
+                    this.waveDictonary = temp;
+
                 }
-                foreach(JSONEnemy e in waveList)
+                else if (waveDictonary.Count == 0)
                 {
-                    Debug.WriteLine("SPAWN TIME IN WAVE LIST: " + e.spawnTime);
-                    /*e.spawnTime = e.spawnTime - timeToSubtract;*/
+                    Globals.EntitiesList.Clear();
+                    Globals.EntitiesList.Add(new Notify(global.Content.Load<Texture2D>("Sprites/YouWin"), new Vector2(-50, 200)));
+
                 }
+            
 
-                this.waveDictonary.Remove(waveList[0].spawnTime);
-                this.waveList.RemoveAt(0);
-
-                this.waveDictonary = temp;
-
-            }
-            else if(waveDictonary.Count == 0)
-            {
-                Globals.EntitiesList.Clear();
-                Globals.EntitiesList.Add(new Notify(global.Content.Load<Texture2D>("Sprites/YouWin"), new Vector2(-50, 200)));
-                
-            }
 
         }
 
@@ -219,11 +222,11 @@ namespace FlameShotGame.Managers
         private void SpawnEntity(JSONEnemy enemy)
         {
             // clear enemies at end of wave or another arbitrary time
-            if (enemy.enemyName == "despawn")
+            if (enemy.enemyName == "despawn" && EntitiesOnScreen.Count != 0)
             {
                 EntitiesOnScreen.Clear();
             }
-            else
+            else if (enemy.enemyName != "despawn")
             {
                 string spritePath = "Sprites/" + enemy.enemyName;
                 EntitiesOnScreen.Add(enemyFactory.CreateEnemy(enemy.enemyName, enemy.movementType, enemy.speed, enemy.data,
