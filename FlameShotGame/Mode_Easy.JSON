@@ -28,15 +28,6 @@
       "spawnLocY": 0
     },
     {
-      "enemyType": "snake",
-      "movementType": "patrol",
-      "data": "20,20",
-      "speed": 85,
-      "spawnTime": 4,
-      "spawnLocX": 400,
-      "spawnLocY": 0
-    },
-    {
       "enemyType": "enemy",
       "movementType": "circle",
       "data": "10",
@@ -46,15 +37,6 @@
       "spawnLocY": 300
     },
     {
-      "enemyType": "snake",
-      "movementType": "circle",
-      "data": "15",
-      "speed": 85,
-      "spawnTime": 15,
-      "spawnLocX": 0,
-      "spawnLocY": 100
-    },
-    {
       "enemyType": "alligator",
       "movementType": "chase",
       "data": "",
@@ -62,15 +44,6 @@
       "spawnTime": 16,
       "spawnLocX": 750,
       "spawnLocY": 100
-    },
-    {
-      "enemyType": "snake",
-      "movementType": "patrol",
-      "data": "10,10",
-      "speed": 85,
-      "spawnTime": 19,
-      "spawnLocX": 250,
-      "spawnLocY": 0
     },
     {
       "enemyType": "enemy",
@@ -144,7 +117,15 @@
       "spawnLocX": 0,
       "spawnLocY": 0
     },
-
+    {
+      "enemyType": "enemy",
+      "movementType": "patrol",
+      "data": "0,0",
+      "speed": 0,
+      "spawnTime": 46,
+      "spawnLocX": 1000,
+      "spawnLocY": 1000
+    },
 
 
     {
@@ -152,7 +133,7 @@
       "movementType": "patrol",
       "data": "60,120",
       "speed": 150,
-      "spawnTime": 46,
+      "spawnTime": 47,
       "spawnLocX": 350,
       "spawnLocY": 50
     },
@@ -175,15 +156,6 @@
       "speed": 85,
       "spawnTime": 91,
       "spawnLocX": 0,
-      "spawnLocY": 100
-    },
-    {
-      "enemyType": "snake",
-      "movementType": "circle",
-      "data": "15",
-      "speed": 90,
-      "spawnTime": 92,
-      "spawnLocX": 750,
       "spawnLocY": 100
     },
     {
@@ -211,15 +183,6 @@
       "speed": 100,
       "spawnTime": 105,
       "spawnLocX": 0,
-      "spawnLocY": 100
-    },
-    {
-      "enemyType": "snake",
-      "movementType": "chase",
-      "data": "",
-      "speed": 90,
-      "spawnTime": 106,
-      "spawnLocX": 750,
       "spawnLocY": 100
     },
     {
@@ -304,7 +267,15 @@
       "spawnLocY": 0
     },
 
-
+    {
+      "enemyType": "enemy",
+      "movementType": "patrol",
+      "data": "0,0",
+      "speed": 0,
+      "spawnTime": 46,
+      "spawnLocX": 1000,
+      "spawnLocY": 1000
+    },
 
     {
       "enemyType": "finalboss",

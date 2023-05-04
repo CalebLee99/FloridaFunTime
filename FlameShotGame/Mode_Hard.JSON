@@ -4,70 +4,52 @@
       "enemyType": "alligator",
       "movementType": "chase",
       "data": "",
-      "speed": 85,
+      "speed": 185,
       "spawnTime": 1,
       "spawnLocX": 0,
       "spawnLocY": 100
     },
     {
       "enemyType": "alligator",
-      "movementType": "chase",
-      "data": "",
-      "speed": 85,
+      "movementType": "circle",
+      "data": "20",
+      "speed": 190,
       "spawnTime": 2,
-      "spawnLocX": 750,
-      "spawnLocY": 100
+      "spawnLocX": 400,
+      "spawnLocY": 200
     },
     {
-      "enemyType": "grunt",
-      "movementType": "patroll",
-      "data": "",
-      "speed": 85,
+      "enemyType": "enemy",
+      "movementType": "patrol",
+      "data": "30,10",
+      "speed": 195,
       "spawnTime": 3,
       "spawnLocX": 250,
       "spawnLocY": 0
     },
     {
-      "enemyType": "grunt",
-      "movementType": "patroll",
-      "data": "",
-      "speed": 85,
-      "spawnTime": 4,
+      "enemyType": "enemy",
+      "movementType": "circle",
+      "data": "10",
+      "speed": 190,
+      "spawnTime": 5,
       "spawnLocX": 400,
-      "spawnLocY": 0
+      "spawnLocY": 300
     },
     {
       "enemyType": "alligator",
       "movementType": "chase",
       "data": "",
-      "speed": 85,
-      "spawnTime": 15,
-      "spawnLocX": 0,
-      "spawnLocY": 100
-    },
-    {
-      "enemyType": "alligator",
-      "movementType": "chase",
-      "data": "",
-      "speed": 85,
+      "speed": 185,
       "spawnTime": 16,
       "spawnLocX": 750,
       "spawnLocY": 100
     },
     {
-      "enemyType": "grunt",
-      "movementType": "patroll",
-      "data": "",
-      "speed": 85,
-      "spawnTime": 19,
-      "spawnLocX": 250,
-      "spawnLocY": 0
-    },
-    {
-      "enemyType": "grunt",
-      "movementType": "patroll",
-      "data": "",
-      "speed": 85,
+      "enemyType": "enemy",
+      "movementType": "patrol",
+      "data": "15,20",
+      "speed": 185,
       "spawnTime": 20,
       "spawnLocX": 400,
       "spawnLocY": 0
@@ -76,7 +58,7 @@
       "enemyType": "alligator",
       "movementType": "chase",
       "data": "",
-      "speed": 85,
+      "speed": 185,
       "spawnTime": 27,
       "spawnLocX": 0,
       "spawnLocY": 100
@@ -85,7 +67,7 @@
       "enemyType": "alligator",
       "movementType": "chase",
       "data": "",
-      "speed": 85,
+      "speed": 185,
       "spawnTime": 28,
       "spawnLocX": 750,
       "spawnLocY": 100
@@ -94,7 +76,7 @@
       "enemyType": "alligator",
       "movementType": "chase",
       "data": "",
-      "speed": 105,
+      "speed": 205,
       "spawnTime": 29,
       "spawnLocX": 150,
       "spawnLocY": 0
@@ -103,25 +85,25 @@
       "enemyType": "alligator",
       "movementType": "chase",
       "data": "",
-      "speed": 105,
+      "speed": 205,
       "spawnTime": 30,
       "spawnLocX": 600,
       "spawnLocY": 0
     },
     {
-      "enemyType": "grunt",
-      "movementType": "patroll",
-      "data": "",
-      "speed": 120,
+      "enemyType": "enemy",
+      "movementType": "patrol",
+      "data": "20,25",
+      "speed": 170,
       "spawnTime": 35,
       "spawnLocX": 250,
       "spawnLocY": 50
     },
     {
-      "enemyType": "grunt",
-      "movementType": "patroll",
-      "data": "",
-      "speed": 120,
+      "enemyType": "enemy",
+      "movementType": "patrol",
+      "data": "25,30",
+      "speed": 170,
       "spawnTime": 36,
       "spawnLocX": 500,
       "spawnLocY": 50
@@ -135,15 +117,23 @@
       "spawnLocX": 0,
       "spawnLocY": 0
     },
-
+    {
+      "enemyType": "enemy",
+      "movementType": "patrol",
+      "data": "0,0",
+      "speed": 0,
+      "spawnTime": 46,
+      "spawnLocX": 1000,
+      "spawnLocY": 1000
+    },
 
 
     {
       "enemyType": "midboss",
-      "movementType": "0",
-      "data": "",
-      "speed": 0,
-      "spawnTime": 46,
+      "movementType": "patrol",
+      "data": "60,120",
+      "speed": 200,
+      "spawnTime": 47,
       "spawnLocX": 350,
       "spawnLocY": 50
     },
@@ -163,34 +153,25 @@
       "enemyType": "alligator",
       "movementType": "chase",
       "data": "",
-      "speed": 85,
+      "speed": 185,
       "spawnTime": 91,
       "spawnLocX": 0,
       "spawnLocY": 100
     },
     {
-      "enemyType": "alligator",
-      "movementType": "chase",
-      "data": "",
-      "speed": 85,
-      "spawnTime": 92,
-      "spawnLocX": 750,
-      "spawnLocY": 100
-    },
-    {
-      "enemyType": "grunt",
-      "movementType": "patroll",
-      "data": "",
-      "speed": 85,
+      "enemyType": "enemy",
+      "movementType": "patrol",
+      "data": "15,10",
+      "speed": 185,
       "spawnTime": 93,
       "spawnLocX": 250,
       "spawnLocY": 0
     },
     {
-      "enemyType": "grunt",
-      "movementType": "patroll",
-      "data": "",
-      "speed": 85,
+      "enemyType": "enemy",
+      "movementType": "patrol",
+      "data": "10,5",
+      "speed": 200,
       "spawnTime": 94,
       "spawnLocX": 400,
       "spawnLocY": 0
@@ -199,34 +180,25 @@
       "enemyType": "alligator",
       "movementType": "chase",
       "data": "",
-      "speed": 85,
+      "speed": 200,
       "spawnTime": 105,
       "spawnLocX": 0,
       "spawnLocY": 100
     },
     {
-      "enemyType": "alligator",
+      "enemyType": "enemy",
       "movementType": "chase",
       "data": "",
-      "speed": 85,
-      "spawnTime": 106,
-      "spawnLocX": 750,
-      "spawnLocY": 100
-    },
-    {
-      "enemyType": "grunt",
-      "movementType": "patroll",
-      "data": "",
-      "speed": 85,
+      "speed": 185,
       "spawnTime": 109,
       "spawnLocX": 250,
       "spawnLocY": 0
     },
     {
-      "enemyType": "grunt",
-      "movementType": "patroll",
-      "data": "",
-      "speed": 85,
+      "enemyType": "enemy",
+      "movementType": "patrol",
+      "data": "15,30",
+      "speed": 190,
       "spawnTime": 110,
       "spawnLocX": 400,
       "spawnLocY": 0
@@ -235,7 +207,7 @@
       "enemyType": "alligator",
       "movementType": "chase",
       "data": "",
-      "speed": 85,
+      "speed": 210,
       "spawnTime": 117,
       "spawnLocX": 0,
       "spawnLocY": 100
@@ -244,16 +216,16 @@
       "enemyType": "alligator",
       "movementType": "chase",
       "data": "",
-      "speed": 85,
+      "speed": 185,
       "spawnTime": 118,
       "spawnLocX": 750,
       "spawnLocY": 100
     },
     {
-      "enemyType": "alligator",
+      "enemyType": "enemy",
       "movementType": "chase",
       "data": "",
-      "speed": 105,
+      "speed": 205,
       "spawnTime": 119,
       "spawnLocX": 150,
       "spawnLocY": 0
@@ -262,25 +234,25 @@
       "enemyType": "alligator",
       "movementType": "chase",
       "data": "",
-      "speed": 105,
+      "speed": 205,
       "spawnTime": 120,
       "spawnLocX": 600,
       "spawnLocY": 0
     },
     {
-      "enemyType": "grunt",
-      "movementType": "patroll",
-      "data": "",
-      "speed": 120,
+      "enemyType": "enemy",
+      "movementType": "patrol",
+      "data": "15,20",
+      "speed": 170,
       "spawnTime": 125,
       "spawnLocX": 0,
       "spawnLocY": 250
     },
     {
-      "enemyType": "grunt",
-      "movementType": "patroll",
-      "data": "",
-      "speed": 120,
+      "enemyType": "alligator",
+      "movementType": "patrol",
+      "data": "20,15",
+      "speed": 170,
       "spawnTime": 126,
       "spawnLocX": 0,
       "spawnLocY": 400
@@ -295,13 +267,21 @@
       "spawnLocY": 0
     },
 
-
+    {
+      "enemyType": "enemy",
+      "movementType": "patrol",
+      "data": "0,0",
+      "speed": 0,
+      "spawnTime": 46,
+      "spawnLocX": 1000,
+      "spawnLocY": 1000
+    },
 
     {
       "enemyType": "finalboss",
-      "movementType": "0",
-      "data": "",
-      "speed": 0,
+      "movementType": "circle",
+      "data": "15",
+      "speed": 200,
       "spawnTime": 136,
       "spawnLocX": 350,
       "spawnLocY": 50
