@@ -62,10 +62,10 @@ namespace FlameShotGame
             gameManager.Update();
             Globals.Update(gameTime);
             base.Update(gameTime);
-            if (Globals.player._currentHealth == 0)
+/*            if (Globals.player._currentHealth == 0)
             {
                 Exit();
-            }
+            }*/
         }
 
         protected override void Draw(GameTime gameTime) // Called multiple times per second

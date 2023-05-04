@@ -56,9 +56,9 @@
     },
     {
       "enemyType": "finalboss",
-      "movementType": "patroll",
+      "movementType": "circle",
       "data": "",
-      "speed": 0,
+      "speed": 100,
       "spawnTime": 31,
       "spawnLocX": 350,
       "spawnLocY": 50

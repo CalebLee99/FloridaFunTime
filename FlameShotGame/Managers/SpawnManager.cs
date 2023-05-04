@@ -162,6 +162,11 @@ namespace FlameShotGame.Managers
                     var midboss = enemy as MidbossEnemy;
                     midboss.Fire();
                 }
+                if (enemy.GetType() == typeof(FinalBossEnemy))
+                {
+                    var fin = enemy as FinalBossEnemy;
+                    fin.Fire();
+                }
             }
         }
 

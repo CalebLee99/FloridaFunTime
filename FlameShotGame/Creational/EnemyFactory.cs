@@ -35,7 +35,7 @@ namespace FlameShotGame.Creational
                 points.Add(new Vector2(pos.X + x_dev, pos.Y + y_dev));
                 points.Add(new Vector2(pos.X, pos.Y + y_dev));
 
-                movement = new PatrolMovement(pos, new List<Vector2>() { new Vector2(100, 100), new Vector2(400, 100), new Vector2(400, 400), new Vector2(100, 400) }, speed);
+                movement = new PatrolMovement(pos, points, speed);
             }
             else if (movementType == "circle")
             {
@@ -64,6 +64,10 @@ namespace FlameShotGame.Creational
             else if (enemyType == "midboss")
             {
                 return new MidbossEnemy(texture, pos, movement);
+            }
+            else if (enemyType == "finalboss")
+            {
+                return new FinalBossEnemy(texture, pos, movement);
             }
             else
             {

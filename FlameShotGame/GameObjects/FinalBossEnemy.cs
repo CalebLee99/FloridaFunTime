@@ -9,58 +9,62 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SharpDX.Direct2D1;
 
-using FlameShotGame.Creational;
-
 namespace FlameShotGame.GameObjects
 {
-    public class MidbossEnemy : Entity
+    internal class FinalBossEnemy : Entity
     {
         Globals globals = Globals.Instance();
 
         IMovement movement;
         int spawnTime;
         int timeAlive;
-        private int phaseTwoTime = 30;
         bool firstPhase;
+        bool secondPhase;
+        bool spawnedGrunts = false;
 
- /*       public bool HasShot;*/
         public float ShootCoolDownValue;
         public float ShootAccumulator;
 
-  /*      public bool HasSpawned;*/
         public float SpawnCoolDownValue;
         public float SpawnAccumulator;
 
         private EnemyFactory enemyFactory = new EnemyFactory();
 
-
-        public MidbossEnemy(Texture2D texture, Vector2 pos, IMovement movementType) : base(texture, pos)
+        public FinalBossEnemy(Texture2D texture, Vector2 pos, IMovement movementType) : base(texture, pos)
         {
             this.movement = movementType;
-            this.Health = 50;
-            this.spawnTime = (int) Globals.TotalElapsedTime;
+            this.Health = 75;
+            this.spawnTime = (int)Globals.TotalElapsedTime;
             this.timeAlive = 0;
             this.firstPhase = true;
+            this.secondPhase = true;
 
             this.ShootAccumulator = 0;
-            this.ShootCoolDownValue = (float) 0.5;
+            this.ShootCoolDownValue = (float)0.8;
 
             this.SpawnAccumulator = 0;
             this.SpawnCoolDownValue = 3;
         }
+
         public override void Move()
         {
-            timeAlive = (int) Globals.TotalElapsedTime - spawnTime;
-            if (timeAlive > 15 && firstPhase) 
+            timeAlive = (int)Globals.TotalElapsedTime - spawnTime;
+            if (timeAlive > 15 && firstPhase)
             {
                 firstPhase = false;
                 // Make new movement
                 IMovement movement = new ChaseMovement(this.currentPosition, 90);
                 this.movement = movement;
             }
+            if (timeAlive > 30 && secondPhase)
+            {
+                secondPhase = false;
+                IMovement movement = new PatrolMovement(this.currentPosition, new List<Vector2>() { new Vector2(0, 0), new Vector2(Globals.ScreenWidth - 100, 0), new Vector2(Globals.ScreenWidth - 100, Globals.ScreenHeight - 200), new Vector2(0, Globals.ScreenHeight - 200) }, 200);
+                this.movement = movement;
+            }
+   
             this.currentPosition = this.movement.Move();
         }
-
         public void HasShotUpdate()
         {
             this.ShootAccumulator -= this.ShootCoolDownValue;
@@ -87,7 +91,14 @@ namespace FlameShotGame.GameObjects
                 this.HasShotUpdate(); // Now HasShot is True
                 Debug.WriteLine("!!!! SHOOT ACCUMUL !!!" + this.ShootAccumulator);
 
-                IMovement diagonalMovement = new DiagonalMovement(this.currentPosition, Globals.player.currentPosition, rand.Next(-5, 5), 350);
+                int speed = 350;
+
+                if (timeAlive > 30)
+                {
+                    speed = 500;
+                }
+
+                IMovement diagonalMovement = new DiagonalMovement(this.currentPosition, Globals.player.currentPosition, rand.Next(-5, 5), speed);
                 Globals.EnemyBulletList.Add(new EnemyBullet(globals.Content.Load<Texture2D>("Sprites/enemybullet"), this.currentPosition, -1, diagonalMovement));
 
                 if (timeAlive > 15)
@@ -97,21 +108,24 @@ namespace FlameShotGame.GameObjects
                     Globals.EnemyBulletList.Add(new EnemyBullet(globals.Content.Load<Texture2D>("Sprites/enemybullet"), this.currentPosition, -1, circleMovement));
                 }
 
-                /*if (timeAlive > 25)
+                if (spawnedGrunts == false)
                 {
-                    List<Vector2> PointsToShoot = new List<Vector2>();
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 9; i++)
                     {
-                        Vector2 newPoint = new Vector2();
-                        newPoint.X = currentPosition.X * i;
-                        newPoint.Y = currentPosition.Y * i;
+                        IMovement movement = new PatrolMovement(new Vector2(this.currentPosition.X + ((50 * i) - 200), this.currentPosition.Y + 40),
+                            new List<Vector2>() { new Vector2(this.currentPosition.X + 200, this.currentPosition.Y + 40), new Vector2(this.currentPosition.X, this.currentPosition.Y) }, 50);
+                        Globals.EntitiesList.Add(new GruntEnemy(globals.Content.Load<Texture2D>("Sprites/grunt"), new Vector2(this.currentPosition.X + ((50 * i) - 200), this.currentPosition.Y + 40), movement));
+                        /*Globals.EntitiesList.Add(enemyFactory.CreateEnemy("enemy", "", 80, "",
+                                        globals.Content.Load<Texture2D>("Sprites/grunt"), new Vector2(this.currentPosition.X + ((10 * i) - 20), this.currentPosition.Y + 40)));*/
 
                     }
+                    spawnedGrunts = true;
+                }
+                // spawn grunts who act as shield
+                
 
-                }*/
             }
-
-            if (this.SpawnAccumulator >= this.SpawnCoolDownValue && timeAlive > 15)
+            if (this.SpawnAccumulator >= this.SpawnCoolDownValue && timeAlive > 15) // phase 2 spawning
             {
                 this.HasSpawnUpdate();
 
@@ -120,11 +134,5 @@ namespace FlameShotGame.GameObjects
                                    globals.Content.Load<Texture2D>("Sprites/alligator"), this.currentPosition));
             }
         }
-
-/*        public override void Update()
-        {
-            
-            this.currentPosition = this.movement.Move();
-        }*/
     }
 }

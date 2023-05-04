@@ -63,7 +63,10 @@ namespace FlameShotGame.GameObjects
         {
             if (this._currentHealth == 0)
             {
-                Environment.Exit(0);
+                Globals.EntitiesList.Clear();
+                Globals.EntitiesList.Add(new Notify(global.Content.Load<Texture2D>("Sprites/health_5"), new Vector2(300, 200)));
+                //System.Threading.Thread.Sleep(1000);
+                //Environment.Exit(0);
             }
 
             if (this._currentHealth < this._maxHealth)
