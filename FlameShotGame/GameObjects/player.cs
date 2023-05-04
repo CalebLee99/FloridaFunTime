@@ -17,6 +17,7 @@ namespace FlameShotGame.GameObjects
         private Texture2D _playerTexture { get; set; }
         private Texture2D _playerInvincibleTexture { get; set; }
         public HealthBar PlayerHealthBar { get; set; }
+        public bool playerDamaged = false;
         private bool _shooting { get; set; }
         private bool _invincible { get; set; }
         public bool Invincible => _invincible;
@@ -63,6 +64,15 @@ namespace FlameShotGame.GameObjects
             if (this._currentHealth == 0)
             {
                 Environment.Exit(0);
+            }
+
+            if (this._currentHealth < this._maxHealth)
+            {
+                this.playerDamaged = true;
+            }
+            else
+            {
+                this.playerDamaged = false;
             }
 
             // Invincibility period has run out
