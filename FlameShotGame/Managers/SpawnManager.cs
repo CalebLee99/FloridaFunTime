@@ -139,7 +139,7 @@ namespace FlameShotGame.Managers
 
         public void EnemiesSpawnAndShootBullets()
         {
-            foreach (var enemy in EntitiesOnScreen)
+            foreach (var enemy in EntitiesOnScreen.ToList())
             {
                 if(enemy.GetType() == typeof(GruntEnemy))
                 {
@@ -156,6 +156,11 @@ namespace FlameShotGame.Managers
                             IMovement diagonalMovement = new DiagonalMovement(enemy.currentPosition, Globals.player.currentPosition, rand.Next(-5, 5), 350);
                             Globals.EnemyBulletList.Add(new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), enemy.currentPosition, -1, diagonalMovement));
                         }*/
+                }
+                if (enemy.GetType() == typeof(MidbossEnemy))
+                {
+                    var midboss = enemy as MidbossEnemy;
+                    midboss.Fire();
                 }
             }
         }

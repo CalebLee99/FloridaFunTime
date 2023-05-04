@@ -61,6 +61,10 @@ namespace FlameShotGame.Creational
             {
                 return new SnakeEnemy(texture, pos, movement);
             }
+            else if (enemyType == "midboss")
+            {
+                return new MidbossEnemy(texture, pos, movement);
+            }
             else
             {
                 Debug.WriteLine("Enemy Type of " + enemyType + " not recognized.");
