@@ -11,11 +11,11 @@
     },
     {
       "enemyType": "alligator",
-      "movementType": "chase",
-      "data": "[0 0];",
-      "speed": 85,
+      "movementType": "patrol",
+      "data": "100,200",
+      "speed": 200,
       "spawnTime": 3,
-      "spawnLocX": 400,
+      "spawnLocX": 0,
       "spawnLocY": 100
     },
     {

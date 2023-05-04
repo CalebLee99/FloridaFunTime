@@ -22,7 +22,21 @@ namespace FlameShotGame.Creational
             }
             else if (movementType == "patrol")
             {
-                /*movement = new PatrolMovement(); //Temp*/
+                string[] dev = data.Split(",");
+                int x_dev;
+                int y_dev;
+
+                Int32.TryParse(dev[0], out x_dev);
+                Int32.TryParse(dev[1], out y_dev);
+
+                List<Vector2> points = new List<Vector2>();
+                points.Add(new Vector2(pos.X, pos.Y));
+                points.Add(new Vector2(pos.X + x_dev, pos.Y));
+                points.Add(new Vector2(pos.X + x_dev, pos.Y + y_dev));
+                points.Add(new Vector2(pos.X, pos.Y + y_dev));
+
+                movement = new PatrolMovement(pos, new List<Vector2>() { new Vector2(100, 100), new Vector2(400, 100), new Vector2(400, 400), new Vector2(100, 400) }, speed);
+
             }
             else
             {

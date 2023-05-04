@@ -14,11 +14,12 @@ namespace FlameShotGame.GameObjects
         private int _currentMovementPath;
         private Vector2 currentPosition { get; set; }
 
-        public PatrolMovement(Vector2 currentPosition, List<Vector2> movementPath, int currentMovementPath)
+        public PatrolMovement(Vector2 currentPosition, List<Vector2> movementPath, int speed)
         {
             _MovementPath = movementPath;
-            _currentMovementPath = currentMovementPath;
+            _currentMovementPath = 0;
             this.currentPosition = currentPosition;
+            this.speed = speed;
         }
 
 
