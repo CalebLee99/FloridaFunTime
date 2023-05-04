@@ -22,7 +22,7 @@ namespace FlameShotGame.Creational
             }
             else if (movementType == "patrol")
             {
-                movement = new PatrolMovement(); //Temp
+                /*movement = new PatrolMovement(); //Temp*/
             }
             else
             {
@@ -33,10 +33,9 @@ namespace FlameShotGame.Creational
             {
                 return new AlligatorEnemy(texture, pos, movement);
             }
-            else if (enemyType == "grunt")
+            else if (enemyType == "enemy")
             {
-                /* return new GruntEnemy(texture, pos, movement);*/
-                return null;
+                return new GruntEnemy(texture, pos, movement);
             }
             else
             {

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using FlameShotGame;
 using FlameShotGame.GameObjects;
+using System.Diagnostics;
 
 namespace FlameShotGame.Managers
 {
@@ -58,6 +59,7 @@ namespace FlameShotGame.Managers
             spawnManager.Update();
             _player.Move();
             collisionManager.Update();
+            
             //TODO: Add SpawnManager.Update();
         }
         public void Draw()

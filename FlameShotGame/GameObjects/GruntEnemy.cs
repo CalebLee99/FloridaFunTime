@@ -1,5 +1,6 @@
 ﻿ using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,55 +17,42 @@ namespace FlameShotGame.GameObjects
         // 
 
         // Movement data members
-        private readonly List<Vector2> _MovementPath;
-        private int _currentMovementPath;
+        IMovement movement;
+
+/*        private readonly List<Vector2> _MovementPath;
+        private int _currentMovementPath;*/
         Globals globals = Globals.Instance();
 
         public bool HasShot;
         public float ShootCoolDownValue;
         public float ShootAccumulator;
 
-        public GruntEnemy(Texture2D texture, Vector2 pos) : base(texture, pos)
+/*        public GruntEnemy(Texture2D texture, Vector2 pos) : base(texture, pos)
         {
             // TODO: Stat data members (e.g. hit points)
             _currentMovementPath = 0;   
-        }
+        }*/
 
-        public GruntEnemy(Texture2D texture, Vector2 pos, List<Vector2> movePath) : base(texture, pos)
+        public GruntEnemy(Texture2D texture, Vector2 pos, IMovement movement) : base(texture, pos)
         {
             // TODO: Stat data members (e.g. hit points)
-            this._MovementPath = movePath;
-            _currentMovementPath = 0;
+            /*this._MovementPath = movePath;
+            _currentMovementPath = 0;*/
 
-
+            this.movement = movement;
             this.ShootCoolDownValue = (float) 2;
             this.ShootAccumulator = 0;
         }
-
-        // Add location for Grunt Enemy to move to.
-        public void AddPosition(Vector2 pos)
-        {
-            _MovementPath.Add(pos);
-        }
+        /*
+                // Add location for Grunt Enemy to move to.
+                public void AddPosition(Vector2 pos)
+                {
+                    _MovementPath.Add(pos);
+                }*/
 
         public override void Move()
         {
-            if (_MovementPath.Count == 0)
-            {
-                return;
-            }
-
-            var directionToMove = _MovementPath[_currentMovementPath] - this.currentPosition;
-
-            if (directionToMove.Length() > 4)
-            {
-                directionToMove.Normalize();
-                this.currentPosition += directionToMove * this.speed * Globals.Time;
-            }
-            else
-            {
-                _currentMovementPath = (_currentMovementPath + 1) % _MovementPath.Count;
-            }
+            this.currentPosition = this.movement.Move();
         }
 
         public void HasShotUpdate()
@@ -77,6 +65,20 @@ namespace FlameShotGame.GameObjects
         {
             base.Update();
             this.ShootAccumulator += Globals.Time;
+        }
+
+        public void Fire()
+        {
+            Random rand = new Random();
+
+            if (this.ShootAccumulator >= this.ShootCoolDownValue)
+            {
+                this.HasShotUpdate(); // Now HasShot is True
+                Debug.WriteLine("!!!! SHOOT ACCUMUL !!!" + this.ShootAccumulator);
+
+                IMovement diagonalMovement = new DiagonalMovement(this.currentPosition, Globals.player.currentPosition, rand.Next(-5, 5), 350);
+                Globals.EnemyBulletList.Add(new EnemyBullet(globals.Content.Load<Texture2D>("Sprites/enemybullet"), this.currentPosition, -1, diagonalMovement));
+            }
         }
     }
 }

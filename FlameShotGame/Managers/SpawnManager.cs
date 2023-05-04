@@ -28,6 +28,7 @@ namespace FlameShotGame.Managers
         // Attributes
         private static List<Entity> EntitiesOnScreen; // This should be pass by ref per entity... Test this.
         private Dictionary<int, JSONEnemy> waveDictonary;
+        private List<JSONEnemy> waveList;
 
         private int currentWaveTime;
 
@@ -53,6 +54,43 @@ namespace FlameShotGame.Managers
             EnemiesSpawnAndShootBullets();
             Debug.WriteLine(Globals.TotalElapsedTime);
             AddEntityToScreen();
+
+            //prniting list
+/*            foreach (JSONEnemy e in this.waveList)
+            {
+                Debug.Write("[");
+                Debug.Write(e.enemyName + ", ");
+                Debug.WriteLine("}");
+            }*/
+
+            if (Globals.EntitiesList.Count == 0 && waveList.Count != 0 && waveList[0].enemyName == "despawn")
+            {
+                
+                Debug.WriteLine("*******All Enemies Dead*******");
+                Dictionary<int, JSONEnemy> temp = new Dictionary<int, JSONEnemy>();
+                var keys = new List<int>(waveDictonary.Keys);
+                int timeToSubtract = waveList[0].spawnTime - (int)Globals.TotalElapsedTime;
+
+ 
+
+                foreach (int key in keys)
+                {
+                    waveDictonary[key].spawnTime = waveDictonary[key].spawnTime - timeToSubtract + 1;
+                    temp.Add((waveDictonary[key].spawnTime), waveDictonary[key]);
+                }
+                foreach(JSONEnemy e in waveList)
+                {
+                    Debug.WriteLine("SPAWN TIME IN WAVE LIST: " + e.spawnTime);
+                    /*e.spawnTime = e.spawnTime - timeToSubtract;*/
+                }
+
+                this.waveDictonary.Remove(waveList[0].spawnTime);
+                this.waveList.RemoveAt(0);
+
+                this.waveDictonary = temp;
+
+            }
+
         }
 
         private void AddEntityToScreen()
@@ -63,7 +101,19 @@ namespace FlameShotGame.Managers
                 this.SpawnEntity(currentEnemy);
 
                 // remove because already spawned.
-                this.waveDictonary.Remove((int)Globals.TotalElapsedTime);
+                try
+                {
+                    this.waveDictonary.Remove((int)Globals.TotalElapsedTime);
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("NULL EXCEPTION: WAVE DICTIONARY REMOVE FAILED BECAUSE DNE");
+                }
+                
+                if (this.waveList.Count() > 0)
+                {
+                    this.waveList.RemoveAt(0);
+                }
             }
         }
 
@@ -77,6 +127,7 @@ namespace FlameShotGame.Managers
             this.enemyFactory = new EnemyFactory();
 
             waveDictonary = new Dictionary<int, JSONEnemy>();
+            waveList = new List<JSONEnemy>();
             this.ReadWave();
         }
 
@@ -92,13 +143,19 @@ namespace FlameShotGame.Managers
             {
                 if(enemy.GetType() == typeof(GruntEnemy))
                 {
-                    var gruntEnemy = enemy as GruntEnemy;   
-                    if (gruntEnemy.ShootAccumulator >= gruntEnemy.ShootCoolDownValue)
-                    {
-                        gruntEnemy.HasShotUpdate(); // Now HasShot is True
-                        Debug.WriteLine("!!!! SHOOT ACCUMUL !!!" + gruntEnemy.ShootAccumulator);
-                        Globals.EnemyBulletList.Add(new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), enemy.currentPosition, -1));
-                    }
+                    var gruntEnemy = enemy as GruntEnemy;
+                    gruntEnemy.Fire();
+
+/*                    Random rand = new Random();
+                    
+                        if (gruntEnemy.ShootAccumulator >= gruntEnemy.ShootCoolDownValue)
+                        {
+                            gruntEnemy.HasShotUpdate(); // Now HasShot is True
+                            Debug.WriteLine("!!!! SHOOT ACCUMUL !!!" + gruntEnemy.ShootAccumulator);
+
+                            IMovement diagonalMovement = new DiagonalMovement(enemy.currentPosition, Globals.player.currentPosition, rand.Next(-5, 5), 350);
+                            Globals.EnemyBulletList.Add(new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), enemy.currentPosition, -1, diagonalMovement));
+                        }*/
                 }
             }
         }
@@ -135,9 +192,10 @@ namespace FlameShotGame.Managers
                     Debug.WriteLine("\t spawnLocY: " + enemy["spawnLocY"]);
                     int spawnLocY = (int)enemy["spawnLocY"];
 
-                    JSONEnemy newJSONEnemy = new JSONEnemy(enemyType, movementType, data, speed, spawnLocX, spawnLocY);
+                    JSONEnemy newJSONEnemy = new JSONEnemy(enemyType, movementType, data, spawnTime, speed, spawnLocX, spawnLocY);
                 
                     this.waveDictonary[spawnTime] = newJSONEnemy;
+                    this.waveList.Add(newJSONEnemy);
                 }
 
         }
@@ -159,8 +217,11 @@ namespace FlameShotGame.Managers
 
         public void ShootPlayerBullet()
         {
+            Random rand = new Random();
+            int random = rand.Next(-50, 50);
             /*IMovement straightMovement = new StraightMovement(Globals.player.currentPosition, 350);*/
-            IMovement straightMovement = new CircleMovement(Globals.player.currentPosition, 0.10f, 20);
+            /*IMovement straightMovement = new CircleMovement(Globals.player.currentPosition, 0.10f, 20)*/
+            IMovement straightMovement = new DiagonalMovement(Globals.player.currentPosition, new Vector2(Globals.player.currentPosition.X + 14, 0), random, 350); 
             Globals.PlayerBulletList.Add(new PlayerBullet(global.Content.Load<Texture2D>("Sprites/playerbullet"), Globals.player.currentPosition, 25, straightMovement));
         }
 

@@ -22,7 +22,7 @@ namespace FlameShotGame.Creational
             }
             else if (entityType.ToLower() == "enemy")
             {
-                return new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), pos, damage);
+                return new EnemyBullet(global.Content.Load<Texture2D>("Sprites/enemybullet"), pos, damage, movement);
             }
             else
             {

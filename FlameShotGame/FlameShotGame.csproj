@@ -16,9 +16,9 @@
     <Compile Remove="GameObjects\Movement_Enemy.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Content\Sprites\enemy.png" />
     <None Remove="Creational\NewFile1.txt" />
     <None Remove="GameObjects\IMovement" />
-    <None Remove="GameObjects\NewFile1.txt" />
     <None Remove="Managers\NewFile1.txt" />
   </ItemGroup>
   <ItemGroup>
