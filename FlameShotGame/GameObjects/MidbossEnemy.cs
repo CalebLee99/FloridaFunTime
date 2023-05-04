@@ -17,7 +17,7 @@ namespace FlameShotGame.GameObjects
         }
         public override void Move()
         {
-            throw new NotImplementedException();
+           
         }
 
         public override void Update()

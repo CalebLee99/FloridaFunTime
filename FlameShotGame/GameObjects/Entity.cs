@@ -14,6 +14,7 @@ namespace FlameShotGame.GameObjects
     {
         protected readonly Texture2D texture;
         protected readonly Vector2 spawn;
+        public int Health { get; set; }
         public Vector2 currentPosition { get; set; }
         private Rectangle _hitbox;
         
@@ -33,7 +34,7 @@ namespace FlameShotGame.GameObjects
             this.currentPosition = pos;
             this.speed = globals.defaultEntitySpeed; // Change this to a global variable defaultSpeed.
             this.spawn = new(texture.Width / 2, texture.Height / 2); // Also change this to global variable defaultSpawnPoint.
-
+            this.Health = 1;
             this._hitbox = new Rectangle((int) pos.X, (int) pos.Y, (int) (texture.Width * 0.8), (int) (texture.Height * .8));
 
             // Want to change this to be a more global 

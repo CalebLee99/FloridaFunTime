@@ -222,7 +222,7 @@ namespace FlameShotGame.Managers
             /*IMovement straightMovement = new StraightMovement(Globals.player.currentPosition, 350);*/
             /*IMovement straightMovement = new CircleMovement(Globals.player.currentPosition, 0.10f, 20)*/
             IMovement straightMovement = new DiagonalMovement(Globals.player.currentPosition, new Vector2(Globals.player.currentPosition.X + 14, 0), random, 350); 
-            Globals.PlayerBulletList.Add(new PlayerBullet(global.Content.Load<Texture2D>("Sprites/playerbullet"), Globals.player.currentPosition, 25, straightMovement));
+            Globals.PlayerBulletList.Add(new PlayerBullet(global.Content.Load<Texture2D>("Sprites/playerbullet"), Globals.player.currentPosition, 1, straightMovement));
         }
 
         public void DespawnEntity(Entity en)

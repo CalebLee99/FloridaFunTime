@@ -80,7 +80,12 @@ namespace FlameShotGame.Managers
                     if (bullet.Hitbox.Intersects(entity.Hitbox))
                     {
                         spawnManager.DespawnPlayerBullet(bullet);
-                        spawnManager.DespawnEntity(entity);
+                        entity.Health -= bullet.GetDamage();
+                        if (entity.Health <= 0)
+                        {
+                            spawnManager.DespawnEntity(entity);
+                        }
+
                         Debug.WriteLine("!!!! Take That !!!!!");
 
                         Random HeartDropRate = new Random();

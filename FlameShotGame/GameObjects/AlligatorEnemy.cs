@@ -17,9 +17,11 @@ namespace FlameShotGame.GameObjects
 
         IMovement movement;
 
+
         public AlligatorEnemy(Texture2D texture, Vector2 pos, IMovement movementType) : base(texture, pos)
         {
             this.movement = movementType;
+            this.Health = 3;
         }
 
         public override void Move()
