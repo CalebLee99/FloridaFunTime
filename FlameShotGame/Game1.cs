@@ -13,6 +13,7 @@ namespace FlameShotGame
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private Texture2D _background;
         Globals globals = Globals.Instance();
         
         public Game1()
@@ -38,8 +39,8 @@ namespace FlameShotGame
                         _graphics.PreferredBackBufferHeight = GraphicsDevice.Adapter.CurrentDisplayMode.Height;
                         _graphics.ApplyChanges();*/
 
-            _graphics.PreferredBackBufferWidth = 1920;
-            _graphics.PreferredBackBufferHeight = 1080;
+            _graphics.PreferredBackBufferWidth = 800;
+            _graphics.PreferredBackBufferHeight = 600;
             _graphics.ApplyChanges();
 
             GameManager gameManager = GameManager.Instance();
@@ -50,6 +51,7 @@ namespace FlameShotGame
         { 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             globals.SpriteBatch = this._spriteBatch;
+            _background = Content.Load<Texture2D>("Sprites/background");
             // TODO: use this.Content to load your game content here
         }
 
@@ -70,7 +72,10 @@ namespace FlameShotGame
 
         protected override void Draw(GameTime gameTime) // Called multiple times per second
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            this._spriteBatch.Begin();
+            _spriteBatch.Draw(_background, new Vector2(0,0), Color.White);
+            this._spriteBatch.End();
+
             GameManager gameManager = GameManager.Instance();
             // TODO: Add your drawing code here
             gameManager.Draw();

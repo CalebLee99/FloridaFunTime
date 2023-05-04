@@ -33,7 +33,7 @@ namespace FlameShotGame.Managers
         protected GameManager()
         {
             // Set ALL sprites here.
-            _player = new Player(global.Content.Load<Texture2D>("Sprites/player"), new Vector2(300, 250));
+            _player = new Player(global.Content.Load<Texture2D>("Sprites/player"), new Vector2(Globals.ScreenWidth - Globals.ScreenWidth/2, Globals.ScreenHeight - Globals.ScreenHeight/6));
             // Populate the Managers list with all of the submanagers.
             //Managers.Add(drawManager);
 

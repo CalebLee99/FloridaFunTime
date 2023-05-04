@@ -37,8 +37,8 @@ namespace FlameShotGame
         public static int FrameCounter = 0;
 
 
-        public static int ScreenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-        public static int ScreenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+        public static int ScreenWidth = 800;
+        public static int ScreenHeight = 600;
 
         public static Globals Instance()
         {

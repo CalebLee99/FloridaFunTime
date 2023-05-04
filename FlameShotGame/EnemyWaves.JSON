@@ -1,13 +1,13 @@
 {
   "enemies": [
     {
-      "enemyType": "finalboss",
+      "enemyType": "enemy",
       "movementType": "chase",
       "data": "",
       "speed": 100,
       "spawnTime": 1,
-      "spawnLocX": 900,
-      "spawnLocY": 200
+      "spawnLocX": 400,
+      "spawnLocY": 300
     },
     {
       "enemyType": "despawn",

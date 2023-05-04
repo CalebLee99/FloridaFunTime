@@ -90,6 +90,12 @@ namespace FlameShotGame.Managers
                 this.waveDictonary = temp;
 
             }
+            else if(waveDictonary.Count == 0)
+            {
+                Globals.EntitiesList.Clear();
+                Globals.EntitiesList.Add(new Notify(global.Content.Load<Texture2D>("Sprites/YouWin"), new Vector2(-50, 200)));
+                
+            }
 
         }
 

@@ -64,7 +64,8 @@ namespace FlameShotGame.GameObjects
             if (this._currentHealth == 0)
             {
                 Globals.EntitiesList.Clear();
-                Globals.EntitiesList.Add(new Notify(global.Content.Load<Texture2D>("Sprites/health_5"), new Vector2(300, 200)));
+                Globals.EntitiesList.Add(new Notify(global.Content.Load<Texture2D>("Sprites/YouLose"), new Vector2(300, 200)));
+                this.currentPosition = new Vector2(-9999999, 9999999);
                 //System.Threading.Thread.Sleep(1000);
                 //Environment.Exit(0);
             }
@@ -113,7 +114,7 @@ namespace FlameShotGame.GameObjects
         public void PlayerTakesDamage(int damage)
         {
             this.UpdateHealth(damage);
-            this.currentPosition = new Vector2(350, 300);
+            this.currentPosition = new Vector2(Globals.ScreenWidth - Globals.ScreenWidth / 2, Globals.ScreenHeight - Globals.ScreenHeight / 6);
             ToggleInvincibility();
             this.SetInvincibilityFrames(150);
             this._frameWhereDamageOccurred = Globals.FrameCounter;
