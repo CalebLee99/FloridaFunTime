@@ -16,7 +16,7 @@ namespace FlameShotGame.GameObjects
         private Vector2 currentPosition;
         private Vector2 origin;
         private float radius { get; set; }
-        private float speed { get; set; }
+        private float radians { get; set; }
         private float angle { get; set; }
         private float increase { get; set; }
 
@@ -33,10 +33,10 @@ namespace FlameShotGame.GameObjects
 
         public override Vector2 Move()
         {
-            speed += 0.10f;
+            radians += 0.10f;
 
-            this.currentPosition.X = (float)(this.currentPosition.X + this.radius * Math.Cos(speed));
-            this.currentPosition.Y = (float)(this.currentPosition.Y + this.radius * Math.Sin(speed));
+            this.currentPosition.X = (float)(this.currentPosition.X + this.radius * Math.Cos(radians));
+            this.currentPosition.Y = (float)(this.currentPosition.Y + this.radius * Math.Sin(radians));
 
             return this.currentPosition;
 
