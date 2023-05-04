@@ -36,6 +36,10 @@ namespace FlameShotGame.GameObjects
             {
                 spawnManager.DespawnEnemyBullet(this);
             }
+            if (Age >= MaxTime && this.GetType() == typeof(PlayerBullet))
+            {
+                spawnManager.DespawnPlayerBullet(this);
+            }
         }
 
     }
