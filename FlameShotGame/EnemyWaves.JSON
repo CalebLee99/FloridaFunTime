@@ -1,13 +1,13 @@
 {
   "enemies": [
     {
-      "enemyType": "midboss",
-      "movementType": "patrol",
-      "data": "60,120",
-      "speed": 150,
+      "enemyType": "alligator",
+      "movementType": "chase",
+      "data": "",
+      "speed": 85,
       "spawnTime": 1,
-      "spawnLocX": 900,
-      "spawnLocY": 50
+      "spawnLocX": 0,
+      "spawnLocY": 100
     },
     {
       "enemyType": "despawn",

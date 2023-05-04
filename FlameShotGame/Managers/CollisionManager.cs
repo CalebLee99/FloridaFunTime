@@ -79,23 +79,26 @@ namespace FlameShotGame.Managers
                 {
                     if (bullet.Hitbox.Intersects(entity.Hitbox))
                     {
-                        spawnManager.DespawnPlayerBullet(bullet);
+                        
                         entity.Health -= bullet.GetDamage();
                         if (entity.Health <= 0)
                         {
                             spawnManager.DespawnEntity(entity);
+                            Random HeartDropRate = new Random();
+                            int heartChance = HeartDropRate.Next(0, 40);
+                            if (heartChance == 1)
+                            {
+                                // Create new HeartPowerUp
+                                Globals.EntitiesList.Add(new HeartPowerUp(global.Content.Load<Texture2D>("Sprites/HeartPowerUp"), bullet.currentPosition));
+                            }
                         }
 
                         Debug.WriteLine("!!!! Take That !!!!!");
 
-                        Random HeartDropRate = new Random();
-                        int heartChance = HeartDropRate.Next(0, 100);
-                        if (heartChance == 1) // Add condition if player health is less than maxhealth
-                        {
-                            // Drop Heart
-                        }
-
                         
+
+                        spawnManager.DespawnPlayerBullet(bullet);
+
                     }
                 }
             }
@@ -118,15 +121,27 @@ namespace FlameShotGame.Managers
                     }
                 }
 
-                // Case 3: Enemy hits Player
-                foreach (var enemy in Globals.EntitiesList.ToList())
+                // Case 3: Enemy or Powerup hits Player
+                foreach (var entity in Globals.EntitiesList.ToList())
                 {
-                    if (enemy.Hitbox.Intersects(Globals.player.Hitbox))
+                    if (entity.Hitbox.Intersects(Globals.player.Hitbox))
                     {
-                        Debug.WriteLine("!!!!! Chomp Chomp !!!!!");
+                        if (entity.GetType() == typeof(HeartPowerUp) && Globals.player.playerDamaged == true)
+                        {
+                            Debug.WriteLine("!!!!! YEAH BABY !!!!!");
+
+                            Globals.player.UpdateHealth(+1);
+                            spawnManager.DespawnEntity(entity);
+                            spawnManager.UpdatePlayerHealthBar();
+                        } 
+                        else if (entity.GetType() != typeof(HeartPowerUp))
+                        {
+                            Debug.WriteLine("!!!!! Ouch !!!!!");
+
+                            Globals.player.PlayerTakesDamage(-1);
+                            spawnManager.UpdatePlayerHealthBar();
+                        }
                         
-                        Globals.player.PlayerTakesDamage(-1);
-                        spawnManager.UpdatePlayerHealthBar();
                     }
                 }
             }
