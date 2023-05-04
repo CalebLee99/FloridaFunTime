@@ -29,6 +29,7 @@ namespace FlameShotGame
         public ContentManager Content { get; set; }
         public readonly float defaultEntitySpeed = 40;
         
+        
         public static List<Entity> EntitiesList;
         public static Player player;
         public static List<Bullet> EnemyBulletList;

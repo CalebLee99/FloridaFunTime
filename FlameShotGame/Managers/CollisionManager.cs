@@ -44,7 +44,7 @@ namespace FlameShotGame.Managers
             foreach (var bullet in Globals.PlayerBulletList.ToList())
             {
                 bullet.Update();
-                Debug.WriteLine("Bullet Position in int: " + (int)bullet.currentPosition.X + ", " + (int)bullet.currentPosition.Y);
+                //Debug.WriteLine("Bullet Position in int: " + (int)bullet.currentPosition.X + ", " + (int)bullet.currentPosition.Y);
 
                 if (((int)bullet.currentPosition.Y) <= 2)
                 {
@@ -82,6 +82,15 @@ namespace FlameShotGame.Managers
                         spawnManager.DespawnPlayerBullet(bullet);
                         spawnManager.DespawnEntity(entity);
                         Debug.WriteLine("!!!! Take That !!!!!");
+
+                        Random HeartDropRate = new Random();
+                        int heartChance = HeartDropRate.Next(0, 100);
+                        if (heartChance == 1) // Add condition if player health is less than maxhealth
+                        {
+                            // Drop Heart
+                        }
+
+                        
                     }
                 }
             }
@@ -104,13 +113,13 @@ namespace FlameShotGame.Managers
                     }
                 }
 
-                // Case 3: Enemy hits Playerw
+                // Case 3: Enemy hits Player
                 foreach (var enemy in Globals.EntitiesList.ToList())
                 {
                     if (enemy.Hitbox.Intersects(Globals.player.Hitbox))
                     {
                         Debug.WriteLine("!!!!! Chomp Chomp !!!!!");
-                        spawnManager.DespawnEntity(enemy);
+                        
                         Globals.player.PlayerTakesDamage(-1);
                         spawnManager.UpdatePlayerHealthBar();
                     }
