@@ -159,7 +159,8 @@ namespace FlameShotGame.Managers
 
         public void ShootPlayerBullet()
         {
-            IMovement straightMovement = new StraightMovement(Globals.player.currentPosition, 350);
+            /*IMovement straightMovement = new StraightMovement(Globals.player.currentPosition, 350);*/
+            IMovement straightMovement = new CircleMovement(Globals.player.currentPosition, 0.10f, 10);
             Globals.PlayerBulletList.Add(new PlayerBullet(global.Content.Load<Texture2D>("Sprites/playerbullet"), Globals.player.currentPosition, 25, straightMovement));
         }
 
