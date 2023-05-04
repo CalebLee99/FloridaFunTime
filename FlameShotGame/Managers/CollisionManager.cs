@@ -86,7 +86,7 @@ namespace FlameShotGame.Managers
                             spawnManager.DespawnEntity(entity);
                             Random HeartDropRate = new Random();
                             int heartChance = HeartDropRate.Next(0, 40);
-                            if (heartChance == 1)
+                            if (heartChance <= 10)
                             {
                                 // Create new HeartPowerUp
                                 Globals.EntitiesList.Add(new HeartPowerUp(global.Content.Load<Texture2D>("Sprites/HeartPowerUp"), bullet.currentPosition));
