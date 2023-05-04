@@ -36,7 +36,13 @@ namespace FlameShotGame.Creational
                 points.Add(new Vector2(pos.X, pos.Y + y_dev));
 
                 movement = new PatrolMovement(pos, new List<Vector2>() { new Vector2(100, 100), new Vector2(400, 100), new Vector2(400, 400), new Vector2(100, 400) }, speed);
-
+            }
+            else if (movementType == "circle")
+            {
+                int radius;
+                Int32.TryParse(data, out radius);
+               
+                movement = new CircleMovement(pos, speed, radius);
             }
             else
             {
@@ -50,6 +56,10 @@ namespace FlameShotGame.Creational
             else if (enemyType == "enemy")
             {
                 return new GruntEnemy(texture, pos, movement);
+            }
+            else if (enemyType == "snake")
+            {
+                return new SnakeEnemy(texture, pos, movement);
             }
             else
             {

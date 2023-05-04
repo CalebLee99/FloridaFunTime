@@ -29,10 +29,19 @@
     },
     {
       "enemyType": "enemy",
-      "movementType": "chase",
-      "data": "",
+      "movementType": "patrol",
+      "data": "70,100",
       "speed": 85,
       "spawnTime": 6,
+      "spawnLocX": 700,
+      "spawnLocY": 100
+    },
+    {
+      "enemyType": "snake",
+      "movementType": "circle",
+      "data": "10",
+      "speed": 20,
+      "spawnTime": 1,
       "spawnLocX": 700,
       "spawnLocY": 100
     },
@@ -41,7 +50,7 @@
       "movementType": "0",
       "data": "",
       "speed": 0,
-      "spawnTime": 8,
+      "spawnTime": 15,
       "spawnLocX": 0,
       "spawnLocY": 0
     },
@@ -50,7 +59,7 @@
       "movementType": "chase",
       "data": "",
       "speed": 85,
-      "spawnTime": 10,
+      "spawnTime": 16,
       "spawnLocX": 700,
       "spawnLocY": 103
     },
@@ -59,7 +68,7 @@
       "movementType": "chase",
       "data": "",
       "speed": 85,
-      "spawnTime": 11,
+      "spawnTime": 17,
       "spawnLocX": 700,
       "spawnLocY": 103
     },
@@ -68,7 +77,7 @@
       "movementType": "chase",
       "data": "",
       "speed": 85,
-      "spawnTime": 12,
+      "spawnTime": 18,
       "spawnLocX": 700,
       "spawnLocY": 103
     }
